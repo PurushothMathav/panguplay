@@ -1,7 +1,7 @@
 {
   "id": "com.panguplay.app",
-  "name": "panguplay",
-  "short_name": "panguplay",
+  "name": "PanguPlay",
+  "short_name": "PanguPlay",
   "lang": "en",
   "start_url": "/",
   "scope": "/",
