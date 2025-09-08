@@ -10,8 +10,8 @@
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1f1f1f">
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
-  <title>panguplay - 720p</title>
+    <link rel="icon" type="image/png" href="https://panguplay.in/favicon.png">
+  <title>PanguPlay - 720p</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #121212; color: #fff; font-family: Arial, sans-serif; }
@@ -454,7 +454,7 @@
 <div class="navbar">
   <div class="nav-left">
   <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-  <a href="index.html" class="nav-logo">panguplay</a>
+  <a href="index.html" class="nav-logo">PanguPlay</a>
  <!-- <button class="bell-btn" id="bellBtn" title="Notifications">🔔</button> -->
 </div>
 
@@ -463,7 +463,7 @@
     <a href="movies.html">Movies</a>
     <a href="shows.html">Shows</a>
     <a href="dubbed.html">Tamil Dub</a>
-	<a href="test.html">Kuku TV</a>
+	<a href="test.html" selected>Kuku TV</a>
     <a href="request.html">Request</a>
     <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
     <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">Telegram</a>
@@ -488,7 +488,7 @@
   <a href="movies.html">🎬 Movies</a>
   <a href="shows.html">📺 Shows</a>
   <a href="dubbed.html">🎙 Tamil Dub</a>
-  <a href="test.html">🎞️ Kuku TV</a>
+  <a href="test.html" selected>🎞️ Kuku TV</a>
   <a href="request.html">📩 Request</a>
   <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
   <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">💬 Telegram</a>
@@ -804,7 +804,7 @@ loadSwiper();
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/panguplay/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })
@@ -816,31 +816,6 @@ loadSwiper();
 </script>
 
 <script>
-
-/*
-let touchStartX = 0;
-let touchEndX = 0;
-
-document.addEventListener('touchstart', function (e) {
-  touchStartX = e.changedTouches[0].screenX;
-}, false);
-
-document.addEventListener('touchend', function (e) {
-  touchEndX = e.changedTouches[0].screenX;
-  handleGesture();
-}, false);
-
-function handleGesture() {
-  const swipeDistance = touchEndX - touchStartX;
-  if (swipeDistance > 60 && touchStartX < 50) {
-    // Swiped right from left edge
-    toggleMenu();
-  } else if (swipeDistance < -60 && document.getElementById("mobileMenu").classList.contains("open")) {
-    // Swiped left while menu is open
-    closeMenu();
-  }
-}
-*/
 
 const gestureZone = document.getElementById('gestureZone');
 
@@ -858,7 +833,7 @@ gestureZone.addEventListener('touchend', (e) => {
 </script>
 
 
-<script src="/panguplay/orientation-lock.js"></script>
+<script src="/orientation-lock.js"></script>
 
 </body>
 </html>

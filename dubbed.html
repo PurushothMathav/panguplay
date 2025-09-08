@@ -10,8 +10,8 @@
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1f1f1f">
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
-  <title>panguplay - Dubbed</title>
+    <link rel="icon" type="image/png" href="https://panguplay.in/favicon.png">
+  <title>PanguPlay - Dubbed</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #121212; color: #fff; font-family: Arial, sans-serif; }
@@ -454,7 +454,7 @@
 <div class="navbar">
   <div class="nav-left">
   <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-  <a href="index.html" class="nav-logo">panguplay</a>
+  <a href="index.html" class="nav-logo">PanguPlay</a>
   <!-- <button class="bell-btn" id="bellBtn" title="Notifications">🔔</button> -->
 </div>
 
@@ -462,7 +462,7 @@
     <a href="index.html">Home</a>
     <a href="movies.html">Movies</a>
     <a href="shows.html">Shows</a>
-    <a href="dubbed.html">Tamil Dub</a>
+    <a href="dubbed.html" selected>Tamil Dub</a>
 	<a href="720p.html">Kuku TV</a>
     <a href="request.html">Request</a>
     <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
@@ -487,7 +487,7 @@
   <a href="index.html">🏠 Home</a>
   <a href="movies.html">🎬 Movies</a>
   <a href="shows.html">📺 Shows</a>
-  <a href="dubbed.html">🎙 Tamil Dub</a>
+  <a href="dubbed.html" selected>🎙 Tamil Dub</a>
   <a href="720p.html">🎞️ Kuku TV</a>
   <a href="request.html">📩 Request</a>
   <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
@@ -42549,39 +42549,6 @@ document.addEventListener('DOMContentLoaded', () => {
 };
   filterAndRenderDubbed();
 });
-/*
-// Show/hide notification popup
-const bellBtn = document.getElementById('bellBtn');
-const popup = document.getElementById('notificationPopup');
-
-bellBtn.addEventListener('click', function(event) {
-  event.stopPropagation();
-  popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
-});
-
-// Hide popup when clicking outside
-document.addEventListener('click', function(event) {
-  if (popup.style.display === 'block' && !popup.contains(event.target) && event.target !== bellBtn) {
-    popup.style.display = 'none';
-  }
-}); */
-
-/*
-function openPlayer(video) {
-  const details = encodeURIComponent(JSON.stringify(video.details));
-  let url = `player.html?title=${encodeURIComponent(video.title)}&image=${encodeURIComponent(video.image)}&details=${details}`;
-  if (video.type === 'series') {
-    const episodes = encodeURIComponent(JSON.stringify(video.episodes));
-    url += `&id=${video.id}&episodes=${episodes}`;
-  } else {
-    url += `&video=${encodeURIComponent(video.video)}`;
-	if (video.alt) {
-		url += `&alt=${encodeURIComponent(video.alt)}`;
-	}
-  }
-  window.location.href = url;
-}
-*/
 
 function openPlayer(video) {
   sessionStorage.setItem('playerData', JSON.stringify(video));
@@ -42630,47 +42597,7 @@ function loadSwiper() {
 }
 
 loadSwiper();
-/*
-function loadDubbed() {
-  const dubbed = document.getElementById('dubbedList');
 
-  // Sort dubbed movies/shows by lastUpdated in descending order (latest first)
-  videos
-    .filter(v => v.type === 'dubbed')
-    .sort((a, b) => parseDate(b.details.lastUpdated) - parseDate(a.details.lastUpdated))
-    .forEach(v => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      
-      // Check if image exists, if not use our new placeholder generator
-      let imageContent;
-	  const quality = v.details.quality || 'SD';
-      const qualityClass = getQualityClass(quality);
-      if (v.image && v.image.trim() !== '') {
-        imageContent = `
-          <div class="card-image-container">
-            <img src="${v.image}" alt="${v.title}" loading="lazy">
-            <div class="quality-tag ${qualityClass}">${quality}</div>
-          </div>`;
-      } else {
-        imageContent = `
-          <div class="card-image-container">
-            ${generatePlaceholderImage(v.title)}
-            <div class="quality-tag ${qualityClass}">${quality}</div>
-          </div>`;
-      }
-      
-      card.innerHTML = `${imageContent}
-                       <div class="card-title">${v.title}</div>`;
-      card.onclick = () => openPlayer(v);
-      dubbed.appendChild(card);
-    });
-}
-
-
-loadDubbed();
-
-*/
 </script>
 
 <script>
@@ -42690,12 +42617,12 @@ gestureZone.addEventListener('touchend', (e) => {
 
 </script>
 
-<script src="/panguplay/orientation-lock.js"></script>
+<script src="/orientation-lock.js"></script>
 
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/panguplay/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })

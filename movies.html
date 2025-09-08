@@ -8,8 +8,8 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1f1f1f">
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
-  <title>panguplay - Movies</title>
+    <link rel="icon" type="image/png" href="https://panguplay.in/favicon.png">
+  <title>PanguPlay - Movies</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #121212; color: #fff;  font-family: Arial, sans-serif; }
@@ -484,13 +484,13 @@
 <div class="navbar">
   <div class="nav-left">
   <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-  <a href="index.html" class="nav-logo">panguplay</a>
+  <a href="index.html" class="nav-logo">PanguPlay</a>
  <!-- <button class="bell-btn" id="bellBtn" title="Notifications">🔔</button> -->
 </div>
 
   <div class="nav-center nav-links">
     <a href="index.html">Home</a>
-    <a href="movies.html">Movies</a>
+    <a href="movies.html" selected>Movies</a>
     <a href="shows.html">Shows</a>
     <a href="dubbed.html">Tamil Dub</a>
 	<a href="720p.html">Kuku TV</a>
@@ -515,7 +515,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="closeMenu()">✖</button>
   <a href="index.html">🏠 Home</a>
-  <a href="movies.html">🎬 Movies</a>
+  <a href="movies.html" selected>🎬 Movies</a>
   <a href="shows.html">📺 Shows</a>
   <a href="dubbed.html">🎙 Tamil Dub</a>
   <a href="720p.html">🎞️ Kuku TV</a>
@@ -568,7 +568,7 @@ disable-paste='false'>
 </script>
 
 <footer>
-  &copy; 2025 panguplay
+  &copy; 2025 PanguPlay
 </footer>
 
 <div id="gestureZone" style="position: fixed; top: 0; left: 0; height: 100%; width: 30px; z-index: 3000;"></div>
@@ -27302,12 +27302,12 @@ gestureZone.addEventListener('touchend', (e) => {
 
 </script>
 
-<script src="/panguplay/orientation-lock.js"></script>
+<script src="/orientation-lock.js"></script>
 
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/panguplay/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })

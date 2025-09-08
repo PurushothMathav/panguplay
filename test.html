@@ -7,8 +7,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1f1f1f">
-  <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
-  <title>panguplay - Movies</title>
+  <link rel="icon" type="image/png" href="https://panguplay.in/favicon.png">
+  <title>PanguPlay - Movies</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #121212; color: #fff; font-family: Arial, sans-serif; }
@@ -525,7 +525,7 @@
     <a href="movies.html">Movies</a>
     <a href="shows.html">Shows</a>
     <a href="dubbed.html">Tamil Dub</a>
-    <a href="720p.html">Kuku TV</a>
+    <a href="720p.html" selected>Kuku TV</a>
     <a href="request.html">Request</a>
     <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
     <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">Telegram</a>
@@ -550,7 +550,7 @@
   <a href="movies.html">🎬 Movies</a>
   <a href="shows.html">📺 Shows</a>
   <a href="dubbed.html">🎙 Tamil Dub</a>
-  <a href="720p.html">🎞️ Kuku TV</a>
+  <a href="720p.html" selected>🎞️ Kuku TV</a>
   <a href="request.html">📩 Request</a>
   <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
   <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">💬 Telegram</a>
@@ -29889,12 +29889,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
-<script src="/panguplay/orientation-lock.js"></script>
+<script src="/orientation-lock.js"></script>
 
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/panguplay/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })

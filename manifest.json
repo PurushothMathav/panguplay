@@ -3,8 +3,8 @@
   "name": "panguplay",
   "short_name": "panguplay",
   "lang": "en",
-  "start_url": "/panguplay/index.html",
-  "scope": "/panguplay/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "display_override": ["fullscreen", "minimal-ui"],
   "background_color": "#fafafa",
@@ -14,19 +14,19 @@
   "categories": ["entertainment", "video", "streaming"],
   "icons": [
     {
-      "src": "/panguplay/icon-192.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/panguplay/icon-512.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/panguplay/favicon.png",
+      "src": "/favicon.png",
       "sizes": "16x16",
       "type": "image/png"
     }
@@ -36,37 +36,36 @@
       "name": "Movies",
       "short_name": "Movies",
       "description": "Browse all movies",
-      "url": "/panguplay/movies.html"
+      "url": "/movies.html"
     },
     {
       "name": "TV Shows",
       "short_name": "Shows",
       "description": "Browse all TV shows",
-      "url": "/panguplay/shows.html"
+      "url": "/shows.html"
     },
     {
       "name": "Dubbed",
       "short_name": "Dubbed",
       "description": "Browse dubbed content",
-      "url": "/panguplay/dubbed.html"
+      "url": "/dubbed.html"
     },
     {
       "name": "720p",
       "short_name": "720p",
       "description": "Browse 720p content",
-      "url": "/panguplay/720p.html"
+      "url": "/720p.html"
     }
   ],
   "screenshots": [
     {
-      "src": "/panguplay/screenshot1.png",
+      "src": "/screenshot1.png",
       "sizes": "540x720",
       "type": "image/png",
       "form_factor": "narrow"
     }
   ],
   "prefer_related_applications": false,
-  "iarc_rating_id": "",
   "handle_links": "auto",
   "launch_handler": {
     "client_mode": ["navigate-existing", "auto"]

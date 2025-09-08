@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Video Player - panguplay</title>
+  <title>Video Player - PanguPlay</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css">
   <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1f1f1f">
   <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
+    <link rel="icon" type="image/png" href="https://panguplay.in/favicon.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #121212; color: #fff; font-family: 'Inter', sans-serif; }
@@ -831,7 +831,7 @@ body.lock-scroll {
   <div class="navbar">
     <div class="nav-left">
       <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-      <a href="index.html" class="nav-logo">panguplay</a>
+      <a href="index.html" class="nav-logo">PanguPlay</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="movies.html">Movies</a>
@@ -2397,7 +2397,7 @@ function updateEpisodeButtonsInFullscreen() {
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/panguplay/service-worker.js')
+      navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {
           console.log('Service Worker registered with scope:', registration.scope);
         })
@@ -2408,7 +2408,7 @@ function updateEpisodeButtonsInFullscreen() {
   }
 </script>
 
-<script src="/panguplay/orientation-lock.js"></script>
+<script src="/orientation-lock.js"></script>
 
 <script>
 
