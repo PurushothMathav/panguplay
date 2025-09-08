@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"> -->
+  <!-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> -->
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f1f1f">
+  <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
+  <title>panguplay - 720p</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #121212; color: #fff; font-family: Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px }
+
+        /* Navbar */
+  .navbar {
+  background: #1f1f1f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.nav-left { 
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.nav-center {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.nav-center a {
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.nav-center a:hover {
+  background: #333;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+
+.nav-links a {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: #333;
+  color: #ff4500;
+}
+/* Menu icon for mobile */
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  display: none;
+}
+    .search-bar { display: flex; align-items: center; position: relative; }
+	.search-bar input { padding: 6px 10px; border: 1px solid #444; background: #2a2a2a; color: #fff; border-radius: 20px; outline: none; width: 180px; transition: all 0.3s ease; }
+	.search-bar input:focus { border-color: #ff4500; background: #1e1e1e; }
+	.search-results { position: absolute; top: 110%; background: #2a2a2a; width: 200px; border-radius: 8px; overflow: hidden; display: none; right: 0; }
+    .search-results div { padding: 10px; border-bottom: 1px solid #444; cursor: pointer; }
+    .search-results div:hover { background: #333; }
+    .search-bar { position: relative; display: flex; align-items: center; }
+    #searchInput { padding-right: 30px; }
+    #clearButton { position: absolute; right: 8px; background: none; border: none; color: #aaa; cursor: pointer; font-size: 14px; display: none; }
+
+    /* Mobile Menu Backdrop */
+    .mobile-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1999;
+      display: none;
+    }
+
+    /* Updated Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background: #202020;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+      border-right: 2px solid #333;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu a {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-menu a:hover {
+      background: #2a2a2a;
+    }
+
+    .close-btn {
+      font-size: 22px;
+      color: #fff;
+      background: none;
+      border: none;
+      align-self: flex-end;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+     /* Sections */
+    .section { padding: 20px 15px; }
+    .section h2 { margin-bottom: 15px; font-size: 18px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+    .card { background: #1f1f1f; border-radius: 10px; overflow: hidden; transition: 0.3s; font-size: 12px; text-align: center; cursor: pointer; }
+    .card:hover { transform: scale(1.05); }
+    .card-title { padding: 8px 5px; font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    /* Placeholder styling */
+    .placeholder-image {
+      position: relative;
+      background: linear-gradient(135deg, #1f1f1f 0%, #303030 100%);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .placeholder-icon {
+      font-size: 50px;
+      opacity: 0.5;
+    }
+    
+    .placeholder-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 5px;
+      background: rgba(0,0,0,0.6);
+      font-size: 10px;
+      color: #ccc;
+    }
+	
+	/* Quality Tag Styling */
+    .quality-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+    
+    .quality-4k {
+      background: linear-gradient(135deg, #8a2be2, #4b0082);
+    }
+    
+    .quality-hd {
+      background: linear-gradient(135deg, #1e90ff, #0000cd);
+    }
+    
+    .quality-sd {
+      background: linear-gradient(135deg, #696969, #2f4f4f);
+    }
+    
+    /* Card Image Container */
+    .card-image-container {
+      position: relative;
+    }
+
+    /* Swiper Styles */
+.swiper {
+  width: 100%;
+  height: 250px; /* Adjust height to accommodate the title */
+  margin-bottom: 20px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.swiper-slide-title {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 5px;
+  color: #fff;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.swiper-pagination {
+  position: relative;
+  bottom: 10px;
+  text-align: center;
+}
+	.swiper-pagination-bullet {   width: 12px; height: 12px; border-radius: 0; background: #ff6600; }
+    footer { text-align: center; padding: 20px; font-size: 14px; background: #1f1f1f; margin-top: 20px; }
+
+    @media(max-width:768px) {
+      .nav-links { display: none; }
+      .menu-icon { display: block; }
+      .cards { grid-template-columns: repeat(3, 1fr); }
+	  .search-bar input { width: 140px; }
+    }
+
+	.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 20px 0 10px 0;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filters select,
+.filters button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid #444;
+  background: #232323;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s, background 0.2s;
+  min-width: 90px;
+}
+
+.filters button {
+  background: #ff4500;
+  border: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.filters button:hover {
+  background: #e03e00;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 16px 0 8px 0;
+  }
+  .filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+  .filters select,
+  .filters button {
+    min-width: 40px;
+    font-size: 13px;
+    padding: 5px 8px;
+    flex: 0 0 auto;
+  }
+}
+    /* Back to top button styling */
+    #backToTopBtn {
+      display: none; /* Hidden by default */
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background-color: #1a365d;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    #backToTopBtn:hover {
+      background-color: #0f2042;
+      transform: translateY(-3px);
+    }
+    
+    /* Adding arrow icon inside button */
+    #backToTopBtn::after {
+      content: "↑";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }	
+
+    .nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.bell-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.notification-popup {
+  position: absolute;
+  top: 48px; /* Adjust to be just below navbar */
+  left: 150px; /* Adjust to align with bell icon */
+  background: #222;
+  color: #fff;
+  border: 1.5px solid #ff4500;
+  padding: 14px 18px 10px 18px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  z-index: 9999;
+  min-width: 210px;
+  font-size: 15px;
+  font-family: inherit;
+  pointer-events: auto;
+  width: auto;
+  max-width: 50vw;
+ 
+}
+.notification-popup ul {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+}
+.notification-popup li {
+  margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .notification-popup {
+    left: 150px;
+    right: 10px;
+    min-width: unset;
+    width: auto;
+    max-width: 50vw;
+  }
+}
+  </style>
+</head>
+<body>
+
+
+<div id="splash-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#121212;display:none;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
+  <img src="favicon.png" alt="Loading..." style="width:100px;height:auto;margin-bottom:20px;">
+  <div class="loader"></div>
+</div>
+
+<style>
+  .loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ffffff33;
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<script>
+  const splash = document.getElementById('splash-screen');
+  let splashTimeout = setTimeout(() => {
+    if (splash) {
+      splash.style.display = 'flex';
+    }
+  }, 2000); // Show splash only if load takes longer than 2s
+
+  window.addEventListener('load', () => {
+    clearTimeout(splashTimeout); // Cancel showing splash if load completes in time
+    if (splash) {
+      splash.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <a href="index.html" class="nav-logo">panguplay</a>
+ <!-- <button class="bell-btn" id="bellBtn" title="Notifications">🔔</button> -->
+</div>
+
+  <div class="nav-center nav-links">
+    <a href="index.html">Home</a>
+    <a href="movies.html">Movies</a>
+    <a href="shows.html">Shows</a>
+    <a href="dubbed.html">Tamil Dub</a>
+	<a href="test.html">Kuku TV</a>
+    <a href="request.html">Request</a>
+    <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
+    <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">Telegram</a>
+  </div>
+
+  <div class="nav-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." id="searchInput" oninput="searchFunction()">
+      <button id="clearButton">✖</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu Backdrop -->
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMenu()"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="closeMenu()">✖</button>
+  <a href="index.html">🏠 Home</a>
+  <a href="movies.html">🎬 Movies</a>
+  <a href="shows.html">📺 Shows</a>
+  <a href="dubbed.html">🎙 Tamil Dub</a>
+  <a href="test.html">🎞️ Kuku TV</a>
+  <a href="request.html">📩 Request</a>
+  <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
+  <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">💬 Telegram</a>
+</div>
+
+<div class="swiper">
+  <div class="swiper-wrapper" id="featured"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<div style="padding: 80px 20px; text-align: center; color: #fff; background: #121212; min-height: 60vh;">
+  <h1 style="font-size: 32px; margin-bottom: 20px; color: #ffcc00;">This Page Has Been Discontinued</h1>
+  <p style="font-size: 18px; margin-bottom: 30px; color: #ccc;">
+    We’ve moved to a better platform with enhanced performance, faster loading, and updated content.
+  </p>
+  <a href="https://purushothmathav.github.io/meow" target="_blank" 
+     style="display: inline-block; background: #587df0; color: white; padding: 12px 24px; font-size: 16px; font-weight: bold; border-radius: 8px; text-decoration: none; transition: background 0.3s;">
+    Visit 🐱e⭕w
+  </a>
+</div>
+
+
+<footer>
+  &copy; 2025 panguplay
+</footer>
+
+<div id="gestureZone" style="position: fixed; top: 0; left: 0; height: 100%; width: 30px; z-index: 3000;"></div>
+
+<script disable-devtool-auto='true'
+src='https://cdn.jsdelivr.net/npm/disable-devtool'
+clear-log='true'
+disable-select='true' 
+disable-copy='true'
+disable-cut='true' 
+disable-paste='false'>
+</script>
+
+<script>
+// Get the button
+const backToTopButton = document.getElementById("backToTopBtn");
+
+// When the user scrolls down 300px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    backToTopButton.style.display = "block";
+  } else {
+    backToTopButton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+backToTopButton.addEventListener("click", function() {
+  // For smooth scrolling
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+const searchInput = document.getElementById("searchInput");
+const clearButton = document.getElementById("clearButton");
+const searchResults = document.getElementById("searchResults");
+
+searchInput.addEventListener("input", function () {
+    clearButton.style.display = this.value ? "block" : "none";
+});
+
+clearButton.addEventListener("click", function () {
+    searchInput.value = "";
+    searchResults.innerHTML = "";
+    clearButton.style.display = "none";
+    searchInput.focus();
+});
+
+// Generate a placeholder image based on the movie title
+function generatePlaceholderImage(title) {
+  // Extract initials or first letter
+  const words = title.split(' ');
+  const initials = words.length > 1 
+    ? (words[0][0] + words[1][0]).toUpperCase()
+    : title.substring(0, 2).toUpperCase();
+  
+  // Generate a pseudo-random color based on the title
+  const hash = title.split('').reduce((acc, char) => char.charCodeAt(0) + acc, 0);
+  const hue = hash % 360;
+  const background = `hsl(${hue}, 60%, 20%)`;
+  
+  // Return HTML for placeholder
+  return `<div class="placeholder-image" style="background: ${background}">
+            <div class="placeholder-icon">🎬</div>
+            <div class="placeholder-text">${title}</div>
+          </div>`;
+}
+
+// Get appropriate CSS class for quality tag
+function getQualityClass(quality) {
+  if (quality.includes('1080p') || quality.includes('1080p')) {
+    return 'quality-4k';
+  } else if (quality.includes('New') || quality.includes('720p')) {
+    return 'quality-hd';
+  } else {
+    return 'quality-sd';
+  }
+}
+
+
+const videos = [
+
+]; // Insert your full 720p list here
+
+
+const mobileMenu = document.getElementById("mobileMenu");
+const menuIcon = document.querySelector(".menu-icon");
+
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("mobileBackdrop");
+  menu.classList.add("open");
+  backdrop.style.display = "block";
+}
+
+function closeMenu() {
+  const menu = document.getElementById("mobileMenu");
+  const backdrop = document.getElementById("mobileBackdrop");
+  menu.classList.remove("open");
+  backdrop.style.display = "none";
+}
+
+document.addEventListener("click", function (event) {
+  const menu = document.getElementById("mobileMenu");
+  const icon = document.querySelector(".menu-icon");
+  if (!menu.contains(event.target) && !icon.contains(event.target)) {
+    closeMenu();
+  }
+});
+
+function searchFunction() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const results = document.getElementById('searchResults');
+  results.innerHTML = '';
+  if (input.length > 0) {
+    const filtered = videos.filter(v => v.title.toLowerCase().includes(input));
+    filtered.forEach(v => {
+      const div = document.createElement('div');
+      div.innerText = v.title;
+      div.onclick = () => openPlayer(v);
+      results.appendChild(div);
+    });
+    results.style.display = 'block';
+  } else {
+    results.style.display = 'none';
+  }
+}
+
+// Hide search results when clicking outside
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+    searchResults.style.display = 'none';
+  }
+});
+searchInput.addEventListener('focus', function() {
+  if (searchInput.value.trim().length > 0) {
+    searchResults.style.display = 'block';
+  }
+});
+
+// Helper to get unique years from videos
+function getYears() {
+  const years = new Set();
+  videos.forEach(v => {
+    const match = v.title && v.title.match(/\((\d{4})\)/);
+    if (match) {
+      years.add(match[1]);
+    }
+  });
+  return Array.from(years).sort((a, b) => b - a);
+}
+
+// Populate year filter
+function populateYearFilter() {
+  const yearFilter = document.getElementById('yearFilter');
+  getYears().forEach(year => {
+    const opt = document.createElement('option');
+    opt.value = year;
+    opt.textContent = year;
+    yearFilter.appendChild(opt);
+  });
+}
+
+// Filtering logic
+function filterAndRenderWebdl() {
+  const year = document.getElementById('yearFilter').value;
+  const quality = document.getElementById('qualityFilter').value;
+  const sort = document.getElementById('sortFilter').value;
+
+  let filtered = videos.filter(v => v.type === '720p');
+
+  if (year) {
+    filtered = filtered.filter(v => {
+      const match = v.title && v.title.match(/\((\d{4})\)/);
+      return match && match[1] === year;
+    });
+  }
+  if (quality) {
+    filtered = filtered.filter(v => v.details && v.details.quality === quality);
+  }
+
+  // Sorting
+  if (sort === 'asc') {
+    filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sort === 'desc') {
+    filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
+  } else { // "lastupdated" or default
+    filtered = filtered.sort((a, b) => parseDate(b.details.lastUpdated) - parseDate(a.details.lastUpdated));
+  }
+
+  // Render
+  const webdl = document.getElementById('720pList');
+  webdl.innerHTML = '';
+  filtered.forEach(v => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    let imageContent;
+    const quality = v.details.quality || 'SD';
+    const qualityClass = getQualityClass(quality);
+    if (v.image && v.image.trim() !== '') {
+      imageContent = `
+        <div class="card-image-container">
+          <img src="${v.image}" alt="${v.title}" loading="lazy">
+          <div class="quality-tag ${qualityClass}">${quality}</div>
+        </div>`;
+    } else {
+      imageContent = `
+        <div class="card-image-container">
+          ${generatePlaceholderImage(v.title)}
+          <div class="quality-tag ${qualityClass}">${quality}</div>
+        </div>`;
+    }
+    card.innerHTML = `${imageContent}
+                     <div class="card-title" style="padding:5px">${v.title}</div>`;
+    card.onclick = () => openPlayer(v);
+    webdl.appendChild(card);
+  });
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', () => {
+  populateYearFilter();
+  document.getElementById('yearFilter').onchange = filterAndRenderWebdl;
+  document.getElementById('qualityFilter').onchange = filterAndRenderWebdl;
+  document.getElementById('sortFilter').onchange = filterAndRenderWebdl;
+  document.getElementById('clearFilters').onclick = () => {
+  document.getElementById('yearFilter').value = '';
+  document.getElementById('qualityFilter').value = '';
+  document.getElementById('sortFilter').value = 'lastupdated';
+  filterAndRenderWebdl();
+};
+  filterAndRenderWebdl();
+});
+
+function openPlayer(video) {
+  sessionStorage.setItem('playerData', JSON.stringify(video));
+  window.location.href = `player.html?id=${video.id}`;
+}
+
+function parseDate(dateString) {
+  // Convert '18 April 2025' into a Date object
+  return new Date(Date.parse(dateString));
+}
+
+function loadSwiper() {
+  const featured = document.getElementById('featured');
+
+  // Sort movies by lastUpdated and take the top 10
+  videos
+    .filter(v => v.type === '720p')
+    .sort((a, b) => parseDate(b.details.lastUpdated) - parseDate(a.details.lastUpdated))
+    .slice(0, 10)
+    .forEach(v => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+      slide.innerHTML = `
+        <div class="swiper-slide-content">
+          <img src="${v.image}" alt="${v.title}">
+          <div class="swiper-slide-title">${v.title}</div>
+        </div>`;
+      slide.onclick = () => openPlayer(v);
+      featured.appendChild(slide);
+    });
+
+  // Initialize Swiper
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 1.0,
+    spaceBetween: 10,
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+}
+
+loadSwiper();
+
+</script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/panguplay/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+<script>
+
+/*
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleGesture();
+}, false);
+
+function handleGesture() {
+  const swipeDistance = touchEndX - touchStartX;
+  if (swipeDistance > 60 && touchStartX < 50) {
+    // Swiped right from left edge
+    toggleMenu();
+  } else if (swipeDistance < -60 && document.getElementById("mobileMenu").classList.contains("open")) {
+    // Swiped left while menu is open
+    closeMenu();
+  }
+}
+*/
+
+const gestureZone = document.getElementById('gestureZone');
+
+gestureZone.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+gestureZone.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX - touchStartX > 60) {
+    toggleMenu();
+  }
+});
+
+</script>
+
+
+<script src="/panguplay/orientation-lock.js"></script>
+
+</body>
+</html>

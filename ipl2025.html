@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="no-referrer">
+	<meta name="title" content="panguplay Live TV">
+<meta name="description" content="Watch Latest Movies, TV Shows, Live TV for free without Ads.">
+<meta name="keywords" content="movies,tamil,tv,shows,pangu,play,ipl,live,tv,free,download,watch,online">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="author" content="Purushoth Mathav">
+    <title>panguplay Live TV</title>
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+          
+	:root {
+            --primary-color: #e50914;
+            --primary-hover: #ff1a25;
+            --dark-bg: #0d0d0d;
+            --light-bg: #1a1a1a;
+            --text-color: #ffffff;
+            --text-muted: #b3b3b3;
+            --border-color: #333;
+            --comment-bg: #1e1e1e;
+            --comment-text: #e6e6e6;
+            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --gradient: linear-gradient(135deg, #e50914 0%, #b81d24 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--gradient);
+            padding: 1.5rem 0;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav {
+            color: white !important;
+            font-weight: 600;
+        }
+        
+        .active-nav::after {
+            width: 100% !important;
+        }
+
+
+		  
+		.banner-container {
+      width: 100%;
+      background-color: #1a365d;
+      color: white;
+      padding: 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      min-height: 40px;
+      height: auto;
+    }
+    
+    .breaking-news {
+      display: flex;
+      align-items: center;
+      min-height: 40px;
+      height: 100%;
+    }
+    
+    .breaking-label {
+      background-color: #e53e3e;
+      color: white;
+      font-weight: bold;
+      padding: 8px 10px;
+      margin-right: 10px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      z-index: 10;
+      position: relative;
+    }
+    
+    .news-ticker-container {
+      position: relative;
+      width: calc(100% - 120px);
+      overflow: hidden;
+    }
+    
+    .news-scroll-wrapper {
+      position: relative;
+      display: flex;
+      width: max-content;
+      animation: tickerMove 60s linear infinite;
+    }
+    
+    /* Pause animation when user hovers/touches - helps with accessibility */
+    .news-scroll-wrapper:hover {
+      animation-play-state: paused;
+    }
+    
+    .news-scroll {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+    
+    .news-item {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 16px;
+    }
+    
+    .separator {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background-color: #e53e3e;
+      border-radius: 50%;
+      margin: 0 15px;
+    }
+    
+    /* Create masking effect so text disappears behind the label */
+    .mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 120px; /* Width of the breaking news label plus margin */
+      background-color: #1a365d;
+      z-index: 5;
+    }
+    
+    @keyframes tickerMove {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); /* Move exactly one ticker width */
+      }
+    }
+    
+    .timestamp {
+      font-size: 12px;
+      margin-left: 5px;
+      /* Add animation for flashing effect */
+      animation: flash 1s ease-in-out infinite;
+      font-weight: bold;
+      color: #ffff00; /* Yellow color for better visibility */
+    }
+    
+    /* Add keyframes for flashing effect */
+    @keyframes flash {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.3;
+      }
+    }
+    
+    
+		
+		
+		      
+		
+		
+		     
+        .content {
+            display: flex;
+			flex-direction: column;
+        }
+        
+        @media (min-width: 768px) {
+            .content {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+        
+        .menu {
+            width: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        @media (min-width: 768px) {
+            .menu {
+                width: 30%;
+                max-height: 600px;
+                overflow-y: auto;
+                margin-bottom: 0;
+            }
+        }
+        
+        .menu-header {
+            background-color: var(--accent-color);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        
+        .menu-search {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+        }
+        
+        .category-selector {
+            width: 100%;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+        
+        .channel-list {
+            list-style-type: none;
+            padding: 10px;
+        }
+        
+        .channel-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .channel-item:hover, .channel-item.active {
+            background-color: var(--highlight-color);
+            transform: translateX(5px);
+        }
+        
+        .player-container {
+            width: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        @media (min-width: 768px) {
+            .player-container {
+                width: 70%;
+            }
+        }
+        
+        .player-header {
+            background-color: var(--accent-color);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .player-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .player-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .control-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--text-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background-color: var(--highlight-color);
+        }
+        
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: #000;
+        }
+        
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .no-channel-selected {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+        }
+        
+        .no-channel-selected h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--text-color);
+            border-bottom-color: var(--highlight-color);
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+        
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+		
+		
+		
+		/* Loading Text */
+		.loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+        }
+
+        .loading-text {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            text-align: center;
+            width: 100%;
+            height: 100px;
+            line-height: 100px;
+        }
+
+        .loading-text span {
+            display: inline-block;
+            margin: 0 5px;
+            color: #e657ff;
+            font-family: 'Quattrocento Sans', sans-serif;
+        }
+
+        .loading-text span:nth-child(1) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(2) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.2s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(3) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.4s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(4) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.6s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(5) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 0.8s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(6) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(7) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.2s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(8) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.4s infinite linear alternate;
+        }
+
+        .loading-text span:nth-child(9) {
+            filter: blur(0px);
+            animation: blur-text 1.5s 1.6s infinite linear alternate;
+        }
+        @keyframes blur-text {
+            0% {
+                filter: blur(0px);
+            }
+
+            100% {
+                filter: blur(4px);
+            }
+        }
+		
+.widget-container {
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.widget-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.widget-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.widget-content {
+    padding: 15px;
+    background-color: #2c3e50;
+    color: var(--text-color);
+}
+
+.widget-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.widget-table th {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.widget-table td {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+.widget-table tr:hover td {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.widget-footer {
+    background-color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .widget-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .widget-table {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scrollbar Styling */
+.widget-content {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--secondary-color);
+}
+
+.widget-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.widget-content::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+.widget-content::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 20px;
+}
+		
+	
+        
+        
+        
+        	
+		/* Media query for small screens */
+    @media (max-width: 480px) {
+      .breaking-label {
+        font-size: 12px;
+        padding: 6px 8px;
+        margin-right: 8px;
+      }
+      
+      .news-item {
+        font-size: 14px;
+      }
+      
+      .timestamp {
+        font-size: 10px;
+      }
+      
+      .separator {
+        width: 5px;
+        height: 5px;
+        margin: 0 10px;
+      }
+      
+      .mask {
+        width: 100px;
+      }
+      
+      .news-ticker-container {
+        width: calc(100% - 100px);
+      }
+	  
+	  .container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links a {
+                font-size: 0.95rem;
+            }
+	  
+	  
+    }
+	
+	
+	
+	/* Reduce motion option for accessibility */
+    @media (prefers-reduced-motion) {
+      .news-scroll-wrapper {
+        animation-duration: 120s; /* Slower movement for those who prefer reduced motion */
+      }
+      
+      .timestamp {
+        animation-duration: 2s; /* Slower flashing */
+      }
+    }
+		
+		
+		
+		
+		
+        /* Home button responsive styles */
+        @media (max-width: 768px) {
+            header {
+                padding-top: 60px; /* Make room for the home button */
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+		
+    </style>
+</head>
+<body>
+
+	<div class="banner-container">
+    <!-- Mask to hide text as it scrolls behind breaking news label -->
+    <div class="mask"></div>
+    
+    <div class="breaking-news">
+      <div class="breaking-label">Announcement </div>
+      <div class="news-ticker-container">
+        <div class="news-scroll-wrapper">
+          <!-- First copy of the ticker -->
+          <div class="news-scroll">
+			<div class="news-item">Star Sports 1 Hindi,Tamil,Telugu,Willow & Sky Sports Cricket<span class="timestamp">Offline</span></div>
+			<div class="separator"></div>
+			<div class="news-item">You may face Ads/redirects when click on live Tv streaming video. In that case Use Samsung Internet Browser<span class="timestamp">New</span></div>
+			<div class="separator"></div>
+			<div class="news-item">In Samsung browser click ☰. Then click 🆎 Ad Blockers and install 1. AdBlock for Samsung Internet and 2. Adguard Content Blocker<span class="timestamp">New</span></div>
+			<div class="separator"></div>
+			<div class="news-item">In some devices you may face video not playing issue. In that case, use vpn ( Like "Proton VPN" for Free)<span class="timestamp">New</span></div>
+			<div class="separator"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="container">
+        <!-- <header>
+            <a href="index.html" class="home-button">
+                <span>⌂</span> Home
+            </a>
+            <h1>panguplay Live TV</h1>
+            <p>Watch your favorite sports channels</p>
+        </header> -->
+		<header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-play-circle"></i> panguplay Live TV
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#" class="active-nav">Live TV</a>
+                <a href="discussion.html">Discussions</a>
+            </div>
+        </div>
+    </header>
+		
+		
+		
+        
+        <div class="content">
+            <div class="menu">
+                <div class="menu-header">
+                    <input type="text" class="menu-search" id="channelSearch" placeholder="Search channels...">
+                    <select class="category-selector" id="categorySelector">
+						<option value="all">All Channels</option>
+						<option value="ipl">IPL</option>
+                        <option value="cricket">Cricket</option>
+                        <option value="football">Football</option>
+                        <option value="sports">General Sports</option>
+                        <option value="tamil">Tamil Channels</option>
+                        <option value="news">Tamil News</option>
+                        <option value="religious">Tamil Religious</option>
+						
+                    </select>
+                </div>
+                <ul class="channel-list" id="channelList">
+                    <!-- Channel list will be populated by JavaScript -->
+                </ul>
+            </div>
+            
+            <div class="player-container">
+                <div class="player-header">
+                    <div class="player-title" id="currentChannel">No Channel Selected</div>
+                    <div class="player-controls">
+                        <button class="control-btn" id="refreshBtn" title="Refresh">↻</button>
+                        <button class="control-btn" id="fullscreenBtn" title="Fullscreen">⛶</button>
+                    </div>
+                </div>
+                
+                <div class="iframe-container" id="playerContainer">
+                    <div class="no-channel-selected" id="noChannelMessage">
+                        <div id="loading" class="loading">
+<div class="loading-text">
+<span class="loading-text-words">P</span>
+<span class="loading-text-words">A</span>
+<span class="loading-text-words">N</span>
+<span class="loading-text-words">G</span>
+<span class="loading-text-words">U</span>
+<span class="loading-text-words"></span>
+<span class="loading-text-words">P</span>
+<span class="loading-text-words">L</span>
+<span class="loading-text-words">A</span>
+<span class="loading-text-words">Y</span>
+</div>
+</div>
+                    </div>
+                    <!-- The iframe will be inserted here by JavaScript -->
+                </div>
+                
+                <div class="loading-overlay hidden" id="loadingOverlay">
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </div>
+		
+		
+      <div class="widget-container">
+    <div class="widget-header">
+        <h2>Cricket Updates</h2>
+        <button id="cricketRefreshBtn" class="control-btn" title="Refresh Cricket Updates">↻</button>
+    </div>
+    <div class="widget-content">
+        <iframe id="cricketUpdateFrame" src="https://bwidget.crictimes.org/" style="width:100%;min-height: 250px;" frameborder="0" scrolling="yes"></iframe>
+    </div>
+    <div class="widget-footer">
+        Live Cricket Updates
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cricketRefreshBtn = document.getElementById('cricketRefreshBtn');
+        const cricketUpdateFrame = document.getElementById('cricketUpdateFrame');
+
+        cricketRefreshBtn.addEventListener('click', () => {
+            // Reload the iframe by changing its source
+            cricketUpdateFrame.src = cricketUpdateFrame.src;
+        });
+    });
+</script>
+		
+		
+        <footer>
+            <p>&copy; 2025 panguplay. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Channel data
+        const channels = [
+            // Sports Channels
+            { id: 'starsp', name: 'Star Sports 1', categories: ['cricket', 'ipl'] },
+            { id: 'starsp2', name: 'Star Sports 2', categories: ['cricket', 'ipl'] },
+			{ id: 'willowextra', name: 'Willow Extra', categories: ['cricket', 'ipl'] },
+            { id: 'starsp3', name: 'Star Sports 1 Hindi', categories: ['cricket', 'ipl'] },
+            { id: 'starsp1tam', name: 'Star Sports 1 Tamil', categories: ['cricket', 'ipl'] },
+            { id: 'starsp1tel', name: 'Star Sports 1 Telugu', categories: ['cricket', 'ipl'] },
+            { id: 'willow', name: 'Willow', categories: ['cricket', 'ipl'] },
+            { id: 'skysp2', name: 'Sky Sports Cricket', categories: ['cricket', 'ipl'] },
+            { id: 'skysp1', name: 'Sky Sports Main Event', category: 'sports' },
+            { id: 'skyfb', name: 'Sky Sports Football', category: 'football' },
+            { id: 'skyarena', name: 'Sky Sports Arena', category: 'sports' },
+            { id: 'skysp3', name: 'Sky Sports Action', category: 'sports' },
+            { id: 'skysp4', name: 'Sky Sports Golf', category: 'sports' },
+            { id: 'skysp5', name: 'Sky Sports Premier League', category: 'football' },
+            { id: 'skyspf1', name: 'Sky Sports F1', category: 'sports' },
+            { id: 'skymix', name: 'Sky Sports Mix', category: 'sports' },
+            { id: 'skyten', name: 'Sky Sports Tennis', category: 'sports' },
+            { id: 'osncric', name: 'SuperSports', category: 'sports' },
+            { id: 'supersp9', name: 'SuperSport Premier League', category: 'football' },
+            { id: 'supersp10', name: 'SuperSport LaLiga', category: 'football' },
+            { id: 'supersp8', name: 'SuperSport Football', category: 'football' },
+            { id: 'supersp3', name: 'SuperSport Action', category: 'sports' },
+            { id: 'supersp6', name: 'SuperSport GrandStand', category: 'sports' },
+            { id: 'btsp1', name: 'TNT Sports 1', category: 'sports' },
+            { id: 'btsp2', name: 'TNT Sports 2', category: 'sports' },
+            { id: 'btsp3', name: 'TNT Sports 3', category: 'sports' },
+            { id: 'btespn', name: 'TNT Sports 4', category: 'sports' },
+            { id: 'astrocric', name: 'Astro Cricket', category: 'cricket' },
+            { id: 'asports', name: 'A Sports', category: 'sports' },
+            { id: 'tensp', name: 'Ten Sports 1', category: 'sports' },
+            { id: 'ptvsp', name: 'PTV Sports', category: 'sports' },
+            { id: 'ten1', name: 'Sony Ten 1', category: 'sports' },
+            { id: 'viaplaysp1', name: 'Premier Sports 1', category: 'sports' },
+            { id: 'viaplaysp2', name: 'Premier Sports 2', category: 'sports' },
+            { id: 'geosuper', name: 'Geo Super', category: 'sports' },
+            
+            // Tamil TV Channels (added from the text file)
+            { id: 'puthiyathalaimurai', name: 'Puthiya Thalaimurai', category: 'news', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/puthiyathalaimurai/live/embed' },
+            { id: 'polimer-news', name: 'Polimer News', category: 'news', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/polimer-news/live/embed' },
+            { id: 'murasu', name: 'Murasu', category: 'tamil', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/murasu/live/embed' },
+            { id: 'peppers-tv', name: 'Peppers TV', category: 'tamil', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/peppers-tv/live/embed' },
+            { id: 'moon-tv', name: 'Moon TV', category: 'tamil', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/moon-tv/live/embed' },
+            { id: 'nambikkai', name: 'Nambikkai TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/nambikkai/live/embed' },
+            { id: 'sivan-temple-tv', name: 'Sivan Temple TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/sivan-temple-tv/live/embed' },
+            { id: 'seithigal-tv', name: 'Seithigal TV', category: 'news', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/seithigal-tv/live/embed' },
+            { id: 'thanthi-tv', name: 'Thanthi TV', category: 'news', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/thanthi-tv/live/embed' },
+            { id: 'sri-sankara-tamil', name: 'Sri Sankara Tamil', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/sri-sankara-tamil/live/embed' },
+            { id: 'madha-tv', name: 'Madha TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/madha-tv/live/embed' },
+            { id: 'svbc-2', name: 'SVBC 2', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/svbc-2/live/embed' },
+            { id: 'angel-tv', name: 'Angel TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/angel-tv/live/embed' },
+            { id: 'swasthik-tv', name: 'Swasthik TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/swasthik-tv/live/embed' },
+            { id: 'hosanna', name: 'Hosanna', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/hosanna/live/embed' },
+            { id: 'holy-god-tv', name: 'Holy God TV', category: 'religious', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/holy-god-tv/live/embed' },
+            { id: 'athavan-tv-hd', name: 'Athavan TV HD', category: 'tamil', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/athavan-tv-hd/live/embed' },
+            { id: 'thalaa-tv', name: 'Thalaa TV', category: 'tamil', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/thalaa-tv/live/embed' },
+			{ id: 'news7tamil', name: 'News7 Tamil', category: 'news', baseUrl: 'https://www.yupptv.com/yupptvnew/channels/news7tamil/live/embed' },
+			
+			
+	
+    { 
+        id: 'sunnews', 
+        name: 'Sun News', 
+        category: 'news', 
+        youtubeUrl: 'https://www.youtube.com/embed/9M02G5c6x6w?rel=0&modestbranding=1&iv_load_policy=3&controls=1&disablekb=0&showinfo=0&enablejsapi=1&origin=https://purushothmathav.github.io&autoplay=1'
+    },
+	{ 
+        id: 'sathiyamtv', 
+        name: 'Sathiyam TV', 
+        category: 'news', 
+        youtubeUrl: 'https://www.youtube.com/embed/DyRLbWtPvUQ?rel=0&modestbranding=1&iv_load_policy=3&controls=1&disablekb=0&showinfo=0&enablejsapi=1&origin=https://purushothmathav.github.io&autoplay=1'
+    },
+	{ 
+        id: 'rajnewstamil', 
+        name: 'Raj News Tamil', 
+        category: 'news', 
+        youtubeUrl: 'https://www.youtube.com/embed/qyeB_g2bcvs?rel=0&modestbranding=1&iv_load_policy=3&controls=1&disablekb=0&showinfo=0&enablejsapi=1&origin=https://purushothmathav.github.io&autoplay=1'
+    },
+	{ 
+        id: 'news18tamilnadu', 
+        name: 'News18 Tamilnadu', 
+        category: 'news', 
+        youtubeUrl: 'https://www.youtube.com/embed/dUJx4aDoIQo?rel=0&modestbranding=1&iv_load_policy=3&controls=1&disablekb=0&showinfo=0&enablejsapi=1&origin=https://purushothmathav.github.io&autoplay=1'
+    },
+   
+			
+			
+			
+        ];
+
+        // DOM elements
+        const channelList = document.getElementById('channelList');
+        const categorySelector = document.getElementById('categorySelector');
+        const channelSearch = document.getElementById('channelSearch');
+        const playerContainer = document.getElementById('playerContainer');
+        const currentChannel = document.getElementById('currentChannel');
+        const noChannelMessage = document.getElementById('noChannelMessage');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const fullscreenBtn = document.getElementById('fullscreenBtn');
+        const loadingElement = document.getElementById('loading');
+        
+        let currentIframe = null;
+        let activeChannelId = null;
+        let channelSelected = false;
+
+        // Populate channel list
+        function populateChannelList(filteredChannels) {
+            channelList.innerHTML = '';
+            
+            filteredChannels.forEach(channel => {
+                const listItem = document.createElement('li');
+                listItem.className = 'channel-item';
+                listItem.textContent = channel.name;
+                listItem.dataset.id = channel.id;
+                
+                if (channel.id === activeChannelId) {
+                    listItem.classList.add('active');
+                }
+                
+                listItem.addEventListener('click', () => {
+                    loadChannel(channel.id, channel.name);
+                    
+                    // Update active state
+                    document.querySelectorAll('.channel-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    listItem.classList.add('active');
+                    
+                    // Hide the loading screen when a channel is clicked
+                    channelSelected = true;
+                    if (loadingElement) {
+                        loadingElement.style.display = 'none';
+                    }
+                });
+                
+                channelList.appendChild(listItem);
+            });
+        }
+			
+			
+		function loadChannel(channelId, channelName) {
+    // Show loading overlay
+    loadingOverlay.classList.remove('hidden');
+    
+    // Update current channel title
+    currentChannel.textContent = channelName;
+    activeChannelId = channelId;
+    
+    // Remove existing iframe if any
+    if (currentIframe) {
+        currentIframe.remove();
+    }
+    
+    // Hide no channel message
+    noChannelMessage.classList.add('hidden');
+    
+    // Get the channel object
+    const channel = channels.find(c => c.id === channelId);
+    
+    // Create new iframe with appropriate URL
+    const iframe = document.createElement('iframe');
+    
+    // Enhanced iframe configuration
+    iframe.setAttribute('allowfullscreen', 'true');
+    iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+    iframe.setAttribute('referrerpolicy', 'no-referrer');
+    iframe.setAttribute('scrolling', 'no');
+    iframe.setAttribute('frameborder', '0');
+    
+    try {
+        if (channel.youtubeUrl) {
+            // For YouTube live channels
+            iframe.setAttribute('src', channel.youtubeUrl + '&enablejsapi=1');
+        } else if (channel.baseUrl) {
+            // For Tamil/YuppTV channels
+            iframe.setAttribute('src', channel.baseUrl);
+        } else {
+            // For sports channels
+            // Use a more generic embed approach
+            iframe.setAttribute('src', `https://cdn.crichdplays.ru/embed2.php?id=${channelId}`);
+			// iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-top-navigation allow-forms allow-popups allow-presentation allow-modals allow-downloads'); 
+			//iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture; web-share; fullscreen; camera; microphone');
+			//iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-top-navigation'); 
+		}
+        
+        // Add error event listener
+        iframe.addEventListener('error', (event) => {
+            console.error('Iframe loading error:', event);
+            loadingOverlay.classList.add('hidden');
+            noChannelMessage.textContent = 'Unable to load channel. Please try again.';
+            noChannelMessage.classList.remove('hidden');
+        });
+        
+        // Add load event listener
+        iframe.onload = () => {
+            console.log('Iframe loaded successfully');
+            loadingOverlay.classList.add('hidden');
+        };
+        
+        // Add timeout handling
+        const loadTimeout = setTimeout(() => {
+            console.warn('Iframe loading timed out');
+            loadingOverlay.classList.add('hidden');
+            noChannelMessage.textContent = 'Channel loading took too long. Please refresh.';
+            noChannelMessage.classList.remove('hidden');
+        }, 10000);
+        
+        // Remove timeout if loaded successfully
+        iframe.onload = () => {
+            clearTimeout(loadTimeout);
+            loadingOverlay.classList.add('hidden');
+        };
+        
+        // Add to player container
+        playerContainer.appendChild(iframe);
+        currentIframe = iframe;
+        
+    } catch (error) {
+        console.error('Error loading channel:', error);
+        loadingOverlay.classList.add('hidden');
+        noChannelMessage.textContent = 'An error occurred while loading the channel.';
+        noChannelMessage.classList.remove('hidden');
+    }
+}	
+			
+			
+			
+				
+         
+
+        // Filter channels by category
+        categorySelector.addEventListener('change', () => {
+            const category = categorySelector.value;
+            const searchTerm = channelSearch.value.toLowerCase();
+            
+            let filteredChannels = channels;
+            
+            if (category !== 'all') {
+                filteredChannels = filteredChannels.filter(channel => 
+                    // Check if channel has categories array or single category
+                    channel.categories ? 
+    channel.categories.includes(category) : 
+    channel.category === category
+);
+            }
+            
+            // Also apply search filter if there's a search term
+            if (searchTerm) {
+                filteredChannels = filteredChannels.filter(channel => 
+                    channel.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            populateChannelList(filteredChannels);
+        });
+
+        // Filter channels by search term
+        channelSearch.addEventListener('input', () => {
+            const searchTerm = channelSearch.value.toLowerCase();
+            const category = categorySelector.value;
+            
+            let filteredChannels = channels;
+            
+            // Apply category filter if not 'all'
+            if (category !== 'all') {
+                filteredChannels = filteredChannels.filter(channel => 
+                    channel.categories ? 
+                        channel.categories.includes(category) : 
+                        channel.category === category
+                );
+            }
+            
+            // Apply search filter
+            if (searchTerm) {
+                filteredChannels = filteredChannels.filter(channel => 
+                    channel.name.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            populateChannelList(filteredChannels);
+        });
+
+        // Refresh button functionality
+        refreshBtn.addEventListener('click', () => {
+            if (activeChannelId) {
+                const activeChannel = channels.find(c => c.id === activeChannelId);
+                loadChannel(activeChannelId, activeChannel.name);
+            }
+        });
+
+        // Fullscreen button functionality
+        fullscreenBtn.addEventListener('click', () => {
+            if (currentIframe) {
+                if (currentIframe.requestFullscreen) {
+                    currentIframe.requestFullscreen();
+                } else if (currentIframe.webkitRequestFullscreen) {
+                    currentIframe.webkitRequestFullscreen();
+                } else if (currentIframe.mozRequestFullScreen) {
+                    currentIframe.mozRequestFullScreen();
+                } else if (currentIframe.msRequestFullscreen) {
+                    currentIframe.msRequestFullscreen();
+                }
+            }
+        });
+
+        // Initialize channel list
+        populateChannelList();
+        
+        // Hide loading screen after a delay
+        setTimeout(() => {
+            document.getElementById('loading').style.display = 'none';
+        }, 2500);
+    </script>
+</body>
+</html>
+</html>

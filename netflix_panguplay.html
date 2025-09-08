@@ -1,0 +1,2711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PanguPlay - Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#000000">
+  <meta name="title" content="PanguPlay - Free Movies, TV Shows">
+  <meta name="description" content="PanguPlay - Watch Latest Movies, TV Shows for free without Ads. Your ultimate destination for entertainment.">
+  
+  <!-- Keywords -->
+  <meta name="keywords" content="panguplay, live tv, tamil movies, tv shows, tamil, live, tv shows, videogallery, pangu play, movie download, download, watch online, free movies, streaming">
+  
+  <!-- Open Graph / Facebook Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://purushothmathav.github.io/PanguPlay">
+  <meta property="og:title" content="PanguPlay - Free Movies, TV Shows">
+  <meta property="og:description" content="Watch Latest Movies, TV Shows for free without Ads. Your ultimate destination for entertainment.">
+  <meta property="og:image" content="https://purushothmathav.github.io/PanguPlay/images/og-image.jpg">
+  
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://purushothmathav.github.io/PanguPlay">
+  <meta name="twitter:title" content="PanguPlay - Free Movies, TV Shows">
+  <meta name="twitter:description" content="Watch Latest Movies, TV Shows for free without Ads. Your ultimate destination for entertainment.">
+  <meta name="twitter:image" content="https://purushothmathav.github.io/PanguPlay/images/twitter-image.jpg">
+  
+  <!-- Robots Meta Tag -->
+  <meta name="robots" content="index, follow">
+  
+  <!-- Geo Meta Tags -->
+  <meta name="geo.region" content="IN">
+  <meta name="geo.placename" content="India">
+  
+  <!-- Language and Content-Type -->
+  <meta http-equiv="content-language" content="en-us">
+  <meta name="language" content="English">
+  
+  <!-- Canonical Link -->
+  <link rel="canonical" href="https://purushothmathav.github.io/PanguPlay">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://purushothmathav.github.io/PanguPlay/favicon.png">
+  
+  <!-- Additional SEO and Accessibility Tags -->
+  <meta name="author" content="Purushothmathav">
+  <meta name="copyright" content="©2025 PanguPlay">
+  
+  <!-- Mobile App Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Structured Data - Organization -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "PanguPlay",
+      "url": "https://purushothmathav.github.io/PanguPlay",
+      "description": "Watch Latest Movies, TV Shows for free without Ads",
+      "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://purushothmathav.github.io/PanguPlay/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+      }
+  }
+  </script>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-59SJ522E11"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-59SJ522E11');
+  </script>
+
+  <style>
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      background: #000; 
+      color: #fff;  
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.4;
+      overflow-x: hidden;
+    } 
+    
+    a { 
+      color: inherit; 
+      text-decoration: none; 
+    }
+
+    /* Navbar - Netflix Style */
+    .navbar {
+      background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 20px;
+      color: #e50914;
+      letter-spacing: -0.5px;
+    }
+
+    .menu-icon {
+      font-size: 20px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .menu-icon:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bell-btn {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .bell-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .search-bar {
+      position: relative;
+    }
+
+    .search-bar input {
+      padding: 8px 32px 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border-radius: 20px;
+      outline: none;
+      width: 180px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .search-bar input:focus {
+      border-color: #e50914;
+      background: rgba(0, 0, 0, 0.8);
+      width: 220px;
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    #clearButton {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      font-size: 12px;
+      display: none;
+      padding: 4px;
+      border-radius: 50%;
+      transition: all 0.2s ease;
+    }
+
+    #clearButton:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .search-results {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 250px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .search-results div {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .search-results div:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .search-results div:last-child {
+      border-bottom: none;
+    }
+
+    /* Mobile Menu */
+    .mobile-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1999;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-backdrop.show {
+      opacity: 1;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 280px;
+      height: 100vh;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2000;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .close-btn {
+      font-size: 24px;
+      color: #fff;
+      background: none;
+      border: none;
+      align-self: flex-end;
+      margin-bottom: 20px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu a {
+      margin: 8px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-menu a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    /* Notification Popup */
+    .notification-popup {
+      position: absolute;
+      top: 50px;
+      right: 16px;
+      background: rgba(20, 20, 20, 0.95);
+      backdrop-filter: blur(20px);
+      color: #fff;
+      border: 1px solid rgba(229, 9, 20, 0.3);
+      padding: 16px 20px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      z-index: 9999;
+      min-width: 280px;
+      max-width: 90vw;
+      font-size: 14px;
+    }
+
+    .notification-popup strong {
+      color: #e50914;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .notification-popup ul {
+      margin: 12px 0 0 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .notification-popup li {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .notification-popup li:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .notification-popup li img {
+      width: 50px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    /* Hero Section - Netflix Style */
+    .hero-section {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      padding: 40px 20px 20px;
+      color: #fff;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-description {
+      font-size: 14px;
+      opacity: 0.9;
+      line-height: 1.4;
+      max-width: 400px;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-play-btn {
+      background: #e50914;
+      border: none;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(229, 9, 20, 0.3);
+    }
+
+    .hero-play-btn:hover {
+      background: #f40612;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+    }
+
+    /* Section Headers - Netflix Style */
+    .section-header {
+      padding: 40px 20px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-header h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .view-all-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .view-all-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* Netflix Style Cards Container */
+    .netflix-row {
+      padding: 0 20px 24px;
+      position: relative;
+    }
+
+    .netflix-swiper {
+      overflow: visible;
+    }
+
+    .netflix-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background: #222;
+      aspect-ratio: 16/9;
+    }
+
+    .netflix-card:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+
+    .netflix-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .netflix-card:hover img {
+      filter: brightness(0.7);
+    }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.9));
+      padding: 20px 12px 12px;
+      transform: translateY(100%);
+      transition: all 0.3s ease;
+    }
+
+    .netflix-card:hover .card-overlay {
+      transform: translateY(0);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .card-info {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .quality-tag {
+      background: #e50914;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .quality-4k { background: linear-gradient(135deg, #8a2be2, #4b0082); }
+    .quality-hd { background: linear-gradient(135deg, #1e90ff, #0000cd); }
+    .quality-sd { background: linear-gradient(135deg, #696969, #2f4f4f); }
+
+    /* Placeholder styling */
+    .placeholder-image {
+      position: relative;
+      background: linear-gradient(135deg, #1f1f1f 0%, #303030 100%);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .placeholder-icon {
+      font-size: 40px;
+      opacity: 0.3;
+    }
+
+    .placeholder-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 8px;
+      background: rgba(0,0,0,0.8);
+      font-size: 11px;
+      color: #ccc;
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      background: #111;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Back to top button */
+    #backToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      border: none;
+      outline: none;
+      background: rgba(229, 9, 20, 0.9);
+      backdrop-filter: blur(10px);
+      color: white;
+      cursor: pointer;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 18px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 16px rgba(229, 9, 20, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #backToTopBtn:hover {
+      background: #e50914;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
+    }
+
+    #backToTopBtn::after {
+      content: "↑";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Swiper Customization */
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.5);
+      opacity: 0.5;
+      border-radius: 50%;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #e50914;
+      opacity: 1;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .search-bar input {
+        width: 140px;
+      }
+
+      .search-bar input:focus {
+        width: 160px;
+      }
+
+      .hero-title {
+        font-size: 20px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .section-header {
+        padding: 24px 16px 12px;
+      }
+
+      .section-header h2 {
+        font-size: 18px;
+      }
+
+      .netflix-row {
+        padding: 0 16px 20px;
+      }
+
+      .notification-popup {
+        right: 8px;
+        min-width: 260px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar {
+        padding: 8px 12px;
+      }
+
+      .nav-logo {
+        font-size: 18px;
+      }
+
+      .search-bar input {
+        width: 120px;
+      }
+
+      .hero-section {
+        height: 50vh;
+        min-height: 300px;
+      }
+
+      .hero-title {
+        font-size: 18px;
+      }
+
+      .section-header {
+        padding: 20px 12px 8px;
+      }
+
+      .netflix-row {
+        padding: 0 12px 16px;
+      }
+    }
+
+    /* Loading Animation */
+    .loader {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(229, 9, 20, 0.1);
+      border-top: 4px solid #e50914;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Splash Screen */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #splash-screen img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+	
+  .swiper-button-next,
+  .swiper-button-prev {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* prevent accidental click unless hovered */
+    background: rgba(0, 0, 0, 0.4);
+    padding: 30px 12px;
+    border-radius: 6px;
+  }
+
+  .swiper:hover .swiper-button-next,
+  .swiper:hover .swiper-button-prev {
+    opacity: 1;
+    pointer-events: auto; /* activate buttons only when hovered */
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 18px;
+    color: #fff;
+  }
+
+  /* Optional: increase click area slightly without overlapping cards */
+  .swiper-button-next,
+  .swiper-button-prev {
+    top: 30%;
+    bottom: 30%;
+    width: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      padding: 20px 8px;
+    }
+  }
+
+
+	
+  </style>
+</head>
+
+<body>
+<!-- 
+<div id="splash-screen">
+  <img src="favicon.png" alt="Loading..." />
+  <div class="loader"></div>
+</div> -->
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+  <div class="nav-left">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <a href="index.html" class="nav-logo">PanguPlay</a>
+  </div>
+
+  <div class="nav-right">
+    <button class="bell-btn" id="bellBtn" title="Notifications">🔔</button>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." id="searchInput" oninput="searchFunction()">
+      <button id="clearButton">✖</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification Popup -->
+<div id="notificationPopup" class="notification-popup" style="display:none;">
+  <strong>What's New</strong>
+  <ul>
+    <li>
+      <img src="https://m.media-amazon.com/images/M/MV5BZGNkODY3ODctMzZkMy00YjJlLTllNzUtMGIxNjAyM2IwNjY5XkEyXkFqcGc@._V1_SX300.jpg" alt="DD Next Level">
+      <span>DD Next Level (2025)</span>
+    </li>  
+    <li>
+      <img src="https://m.media-amazon.com/images/M/MV5BZjQ5MzBkM2YtOGRkNS00ODA0LWI5ZTMtY2MxNjE2MmRmYzI5XkEyXkFqcGc@._V1_SX300.jpg" alt="Maaman">
+      <span>Maaman (2025)</span>
+    </li>
+    <li>
+      <img src="https://m.media-amazon.com/images/M/MV5BNzNkMGU4YzYtNTY1MC00MmIzLWI0ZjctMzhlMzYwZjQ3MjZjXkEyXkFqcGc@._V1_SX300.jpg" alt="Eleven">
+      <span>Eleven (2025)</span>
+    </li>
+    <li>
+      <img src="https://m.media-amazon.com/images/M/MV5BYzhjZmVlMmQtNmY5NC00N2RjLTkxOWEtNTM2MjNmNzgzYjYxXkEyXkFqcGc@._V1_SX300.jpg" alt="Jora Kaiya Thattunga">
+      <span>Jora Kaiya Thattunga (2025)</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Mobile Menu Backdrop -->
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMenu()"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="closeMenu()">✖</button>
+  <a href="index.html">🏠 Home</a>
+  <a href="movies.html">🎬 Movies</a>
+  <a href="shows.html">📺 Shows</a>
+  <a href="dubbed.html">🎙 Tamil Dub</a>
+  <a href="720p.html">🎞️ 720p HD</a>
+  <a href="request.html">📩 Request</a>
+  <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">💬 Telegram</a>
+</div>
+
+<div class="main-content">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="swiper hero-swiper">
+      <div class="swiper-wrapper" id="heroSlider"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- Movies Section -->
+  <div class="section-header">
+    <h2>🍿 Trending Movies</h2>
+    <a href="movies.html" class="view-all-btn">View All</a>
+  </div>
+  <div class="netflix-row" id="moviesRow">
+	<div class="swiper netflix-swiper" id="moviesSwiper">
+		<div class="swiper-wrapper" id="moviesList"></div>
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
+	</div>
+  </div>
+
+  <!-- TV Shows Section -->
+  <div class="section-header">
+    <h2>📺 Popular Shows</h2>
+    <a href="shows.html" class="view-all-btn">View All</a>
+  </div>
+  <div class="netflix-row" id="seriesRow">
+  <div class="swiper netflix-swiper" id="seriesSwiper">
+    <div class="swiper-wrapper" id="seriesList"></div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+  </div>
+</div>
+
+  <!-- Tamil Dub Section -->
+  <div class="section-header">
+    <h2>🎙 Tamil Dubbed</h2>
+    <a href="dubbed.html" class="view-all-btn">View All</a>
+  </div>
+  <div class="netflix-row" id="dubbedRow">
+  <div class="swiper netflix-swiper" id="dubbedSwiper">
+    <div class="swiper-wrapper" id="dubbedList"></div>
+	<div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+  </div>
+</div>
+</div>
+
+<!-- Back to top button -->
+<button id="backToTopBtn" title="Go to top"></button>
+
+<!-- Footer -->
+<footer>
+  &copy; 2025 PanguPlay - Your Ultimate Entertainment Destination
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+
+<script>
+// Splash Screen Logic
+const splash = document.getElementById('splash-screen');
+let splashTimeout = setTimeout(() => {
+  if (splash) {
+    splash.style.display = 'flex';
+  }
+  // Continue from where the code stopped
+}, 500);
+
+setTimeout(() => {
+  if (splash) {
+    splash.style.display = 'none';
+  }
+}, 2000);
+
+// Sample Data
+const heroMovies = [
+  {
+    title: "Avengers: Endgame",
+    description: "The epic conclusion to the Infinity Saga.",
+    image: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
+    quality: "4K"
+  },
+  {
+    title: "The Dark Knight",
+    description: "Batman faces the Joker in this epic thriller.",
+    image: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    quality: "HD"
+  },
+  {
+    title: "Inception",
+    description: "A mind-bending journey through dreams.",
+    image: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    quality: "4K"
+  }
+];
+
+const movies = [
+  {
+    "type": "movie",
+    "title": "Ace (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNjNjZTg4MDItNWZlZS00NDc3LTkzZTktODVhOWFkYzA4OTAxXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://dl8.hotshare.top/Ace_2025_HQ_PreDVD_720p_HD.mp4",
+    "lookUrl": "https://play.onestream.watch/stream/page/90721",
+    "details": {
+      "director": "P. Aarumugakumar",
+      "starring": "Vijay Sethupathi, Prithviraj, Yogi Babu",
+      "genres": "Action, Fantasy, Romance",
+      "quality": "PreDVD",
+      "language": "Tamil",
+      "movieRating": "⭐9.2/10",
+      "lastUpdated": "25 May 2025",
+      "fileSize": "918 MB",
+      "streamURL": "https://dl8.hotshare.top/Ace_2025_HQ_PreDVD_720p_HD.mp4"
+    },
+    "id": "ace-2025"
+  },	
+  {
+    "type": "movie",
+    "title": "DD Returns (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BN2U2NDAzODMtOGUzZC00NDQxLWE2MGYtMzMyZjQ4NTBkMjdiXkEyXkFqcGc@._V1_SX300",
+    "video": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/DD%20Returns%20(2023)/DD%20Returns%20(Original)/DD%20Returns%20(1080p%20HD)/Moviesda.Mobi%20-%20DD%20Returns%202023%20Original%201080p%20HD.mp4?h=43f1c99accb8575202a6637553706478bede31e6&e=1748891484",
+    "alt": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/DD%20Returns%20(2023)/DD%20Returns%20(Original)/DD%20Returns%20(720p%20HD)/Moviesda.Mobi%20-%20DD%20Returns%202023%20Original%20720p%20HD.mp4?h=cbc871654c05b391a7e4eda71a1ff4ab6dee1093&e=1748891451",
+    "1080Url": "https://play.onestream.watch/stream/page/81244",
+    "720Url": "https://play.onestream.watch/stream/page/81246",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "1080p",
+      "language": "Tamil",
+      "movieRating": "⭐8.6/10",
+      "lastUpdated": "10 May 2025",
+      "fileSize": "1.46 GB",
+      "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/DD%20Returns%20(2023)/DD%20Returns%20(Original)/DD%20Returns%20(1080p%20HD)/Moviesda.Mobi%20-%20DD%20Returns%202023%20Original%201080p%20HD.mp4?h=43f1c99accb8575202a6637553706478bede31e6&e=1748891484"
+    },
+    "id": "dd-returns-2023"
+  },	
+  {
+    "type": "movie",
+    "title": "Sumo (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDgzY2Q0OGItZjRjNy00MzZlLTgzN2EtMjYwY2EwZTZlZmM4XkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s09.hotshare.link/Moviesda.Mobi_-_Sumo_2025_Original_1080p_HD.mp4",
+    "alt": "https://dl1.hotshare.click/Moviesda.Mobi_-_Sumo_2025_Original_720p_HD.mp4",
+    "1080Url": "https://play.onestream.watch/stream/page/90690",
+    "720Url": "https://play.onestream.watch/stream/page/90695",
+    "details": {
+      "director": "S. P. Hosimin",
+      "starring": "Shiva, Priya Anand, Yoshinori Tashiro, VTV Ganesh, Yogi Babu",
+      "genres": "Comedy",
+      "quality": "1080p",
+      "language": "Tamil",
+      "movieRating": "⭐8.6/10",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.46 GB",
+      "streamURL": "https://s09.hotshare.link/Moviesda.Mobi_-_Sumo_2025_Original_1080p_HD.mp4"
+    },
+    "id": "sumo-2025"
+  },  
+  {
+    "type": "movie",
+    "title": "Vallamai (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMzQ0NGExZGItMzljOS00ZDkzLWIyNjEtMmUwNWZhMGUzYzJiXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s06.hotshare.link/Moviesda.Mobi_-_Vallamai_2025_Original_720p_HD.mp4",
+    "lookUrl": "https://play.onestream.watch/stream/page/90702",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.38 GB",
+      "streamURL": "https://s06.hotshare.link/Moviesda.Mobi_-_Vallamai_2025_Original_720p_HD.mp4"
+    },
+    "id": "vallamai-2025"
+  },  
+  {
+    "type": "movie",
+    "title": "Sarangapani Jathakam (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMmEyYzY4NGYtMDU0Ny00YTExLWE4MGMtMmM4OGRhMDc5NjNjXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://dl2.hotshare.top/Moviesda.Mobi_-_Sarangapani_Jathakam_2025_Original_1080p_HD.mp4",
+    "alt": "https://dl2.hotshare.top/Moviesda.Mobi_-_Sarangapani_Jathakam_2025_Original_720p_HD.mp4",
+    "1080Url": "https://play.onestream.watch/stream/page/90706",
+    "720Url": "https://play.onestream.watch/stream/page/90711",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "1080p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.78 GB",
+      "streamURL": "https://dl2.hotshare.top/Moviesda.Mobi_-_Sarangapani_Jathakam_2025_Original_1080p_HD.mp4"
+    },
+    "id": "sarangapani-jathakam-2025"
+  }, 
+  {
+    "type": "movie",
+    "title": "Nayakan (1987)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDgyNDFhMTgtM2Y5YS00MTczLWJmODktNTAzZGIyYWNjYmFjXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s10.hotshare.link/Moviesda.Mobi_-_Nayakan_1987_Original_1080p_HD.mp4",
+    "alt": "https://s01.hotshare.link/Moviesda.Mobi_-_Nayakan_1987_Original_720p_HD.mp4",
+    "1080Url": "https://play.onestream.watch/stream/page/90682",
+    "720Url": "https://play.onestream.watch/stream/page/90687",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "1080p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.59 GB",
+      "streamURL": "https://s10.hotshare.link/Moviesda.Mobi_-_Nayakan_1987_Original_1080p_HD.mp4"
+    },
+    "id": "nayakan-1987"
+  },  
+  {
+    "type": "movie",
+    "title": "Bayamariya Brammai (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMThmYWE2MDgtZjA4NC00NTc5LWFhN2EtYTIxN2U0NTExOTRmXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://dl8.hotshare.top/Moviesda.Mobi_-_Bayamariya_Brammai_2024_Original_720p_HD.mp4",
+    "lookUrl": "https://play.onestream.watch/stream/page/90666",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.00 GB",
+      "streamURL": "https://dl8.hotshare.top/Moviesda.Mobi_-_Bayamariya_Brammai_2024_Original_720p_HD.mp4"
+    },
+    "id": "bayamariya-brammai-2024"
+  },  
+  {
+    "type": "movie",
+    "title": "4 (2024)",
+    "image": "https://m.media-amazon.com/images/S/pv-target-images/71bab2abf495629539e9804e35cdc72c167746012abfe4c1e74e1721a5733311._SX300_FMwebp_.png",
+    "video": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/4%20(2024)/4%20(Original)/4%20(720p%20HD)/Moviesda.Mobi%20-%204%202024%20Original%20720p%20HD.mp4?h=1f29501f00a2561035a14293a2b86fca25e8a053&e=1748711757",
+    "lookUrl": "",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "17 April 2025",
+      "fileSize": "825.80 MB",
+      "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/4%20(2024)/4%20(Original)/4%20(720p%20HD)/Moviesda.Mobi%20-%204%202024%20Original%20720p%20HD.mp4?h=1f29501f00a2561035a14293a2b86fca25e8a053&e=1748711757"
+    },
+    "id": "4-2024",
+	"lookUrl": "https://play.onestream.watch/stream/page/83732"
+  },
+  {
+    "type": "movie",
+    "title": "96 (2018)",
+    "image": "https://m.media-amazon.com/images/M/MV5BODFiZDk5MDgtMWMzNy00MTZmLTk2YTQtYjg1NzNmYzJlODJkXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://cdn1.uptodl.ch/files/Tamil%202018%20Movies/96%20(Movie)%20(2018)/96%20(Movie)%20(Original)/96%20(Movie)%20(1080p%20HD)/Moviesda.Mobi%20-%2096%202018%20Original%201080p%20HD.mp4?h=fc8921be0254e8d6fe1dbaf8a82ba67ec77bc81c&e=1748711686",
+    "alt": "https://cdn1.uptodl.ch/files/Tamil%202018%20Movies/96%20(Movie)%20(2018)/96%20(Movie)%20(Original)/96%20(Movie)%20(720p%20HD)/Moviesda.Mobi%20-%2096%202018%20Original%20720p%20HD.mp4?h=0ff48f8a3591c5d73d202aadb1cf5c9eb43c134c&e=1748737744",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "1080p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "17 April 2025",
+      "fileSize": "1.44 GB",
+      "streamURL": "https://cdn1.uptodl.ch/files/Tamil%202018%20Movies/96%20(Movie)%20(2018)/96%20(Movie)%20(Original)/96%20(Movie)%20(1080p%20HD)/Moviesda.Mobi%20-%2096%202018%20Original%201080p%20HD.mp4?h=fc8921be0254e8d6fe1dbaf8a82ba67ec77bc81c&e=1748711686"
+    },
+    "id": "96-2018",
+    "1080Url": "https://play.onestream.watch/stream/page/83222",
+    "720Url": "https://play.onestream.watch/stream/page/83221"
+  },
+  {
+    "type": "movie",
+    "title": "800 (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BZDY5MzIyN2QtNmU1NS00NzA2LTk5MmYtNzZjMDIzMjk0M2FiXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/800%20(2023)/800%20(Original)/800%20(720p%20HD)/Moviesda.Mobi%20-%20800%202023%20Original%20720p%20HD.mp4?h=806318b03a4089fcd4c4f056cbe71ec72dfef5dc&e=1748711567",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "17 April 2025",
+      "fileSize": "728.70 MB",
+      "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/800%20(2023)/800%20(Original)/800%20(720p%20HD)/Moviesda.Mobi%20-%20800%202023%20Original%20720p%20HD.mp4?h=806318b03a4089fcd4c4f056cbe71ec72dfef5dc&e=1748711567"
+    },
+    "id": "800-2023",
+    "lookUrl": "https://play.onestream.watch/stream/page/82292"
+  }
+];
+
+const series = [
+{
+  "type": "series",
+  "id": "peakyblinders-s01",
+  "title": "Peaky Blinders Season 1 (2013)",
+  "image": "https://m.media-amazon.com/images/M/MV5BOGM0NGY3ZmItOGE2ZC00OWIxLTk0N2EtZWY4Yzg3ZDlhNGI3XkEyXkFqcGc@._V1_SX300.jpg",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "23 May 2025",
+    "Season": "S01",
+  },
+  "episodes": [
+    {
+      "id": "peaky-blinders-s1e1",
+      "season": 1,
+      "episode": 1,
+      "title": "Episode 1",
+      "videoUrl": "https://s05.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_01_.mp4",
+      "streamURL": "https://s05.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_01_.mp4",
+      "lookUrl": "https://dub.onestream.watch/stream/video/99951"
+    },
+    {
+      "id": "peaky-blinders-s1e2",
+      "season": 1,
+      "episode": 2,
+      "title": "Episode 2",
+      "videoUrl": "https://s02.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_02_.mp4",
+      "streamURL": "https://s02.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_02_.mp4",
+      "lookUrl": "https://dub.onestream.watch/stream/video/99972"
+    },
+    {
+      "id": "peaky-blinders-s1e3",
+      "season": 1,
+      "episode": 3,
+      "title": "Episode 3",
+      "videoUrl": "https://s07.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_03_.mp4",
+      "streamURL": "https://s07.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_03_.mp4",
+      "lookUrl": "https://dub.onestream.watch/stream/video/99973"
+    },
+    {
+      "id": "peaky-blinders-s1e4",
+      "season": 1,
+      "episode": 4,
+      "title": "Episode 4",
+      "videoUrl": "https://s05.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_04_.mp4",
+      "streamURL": "https://s05.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_04_.mp4",
+      "lookUrl": "https://dub.onestream.watch/stream/video/99974"
+    },
+    {
+      "id": "peaky-blinders-s1e5",
+      "season": 1,
+      "episode": 5,
+      "title": "Episode 5",
+      "videoUrl": "https://s07.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_05_.mp4",
+      "streamURL": "https://s07.dubshare.one/isaiDub.me_-_Peaky_Blinders_2013_Season_01_Epi_05_.mp4",
+      "lookUrl": "https://dub.onestream.watch/stream/video/99975"
+    },
+  ]
+},
+  {
+    "type": "series",
+    "id": "asur-s01",
+    "title": "Asur Season 1 (2020)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDZkOGQzMjItNTliOC00NTIxLTg4ODEtNTMxZWY1OTk5ZWM0XkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "asur-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2001).mp4?h=2dc1d40aee25f0a3842982b25310ddbd95da30ce&e=1748711345",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2001).mp4?h=2dc1d40aee25f0a3842982b25310ddbd95da30ce&e=1748711345"
+      },
+      {
+        "id": "asur-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2002).mp4?h=2d2ef2bae09d8ea21648b8341953dc08bd358671&e=1748711345",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2002).mp4?h=2d2ef2bae09d8ea21648b8341953dc08bd358671&e=1748711345"
+      },
+      {
+        "id": "asur-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2003).mp4?h=2e5082188fda9c0b9bd3041947bbdc521a29eb1a&e=1748711346",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2003).mp4?h=2e5082188fda9c0b9bd3041947bbdc521a29eb1a&e=1748711346"
+      },
+      {
+        "id": "asur-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2004).mp4?h=c854f5e28dc30221453d41a38f0002af9cba1b0a&e=1748711352",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2004).mp4?h=c854f5e28dc30221453d41a38f0002af9cba1b0a&e=1748711352"
+      },
+      {
+        "id": "asur-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2005).mp4?h=50dfeb2b171194aeb9ea56e228bdf009876fe710&e=1748711352",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2005).mp4?h=50dfeb2b171194aeb9ea56e228bdf009876fe710&e=1748711352"
+      },
+      {
+        "id": "asur-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2006).mp4?h=342652fc22630b13adcc5e03b40829c0563e5f54&e=1748711353",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2006).mp4?h=342652fc22630b13adcc5e03b40829c0563e5f54&e=1748711353"
+      },
+      {
+        "id": "asur-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2007).mp4?h=f7128a0cf9b2e540ceffa248b23d380cc21ad7d4&e=1748711354",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2007).mp4?h=f7128a0cf9b2e540ceffa248b23d380cc21ad7d4&e=1748711354"
+      },
+      {
+        "id": "asur-s1e8",
+        "season": 1,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2008).mp4?h=584034c95fac6352285f159384e1c3341e07cd29&e=1748711355",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2020)%20Season%2001/Asur%20(2020)%20Season%2001%20(Epi%2008).mp4?h=584034c95fac6352285f159384e1c3341e07cd29&e=1748711355"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "asur-s02",
+    "title": "Asur Season 2 (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDZkOGQzMjItNTliOC00NTIxLTg4ODEtNTMxZWY1OTk5ZWM0XkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S02"
+    },
+    "episodes": [
+      {
+        "id": "asur-s2e1",
+        "season": 2,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2001).mp4?h=754a7743d1e7278f1e5c30b6e9a6b9c6183c5ffa&e=1748711354",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2001).mp4?h=754a7743d1e7278f1e5c30b6e9a6b9c6183c5ffa&e=1748711354"
+      },
+      {
+        "id": "asur-s2e2",
+        "season": 2,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2002).mp4?h=364ab0dd2d4ea3059afd768b82b004f0a998e043&e=1748711355",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2002).mp4?h=364ab0dd2d4ea3059afd768b82b004f0a998e043&e=1748711355"
+      },
+      {
+        "id": "asur-s2e3",
+        "season": 2,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2003).mp4?h=f1e614d822cbdf1b00282629ad069922fde090a4&e=1748711355",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2003).mp4?h=f1e614d822cbdf1b00282629ad069922fde090a4&e=1748711355"
+      },
+      {
+        "id": "asur-s2e4",
+        "season": 2,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2004).mp4?h=379eed040b964fe7dd2b5f5b1647a4f108f9c390&e=1748711359",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2004).mp4?h=379eed040b964fe7dd2b5f5b1647a4f108f9c390&e=1748711359"
+      },
+      {
+        "id": "asur-s2e5",
+        "season": 2,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2005).mp4?h=ec8a757e864c18610b70f82e8336b6e2ad0f4016&e=1748711361",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2005).mp4?h=ec8a757e864c18610b70f82e8336b6e2ad0f4016&e=1748711361"
+      },
+      {
+        "id": "asur-s2e6",
+        "season": 2,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2006).mp4?h=89bce2cfeacb7b3f970b51d99a8187981a24f6a8&e=1748711362",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2006).mp4?h=89bce2cfeacb7b3f970b51d99a8187981a24f6a8&e=1748711362"
+      },
+      {
+        "id": "asur-s2e7",
+        "season": 2,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2007).mp4?h=9f95793cc7a650a251aea512f64a38d029086b2b&e=1748711362",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2007).mp4?h=9f95793cc7a650a251aea512f64a38d029086b2b&e=1748711362"
+      },
+      {
+        "id": "asur-s2e8",
+        "season": 2,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2008).mp4?h=4d7599c3a36bb355f385936b0c6cead9a573f366&e=1748711364",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Asur%20(2023)/Asur%20(2023)%20Season%2002/Asur%20(2023)%20Season%2002%20(Epi%2008).mp4?h=4d7599c3a36bb355f385936b0c6cead9a573f366&e=1748711364"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "crackdown-s02",
+    "title": "Crackdown Season 2 (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNDEwMGU2OWMtZThlMC00M2I4LTk3MjQtYzlmOWZiNWVjNTlmXkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S02"
+    },
+    "episodes": [
+      {
+        "id": "crackdown-s2e1",
+        "season": 2,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2001).mp4?h=60beff90873709ef8185434eedbbfa51b01c4462&e=1748711364",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2001).mp4?h=60beff90873709ef8185434eedbbfa51b01c4462&e=1748711364"
+      },
+      {
+        "id": "crackdown-s2e2",
+        "season": 2,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2002).mp4?h=f58fe6849977679c5654547d3505fb9435da5927&e=1748711365",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2002).mp4?h=f58fe6849977679c5654547d3505fb9435da5927&e=1748711365"
+      },
+      {
+        "id": "crackdown-s2e3",
+        "season": 2,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2003).mp4?h=88623e816ccc1e076710ee6ea504e9a6655bf9be&e=1748711369",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2003).mp4?h=88623e816ccc1e076710ee6ea504e9a6655bf9be&e=1748711369"
+      },
+      {
+        "id": "crackdown-s2e4",
+        "season": 2,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2004).mp4?h=c91b8e67e812362e3b90d711ba2091ceac745022&e=1748711369",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2004).mp4?h=c91b8e67e812362e3b90d711ba2091ceac745022&e=1748711369"
+      },
+      {
+        "id": "crackdown-s2e5",
+        "season": 2,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2005).mp4?h=7a19bc769a402ab3bd1bd9465227e827109eadac&e=1748711369",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2005).mp4?h=7a19bc769a402ab3bd1bd9465227e827109eadac&e=1748711369"
+      },
+      {
+        "id": "crackdown-s2e6",
+        "season": 2,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2006).mp4?h=743d809d46bd68936a81ff5aa7472f3841c34172&e=1748711371",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2006).mp4?h=743d809d46bd68936a81ff5aa7472f3841c34172&e=1748711371"
+      },
+      {
+        "id": "crackdown-s2e7",
+        "season": 2,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2007).mp4?h=b744e2ff446a500ca78ba3aca657fd9a5d3315e6&e=1748711371",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2007).mp4?h=b744e2ff446a500ca78ba3aca657fd9a5d3315e6&e=1748711371"
+      },
+      {
+        "id": "crackdown-s2e8",
+        "season": 2,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2008).mp4?h=11edddded89bafff6e4097e63fabf06a2a22dd0a&e=1748711373",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Crackdown%20(2023)/Crackdown%20(2023)%20Season%2002/Crackdown%20(2023)%20Season%2002%20(Epi%2008).mp4?h=11edddded89bafff6e4097e63fabf06a2a22dd0a&e=1748711373"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "indianpoliceforce-s01",
+    "title": "Indian Police Force Season 1 (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMDVmYTExYWUtZWNmNS00ZWFlLWIwMzgtNjBiNzllZmE5NmVlXkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "indian-police-force-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2001).mp4?h=ff16d9e484e86dadf7806941a0b9dada3e78bf06&e=1748711638",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2001).mp4?h=ff16d9e484e86dadf7806941a0b9dada3e78bf06&e=1748711638"
+      },
+      {
+        "id": "indian-police-force-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2002).mp4?h=1ad9bd54c80fe9b16ba3a90e23ba825a05a95932&e=1748711639",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2002).mp4?h=1ad9bd54c80fe9b16ba3a90e23ba825a05a95932&e=1748711639"
+      },
+      {
+        "id": "indian-police-force-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2003).mp4?h=479f28d088ed379aa930bc9a3f7a6e9c34d17abf&e=1748711641",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2003).mp4?h=479f28d088ed379aa930bc9a3f7a6e9c34d17abf&e=1748711641"
+      },
+      {
+        "id": "indian-police-force-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2004).mp4?h=fb507578e96b8cd1149598b74c46373ee5e42bd4&e=1748711643",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2004).mp4?h=fb507578e96b8cd1149598b74c46373ee5e42bd4&e=1748711643"
+      },
+      {
+        "id": "indian-police-force-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2005).mp4?h=ac776323a610983f104ad49613d63b4809275a19&e=1748711643",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2005).mp4?h=ac776323a610983f104ad49613d63b4809275a19&e=1748711643"
+      },
+      {
+        "id": "indian-police-force-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2006).mp4?h=7f988686a221051684005703935907b442e85a4b&e=1748711645",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2006).mp4?h=7f988686a221051684005703935907b442e85a4b&e=1748711645"
+      },
+      {
+        "id": "indian-police-force-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2007).mp4?h=a49ea9bd613b7274dea0e663d0d58a40b90564ae&e=1748711645",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Indian%20Police%20Force%20(2024)/Indian%20Police%20Force%20(Season%2001)/Indian%20Police%20Force%20(720p%20HD)/Moviesda.Mobi%20-%20Indian%20Police%20Force%20Season%2001%20(Epi%2007).mp4?h=a49ea9bd613b7274dea0e663d0d58a40b90564ae&e=1748711645"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "inspectoravinash-s01",
+    "title": "Inspector Avinash Season 1 (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNmFkMDllYzItMTcxYi00ZDU1LTk1ZjUtZDg0ZjdjNWQ0MWY4XkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "inspector-avinash-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2001).mp4?h=13b2873374a9bb42613e50432a72ace82cd49574&e=1748711373",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2001).mp4?h=13b2873374a9bb42613e50432a72ace82cd49574&e=1748711373"
+      },
+      {
+        "id": "inspector-avinash-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2002).mp4?h=746964678bb4c0479ec492275d02a5e286b2866a&e=1748711374",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2002).mp4?h=746964678bb4c0479ec492275d02a5e286b2866a&e=1748711374"
+      },
+      {
+        "id": "inspector-avinash-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2003).mp4?h=d60636401ffaed58df34cf934c1bb7693e6151db&e=1748711374",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2003).mp4?h=d60636401ffaed58df34cf934c1bb7693e6151db&e=1748711374"
+      },
+      {
+        "id": "inspector-avinash-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2004).mp4?h=26079aefb1d7b5173a7a33050b747a002b4af55b&e=1748711379",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2004).mp4?h=26079aefb1d7b5173a7a33050b747a002b4af55b&e=1748711379"
+      },
+      {
+        "id": "inspector-avinash-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2005).mp4?h=81923eef7ebc37dc728b1537bc08089e96225899&e=1748711381",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2005).mp4?h=81923eef7ebc37dc728b1537bc08089e96225899&e=1748711381"
+      },
+      {
+        "id": "inspector-avinash-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2006).mp4?h=1b05d9b882314dbed1bc5baa98db1be24a08bf8f&e=1748711384",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2006).mp4?h=1b05d9b882314dbed1bc5baa98db1be24a08bf8f&e=1748711384"
+      },
+      {
+        "id": "inspector-avinash-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2007).mp4?h=1ddc670aa9e014612f8e491391063b7d8a47a3f3&e=1748711384",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2007).mp4?h=1ddc670aa9e014612f8e491391063b7d8a47a3f3&e=1748711384"
+      },
+      {
+        "id": "inspector-avinash-s1e8",
+        "season": 1,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2008).mp4?h=2113778c9dd86c2c289df4fb48c201695f476a5e&e=1748711384",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Inspector%20Avinash%20(2023)/Inspector%20Avinash%20(2023)%20Season%2001/Inspector%20Nash%20(2023)%20Season%2001%20(Epi%2008).mp4?h=2113778c9dd86c2c289df4fb48c201695f476a5e&e=1748711384"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "journey-s01",
+    "title": "Journey Season 1 (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMWI2ODEzM2ItODE1Ny00YmMxLWJkM2MtNDU2Njc0Yzk5YTAxXkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "journey-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2001).mp4?h=bf4e4a94fbf2f636fb88316646d0a2406fd01cec&e=1748711611",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2001).mp4?h=bf4e4a94fbf2f636fb88316646d0a2406fd01cec&e=1748711611"
+      },
+      {
+        "id": "journey-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2002).mp4?h=ee10e1c61db39239d9659fe7095d4523346e97cc&e=1748711615",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2002).mp4?h=ee10e1c61db39239d9659fe7095d4523346e97cc&e=1748711615"
+      },
+      {
+        "id": "journey-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2003).mp4?h=0f39244f13bce4461c8d41ab3f239ad988863588&e=1748711615",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2003).mp4?h=0f39244f13bce4461c8d41ab3f239ad988863588&e=1748711615"
+      },
+      {
+        "id": "journey-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2004).mp4?h=a7f0cb3a807dbeb4bc1029dddf322d42fcabf1ed&e=1748711616",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2004).mp4?h=a7f0cb3a807dbeb4bc1029dddf322d42fcabf1ed&e=1748711616"
+      },
+      {
+        "id": "journey-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2005).mp4?h=5805e102f65c21e732ca5de9f8459a0918426207&e=1748711616",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2005).mp4?h=5805e102f65c21e732ca5de9f8459a0918426207&e=1748711616"
+      },
+      {
+        "id": "journey-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2006).mp4?h=9b9e7a08b299ce26adbf05c677b7656528e64a6e&e=1748711616",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2006).mp4?h=9b9e7a08b299ce26adbf05c677b7656528e64a6e&e=1748711616"
+      },
+      {
+        "id": "journey-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2007).mp4?h=89761a7302f120acd96c471c3528baa8f5b99f30&e=1748711617",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2007).mp4?h=89761a7302f120acd96c471c3528baa8f5b99f30&e=1748711617"
+      },
+      {
+        "id": "journey-s1e8",
+        "season": 1,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2008).mp4?h=448f4177fc4109d427d9474bf50f912ecd3ef182&e=1748711617",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2008).mp4?h=448f4177fc4109d427d9474bf50f912ecd3ef182&e=1748711617"
+      },
+      {
+        "id": "journey-s1e9",
+        "season": 1,
+        "episode": 9,
+        "title": "Episode 9",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2009).mp4?h=b1139a7e91d56fc3e323a1d6a434293503f91c95&e=1748711619",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Cherans%20Journey%20(2024)/Cherans%20Journey%20(Season%2001)/Cherans%20Journey%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Journey%20Season%2001%20(Epi%2009).mp4?h=b1139a7e91d56fc3e323a1d6a434293503f91c95&e=1748711619"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "killersoup-s01",
+    "title": "Killer Soup Season 1 (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BYjNiYTRjYjQtOWI1Yy00OTZlLWI4YTItMTkxMDA4NzkyNThjXkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "killer-soup-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2001).mp4?h=6a79e3084ba43770dc0a6666b4ee2bcc80a9da55&e=1748711619",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2001).mp4?h=6a79e3084ba43770dc0a6666b4ee2bcc80a9da55&e=1748711619"
+      },
+      {
+        "id": "killer-soup-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2002).mp4?h=981dbf8862d52cd42a17994e9e89e464eed6ba14&e=1748711622",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2002).mp4?h=981dbf8862d52cd42a17994e9e89e464eed6ba14&e=1748711622"
+      },
+      {
+        "id": "killer-soup-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2003).mp4?h=bf7059f125d15e3b0afa55f41051c60931af304e&e=1748711624",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2003).mp4?h=bf7059f125d15e3b0afa55f41051c60931af304e&e=1748711624"
+      },
+      {
+        "id": "killer-soup-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2004).mp4?h=1664951afbc53cfbfb33bd5f65469c7330c5c78e&e=1748711626",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2004).mp4?h=1664951afbc53cfbfb33bd5f65469c7330c5c78e&e=1748711626"
+      },
+      {
+        "id": "killer-soup-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2005).mp4?h=6efedcf170227a23a0665fccc76ba4de7a1ca9e8&e=1748711627",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2005).mp4?h=6efedcf170227a23a0665fccc76ba4de7a1ca9e8&e=1748711627"
+      },
+      {
+        "id": "killer-soup-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2006).mp4?h=f950ede152f9c07f30447b2ca0b3a3411bb2517f&e=1748711627",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2006).mp4?h=f950ede152f9c07f30447b2ca0b3a3411bb2517f&e=1748711627"
+      },
+      {
+        "id": "killer-soup-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2007).mp4?h=16a526a1d141b88ece91252c63bf3090f3d8d95f&e=1748711628",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2007).mp4?h=16a526a1d141b88ece91252c63bf3090f3d8d95f&e=1748711628"
+      },
+      {
+        "id": "killer-soup-s1e8",
+        "season": 1,
+        "episode": 8,
+        "title": "Episode 8",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2008).mp4?h=c227fe9415346145c83d93b606219bb8a2fcce6e&e=1748711629",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Killer%20Soup%20(2024)/Killer%20Soup%20(Season%2001)/Killer%20Soup%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Killer%20Soup%20Season%2001%20(Epi%2008).mp4?h=c227fe9415346145c83d93b606219bb8a2fcce6e&e=1748711629"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "modernlovechennai-s01",
+    "title": "Modern Love Chennai Season 1 (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMzQxZWEyMDAtMWMzYi00NmU5LWJjOWMtOTY0YmVjNzg2NTNmXkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "modern-love-chennai-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2001%20Lalagunda%20Bommaigal).mp4?h=3e4f6c515de5f14c51060c20d18e33f7afd4c4ce&e=1748711321",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2001%20Lalagunda%20Bommaigal).mp4?h=3e4f6c515de5f14c51060c20d18e33f7afd4c4ce&e=1748711321"
+      },
+      {
+        "id": "modern-love-chennai-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2002%20Imaigal).mp4?h=e0ff77e445f4a4d76703d20c4170c6964fa19c63&e=1748711322",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2002%20Imaigal).mp4?h=e0ff77e445f4a4d76703d20c4170c6964fa19c63&e=1748711322"
+      },
+      {
+        "id": "modern-love-chennai-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2003%20Kaadhal%20Enbadhu%20Kannula%20Heart%20Irukkura%20Emoji).mp4?h=21f584b13823b8bc785d813b5188d8585da4cf75&e=1748711322",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2003%20Kaadhal%20Enbadhu%20Kannula%20Heart%20Irukkura%20Emoji).mp4?h=21f584b13823b8bc785d813b5188d8585da4cf75&e=1748711322"
+      },
+      {
+        "id": "modern-love-chennai-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2004%20Margazhi).mp4?h=99a77dad64e14f8013694857557bbf4909876f11&e=1748711323",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2004%20Margazhi).mp4?h=99a77dad64e14f8013694857557bbf4909876f11&e=1748711323"
+      },
+      {
+        "id": "modern-love-chennai-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2005%20Paravai%20Kootil%20Vaazhum%20Maangal).mp4?h=9b4b07bc87794587d046f34bf16e84d54e403ee3&e=1748711324",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2005%20Paravai%20Kootil%20Vaazhum%20Maangal).mp4?h=9b4b07bc87794587d046f34bf16e84d54e403ee3&e=1748711324"
+      },
+      {
+        "id": "modern-love-chennai-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2006%20Ninaivo%20Oru%20Paravai).mp4?h=2f265da10cd9180f31852362a2ddc0a65bdafefa&e=1748711325",
+        "streamURL": "https://cdn6.uptodl.ch/files/Tamil%202023%20Movies/Modern%20Love%20Chennai%20(2023)/Modern%20Love%20Chennai%20(Season%2001)/Modern%20Love%20Chennai%20Season%2001%20(Epi%2006%20Ninaivo%20Oru%20Paravai).mp4?h=2f265da10cd9180f31852362a2ddc0a65bdafefa&e=1748711325"
+      }
+    ]
+  },
+  {
+    "type": "series",
+    "id": "perilloorpremierleague-s01",
+    "title": "Perilloor Premier League Season 1 (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMWFkM2Y4YWQtMmM1OS00MTQ1LWJkYzEtMGEyYjkwMDU2OTI3XkEyXkFqcGc@._V1_SX300.jpg",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "10 April 2025",
+      "Season": "S01"
+    },
+    "episodes": [
+      {
+        "id": "perilloor-premier-league-s1e1",
+        "season": 1,
+        "episode": 1,
+        "title": "Episode 1",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2001).mp4?h=969313efdfa63489d640008ddb1bd8276402bd95&e=1748711598",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2001).mp4?h=969313efdfa63489d640008ddb1bd8276402bd95&e=1748711598"
+      },
+      {
+        "id": "perilloor-premier-league-s1e2",
+        "season": 1,
+        "episode": 2,
+        "title": "Episode 2",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2002).mp4?h=f2af7ae9f753925fa3d6fc4cc5d5baa5d929293b&e=1748711598",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2002).mp4?h=f2af7ae9f753925fa3d6fc4cc5d5baa5d929293b&e=1748711598"
+      },
+      {
+        "id": "perilloor-premier-league-s1e3",
+        "season": 1,
+        "episode": 3,
+        "title": "Episode 3",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2003).mp4?h=cdd75f07b7346194102f0639443e8eeae72ab486&e=1748711601",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2003).mp4?h=cdd75f07b7346194102f0639443e8eeae72ab486&e=1748711601"
+      },
+      {
+        "id": "perilloor-premier-league-s1e4",
+        "season": 1,
+        "episode": 4,
+        "title": "Episode 4",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2004).mp4?h=aec465e9447f9ecce6b892ef12231bf2c908c386&e=1748711606",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2004).mp4?h=aec465e9447f9ecce6b892ef12231bf2c908c386&e=1748711606"
+      },
+      {
+        "id": "perilloor-premier-league-s1e5",
+        "season": 1,
+        "episode": 5,
+        "title": "Episode 5",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2005).mp4?h=23ea84b9f5a1d6c125cca18feab9e7bc6c690572&e=1748711606",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2005).mp4?h=23ea84b9f5a1d6c125cca18feab9e7bc6c690572&e=1748711606"
+      },
+      {
+        "id": "perilloor-premier-league-s1e6",
+        "season": 1,
+        "episode": 6,
+        "title": "Episode 6",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2006).mp4?h=e4662453782b92c4786329944dad699928007ec2&e=1748711606",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2006).mp4?h=e4662453782b92c4786329944dad699928007ec2&e=1748711606"
+      },
+      {
+        "id": "perilloor-premier-league-s1e7",
+        "season": 1,
+        "episode": 7,
+        "title": "Episode 7",
+        "videoUrl": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2007).mp4?h=10a8c91890c07f35c39819d371553822ac13bdd1&e=1748711606",
+        "streamURL": "https://cdn7.uptodl.ch/files/Tamil%202024%20Movies/Perilloor%20Premier%20League%20(2024)/Perilloor%20Premier%20League%20Season%2001%20(720p%20HD)/Moviesda.Mobi%20-%20Perilloor%20Premier%20League%20Season%2001%20(Epi%2007).mp4?h=10a8c91890c07f35c39819d371553822ac13bdd1&e=1748711606"
+      }
+    ]
+  }
+];
+
+const dubbedMovies = [
+  {
+    "type": "dubbed",
+    "title": "Cutting Class (1989)",
+    "image": "https://m.media-amazon.com/images/M/MV5BYWVhNDNiMDItNzJmMy00YjJmLTg0MjQtMWFlMTI4ZGJkNDdkXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s06.dubshare.one/Cutting_Class_1989_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99965",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "972.50 MB",
+      "streamURL": "https://s06.dubshare.one/Cutting_Class_1989_720p_HD.mp4"
+    },
+    "id": "cutting-class-1989"
+  },
+  {
+    "type": "dubbed",
+    "title": "Exit (2019)",
+    "image": "https://m.media-amazon.com/images/M/MV5BYWQ1NjI0ZmEtYmM1Yi00OGIxLWEyZDgtM2I2OTZmNTU3Y2JlXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s02.dubshare.one/Exit_2019_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99971",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.00 GB",
+      "streamURL": "https://s02.dubshare.one/Exit_2019_720p_HD.mp4"
+    },
+    "id": "exit-2019"
+  },
+  {
+    "type": "dubbed",
+    "title": "Inheritance (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNzZkZDM1NWQtZjFmMS00OTE1LWJkMjEtOWIxMDk2ZjkyNjFmXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s01.dubshare.one/Inheritance_2025_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99981",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "965.63 MB",
+      "streamURL": "https://s01.dubshare.one/Inheritance_2025_720p_HD.mp4"
+    },
+    "id": "inheritance-2025"
+  },
+  {
+    "type": "dubbed",
+    "title": "One of Them Days (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNjI3OGIyYTYtN2QzZC00YzZiLThjOTktM2QyYThlZTM3NjYzXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s06.dubshare.one/One_of_Them_Days_2025_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99987",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "983.43 MB",
+      "streamURL": "https://s06.dubshare.one/One_of_Them_Days_2025_720p_HD.mp4"
+    },
+    "id": "one-of-them-days-2025"
+  },
+  {
+    "type": "dubbed",
+    "title": "Paddington in Peru (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BNzMyNWZlYmYtZDgxMC00ZTU3LWFiYzctNGE0ZDc0OTlhZTRlXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s02.dubshare.one/Paddington_in_Peru_2024_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99993",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "988.48 MB",
+      "streamURL": "https://s02.dubshare.one/Paddington_in_Peru_2024_720p_HD.mp4"
+    },
+    "id": "paddington-in-peru-2024"
+  },
+  {
+    "type": "dubbed",
+    "title": "Sea Fever (2019)",
+    "image": "https://m.media-amazon.com/images/M/MV5BOTQ1YjkyNTYtMjJhMS00MjU0LWI3YTItZmY2MGY2ZTc5ZmI2XkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s03.dubshare.one/Sea_Fever_2019_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99959",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "925.33 MB",
+      "streamURL": "https://s03.dubshare.one/Sea_Fever_2019_720p_HD.mp4"
+    },
+    "id": "sea-fever-2019"
+  },  
+  {
+    "type": "dubbed",
+    "title": "The Fortress (2017)",
+    "image": "https://m.media-amazon.com/images/M/MV5BYmQ0Mjg3YTUtNDA0Yi00NmY3LTk0NDAtNTVhZTdhNDlhOWE4XkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s01.dubshare.one/The_Fortress_2017_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/99999",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.07 GB",
+      "streamURL": "https://s01.dubshare.one/The_Fortress_2017_720p_HD.mp4"
+    },
+    "id": "the-fortress-2017"
+  },
+  {
+    "type": "dubbed",
+    "title": "The Seed of the Sacred Fig (2025)",
+    "image": "https://m.media-amazon.com/images/M/MV5BMmYxMTlmODQtZTUyOS00YWE3LWFjYTktOWU4ZjU3ZGYwZDk2XkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s03.dubshare.one/The_Seed_of_the_Sacred_Fig_2025_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/100005",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "1.13 GB",
+      "streamURL": "https://s03.dubshare.one/The_Seed_of_the_Sacred_Fig_2025_720p_HD.mp4"
+    },
+    "id": "the-seed-of-the-sacred-fig-2025"
+  },
+  {
+    "type": "dubbed",
+    "title": "Unsung Hero (2024)",
+    "image": "https://m.media-amazon.com/images/M/MV5BZDQ4YTRlNGQtNjI5My00MGUxLTg1ODYtMTFiY2MwYmRlMmEyXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s08.dubshare.one/Unsung_Hero_2024_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/100011",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "0.99 GB",
+      "streamURL": "https://s08.dubshare.one/Unsung_Hero_2024_720p_HD.mp4"
+    },
+    "id": "unsung-hero-2024"
+  },
+  {
+    "type": "dubbed",
+    "title": "Wicked Little Letters (2023)",
+    "image": "https://m.media-amazon.com/images/M/MV5BZGUzOTFjNWYtY2Q2ZC00ZDU0LWIyZWEtMzFlNmI3OTdjN2VkXkEyXkFqcGc@._V1_SX300.jpg",
+    "video": "https://s04.dubshare.one/Wicked_Little_Letters_2023_720p_HD.mp4",
+    "lookUrl": "https://dub.onestream.watch/stream/video/100017",
+	      "lastUpdated": "23 May 2025",
+    "details": {
+      "director": "",
+      "starring": "",
+      "genres": "",
+      "quality": "720p",
+      "language": "Tamil",
+      "movieRating": "",
+      "lastUpdated": "23 May 2025",
+      "fileSize": "934.75 MB",
+      "streamURL": "https://s04.dubshare.one/Wicked_Little_Letters_2023_720p_HD.mp4"
+    },
+    "id": "wicked-little-letters-2023"
+  }
+];
+
+// Initialize Swiper configurations
+let heroSwiper, movieSwiper, seriesSwiper, dubbedSwiper;
+
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+  loadContent();
+  initializeSwipers();
+  setupEventListeners();
+});
+
+// Load content into sections
+function loadContent() {
+  loadHeroSlider();
+  loadMovies();
+  loadSeries();
+  loadDubbedMovies();
+}
+
+// Load Hero Slider
+function loadHeroSlider() {
+  const heroSlider = document.getElementById('heroSlider');
+  
+  heroMovies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide hero-slide';
+    slide.innerHTML = `
+      <img src="${movie.image}" alt="${movie.title}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIyNSIgdmlld0JveD0iMCAwIDQwMCAyMjUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjI1IiBmaWxsPSIjMjIyIi8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjExMi41IiByPSIzMCIgZmlsbD0iIzQ0NCIvPgo8L3N2Zz4='">
+      <div class="hero-overlay">
+        <h1 class="hero-title">${movie.title}</h1>
+        <p class="hero-description">${movie.description}</p>
+        <button class="hero-play-btn" onclick="playMovie('${movie.title}')">
+          ▶ Watch Now
+        </button>
+      </div>
+    `;
+    heroSlider.appendChild(slide);
+  });
+}
+
+// Load Movies
+function loadMovies() {
+  const moviesList = document.getElementById('moviesList');
+  
+  movies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = createMovieCard(movie);
+    moviesList.appendChild(slide);
+  });
+}
+
+// Load Series
+function loadSeries() {
+  const seriesList = document.getElementById('seriesList');
+  
+  series.forEach(show => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = createMovieCard(show);
+    seriesList.appendChild(slide);
+  });
+}
+
+// Load Dubbed Movies
+function loadDubbedMovies() {
+  const dubbedList = document.getElementById('dubbedList');
+  
+  dubbedMovies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = createMovieCard(movie);
+    dubbedList.appendChild(slide);
+  });
+}
+
+// Create Movie Card
+function createMovieCard(item) {
+  const qualityClass = item.quality === '1080p' ? 'quality-4k' : 
+                      item.quality === '720p' ? 'quality-hd' : 'quality-sd';					  
+  
+  return `
+    <div class="netflix-card" onclick="playMovie('${item.title}')">
+      <img src="${item.image}" alt="${item.title}" 
+           onerror="this.parentElement.innerHTML='<div class=&quot;placeholder-image&quot;><div class=&quot;placeholder-icon&quot;>🎬</div><div class=&quot;placeholder-text&quot;>${item.title}</div></div>'">
+      <div class="card-overlay">
+        <div class="card-title">${item.title}</div>
+        <div class="card-info">
+          <span>${item.year}</span>
+          <span class="quality-tag ${qualityClass}">${item.quality}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Initialize Swiper instances
+function initializeSwipers() {
+  // Hero Swiper
+  heroSwiper = new Swiper('.hero-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    }
+  });
+
+  // Movies Swiper
+  movieSwiper = new Swiper('#moviesSwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    freeMode: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2.2,
+        spaceBetween: 8
+      },
+      480: {
+        slidesPerView: 2.8,
+        spaceBetween: 10
+      },
+      768: {
+        slidesPerView: 4.2,
+        spaceBetween: 12
+      },
+      1024: {
+        slidesPerView: 5.5,
+        spaceBetween: 15
+      }
+    }
+  });
+
+  // Series Swiper
+  seriesSwiper = new Swiper('#seriesSwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    freeMode: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2.2,
+        spaceBetween: 8
+      },
+      480: {
+        slidesPerView: 2.8,
+        spaceBetween: 10
+      },
+      768: {
+        slidesPerView: 4.2,
+        spaceBetween: 12
+      },
+      1024: {
+        slidesPerView: 5.5,
+        spaceBetween: 15
+      }
+    }
+  });
+
+  // Dubbed Movies Swiper
+  dubbedSwiper = new Swiper('#dubbedSwiper', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+    freeMode: true,
+    breakpoints: {
+      320: {
+        slidesPerView: 2.2,
+        spaceBetween: 8
+      },
+      480: {
+        slidesPerView: 2.8,
+        spaceBetween: 10
+      },
+      768: {
+        slidesPerView: 4.2,
+        spaceBetween: 12
+      },
+      1024: {
+        slidesPerView: 5.5,
+        spaceBetween: 15
+      }
+    }
+  });
+}
+
+// Setup Event Listeners
+function setupEventListeners() {
+  // Navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    if (window.scrollY > 300) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  // Back to top functionality
+  document.getElementById('backToTopBtn').addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Search functionality
+  const searchInput = document.getElementById('searchInput');
+  const clearButton = document.getElementById('clearButton');
+  
+  searchInput.addEventListener('input', function() {
+    if (this.value.length > 0) {
+      clearButton.style.display = 'block';
+    } else {
+      clearButton.style.display = 'none';
+      document.getElementById('searchResults').style.display = 'none';
+    }
+  });
+
+  clearButton.addEventListener('click', function() {
+    searchInput.value = '';
+    this.style.display = 'none';
+    document.getElementById('searchResults').style.display = 'none';
+    searchInput.focus();
+  });
+
+  // Notification popup
+  document.getElementById('bellBtn').addEventListener('click', function() {
+    const popup = document.getElementById('notificationPopup');
+    if (popup.style.display === 'none' || popup.style.display === '') {
+      popup.style.display = 'block';
+      setTimeout(() => {
+        popup.style.display = 'none';
+      }, 5000);
+    } else {
+      popup.style.display = 'none';
+    }
+  });
+
+  // Close notification when clicking outside
+  document.addEventListener('click', function(event) {
+    const popup = document.getElementById('notificationPopup');
+    const bellBtn = document.getElementById('bellBtn');
+    
+    if (!popup.contains(event.target) && !bellBtn.contains(event.target)) {
+      popup.style.display = 'none';
+    }
+  });
+}
+
+// Search Function
+function searchFunction() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const searchResults = document.getElementById('searchResults');
+  
+  if (input.length === 0) {
+    searchResults.style.display = 'none';
+    return;
+  }
+  
+  // Combine all content for search
+  const allContent = [...movies, ...series, ...dubbedMovies];
+  const filteredResults = allContent.filter(item => 
+    item.title.toLowerCase().includes(input)
+  ).slice(0, 5);
+  
+  if (filteredResults.length > 0) {
+    searchResults.innerHTML = filteredResults.map(item => 
+      `<div onclick="playMovie('${item.title}')">${item.title} (${item.year})</div>`
+    ).join('');
+    searchResults.style.display = 'block';
+  } else {
+    searchResults.innerHTML = '<div>No results found</div>';
+    searchResults.style.display = 'block';
+  }
+}
+
+// Menu Functions
+function toggleMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+  
+  mobileMenu.classList.add('open');
+  mobileBackdrop.style.display = 'block';
+  
+  setTimeout(() => {
+    mobileBackdrop.classList.add('show');
+  }, 10);
+  
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileBackdrop = document.getElementById('mobileBackdrop');
+  
+  mobileMenu.classList.remove('open');
+  mobileBackdrop.classList.remove('show');
+  
+  setTimeout(() => {
+    mobileBackdrop.style.display = 'none';
+  }, 300);
+  
+  document.body.style.overflow = 'auto';
+}
+
+// Play Movie Function
+function playMovie(title) {
+  alert(`Playing: ${title}\n\nThis would typically redirect to the video player page.`);
+  // In a real app, this would navigate to the video player
+  // window.location.href = `player.html?movie=${encodeURIComponent(title)}`;
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(event) {
+  // ESC to close menu
+  if (event.key === 'Escape') {
+    closeMenu();
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('notificationPopup').style.display = 'none';
+  }
+  
+  // Ctrl/Cmd + K for search
+  if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+    event.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+});
+
+// Error handling for images
+function handleImageError(img) {
+  img.style.display = 'none';
+  const placeholder = document.createElement('div');
+  placeholder.className = 'placeholder-image';
+  placeholder.innerHTML = `
+    <div class="placeholder-icon">🎬</div>
+    <div class="placeholder-text">Image not available</div>
+  `;
+  img.parentNode.appendChild(placeholder);
+}
+
+// Performance optimization - Lazy loading
+function setupLazyLoading() {
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.remove('lazy');
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      imageObserver.observe(img);
+    });
+  }
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  setupLazyLoading();
+});
+
+// Service Worker Registration (for PWA features)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('ServiceWorker registration successful');
+      })
+      .catch(function(err) {
+        console.log('ServiceWorker registration failed');
+      });
+  });
+}
+
+// Touch gestures for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', function(event) {
+  touchStartX = event.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', function(event) {
+  touchEndX = event.changedTouches[0].screenX;
+  handleSwipeGesture();
+});
+
+function handleSwipeGesture() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+  
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      // Swipe left - could trigger next slide
+      console.log('Swipe left detected');
+    } else {
+      // Swipe right - could trigger previous slide
+      console.log('Swipe right detected');
+    }
+  }
+}
+
+// Preload critical images
+function preloadImages() {
+  const criticalImages = [
+    'favicon.png',
+    ...heroMovies.slice(0, 3).map(movie => movie.image)
+  ];
+  
+  criticalImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+// Initialize preloading
+document.addEventListener('DOMContentLoaded', preloadImages);
+
+console.log('PanguPlay - Netflix Style UI Loaded Successfully! 🎬');
+
+
+  function renderMovies(movies) {
+  const container = document.getElementById('moviesList');
+  container.innerHTML = ''; // Clear existing cards before appending
+
+  movies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+
+    const card = document.createElement('div');
+    card.className = 'netflix-card';
+    card.innerHTML = `
+      <img src="${movie.image}" alt="${movie.title}">
+      <div class="card-overlay">
+        <div class="card-title">${movie.title}</div>
+        <div class="card-info">
+          <div class="quality-tag quality-${(movie.details.quality || 'hd').toLowerCase()}">
+            ${movie.details.quality || 'HD'}
+          </div>
+          <div>${movie.details.language || ''}</div>
+        </div>
+      </div>
+    `;
+
+    card.addEventListener('click', () => {
+      sessionStorage.setItem('playerData', JSON.stringify(movie));
+      window.location.href = 'player.html';
+    });
+
+    slide.appendChild(card);
+    container.appendChild(slide);
+  });
+}
+
+  
+
+  function renderShows(series) {
+    const seriesList = document.getElementById('seriesList');
+	
+	seriesList.innerHTML = '';
+	 
+	 
+    series.forEach(show => {
+      const slide = document.createElement('div');
+      slide.className = 'swiper-slide';
+
+      const card = document.createElement('div');
+      card.className = 'netflix-card';
+      card.innerHTML = `
+        <img src="${show.image}" alt="${show.title}">
+        <div class="card-overlay">
+          <div class="card-title">${show.title}</div>
+          <div class="card-info">
+            <div class="quality-tag quality-${show.details.quality?.toLowerCase() || 'hd'}">${show.details.quality || 'HD'}</div>
+            <div>${show.details.language || ''}</div>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', () => {
+        sessionStorage.setItem('playerData', JSON.stringify(show));
+        window.location.href = 'player.html';
+      });
+
+      slide.appendChild(card);
+      seriesList.appendChild(slide);
+    });
+  }
+
+  function renderDubbed(dubbedMovies) {
+  const dubbedList = document.getElementById('dubbedList');
+
+  if (!dubbedList || !Array.isArray(dubbedMovies)) return;
+  
+  dubbedList.innerHTML = ''; 
+
+  dubbedMovies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+
+    const card = document.createElement('div');
+    card.className = 'netflix-card';
+    card.innerHTML = `
+      <img src="${movie.image}" alt="${movie.title}">
+      <div class="card-overlay">
+        <div class="card-title">${movie.title}</div>
+        <div class="card-info">
+          <div class="quality-tag quality-${(movie.details.quality || 'hd').toLowerCase()}">
+            ${movie.details.quality || 'HD'}
+          </div>
+          <div>${movie.details.language || ''}</div>
+        </div>
+      </div>
+    `;
+
+    card.addEventListener('click', () => {
+      sessionStorage.setItem('playerData', JSON.stringify(movie));
+      window.location.href = 'player.html';
+    });
+
+    slide.appendChild(card);
+    dubbedList.appendChild(slide);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderMovies(movies);
+  renderShows(series);
+  renderDubbed(dubbedMovies);
+
+  // Init Swipers only once here too
+  new Swiper('#moviesSwiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 10,
+  navigation: {
+    nextEl: '#moviesSwiper .swiper-button-next',
+    prevEl: '#moviesSwiper .swiper-button-prev',
+  },
+});
+
+new Swiper('#seriesSwiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 10,
+  navigation: {
+    nextEl: '#seriesSwiper .swiper-button-next',
+    prevEl: '#seriesSwiper .swiper-button-prev',
+  },
+});
+
+new Swiper('#dubbedSwiper', {
+  slidesPerView: 'auto',
+  spaceBetween: 10,
+  navigation: {
+    nextEl: '#dubbedSwiper .swiper-button-next',
+    prevEl: '#dubbedSwiper .swiper-button-prev',
+  },
+});
+
+});
+
+
+
+</script>
+<body>
+</html>

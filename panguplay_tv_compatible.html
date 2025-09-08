@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.4.1/swiper-bundle.min.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1f1f1f">
+  <link rel="icon" type="image/png" href="https://purushothmathav.github.io/PanguPlay/favicon.png">
+  <title>PanguPlay - Movies</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #121212; color: #fff; font-family: Arial, sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+
+    .navbar {
+      background: #1f1f1f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 10px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .nav-center a {
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      outline: none;
+      position: relative;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      outline: none;
+      position: relative;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+      padding: 8px;
+      border-radius: 5px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search-bar input {
+      padding: 8px 15px;
+      border: 2px solid #444;
+      background: #2a2a2a;
+      color: #fff;
+      border-radius: 20px;
+      outline: none;
+      width: 180px;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: #ff4500;
+      background: #1e1e1e;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+    }
+
+    .search-results { 
+      position: absolute; 
+      top: 110%; 
+      background: #2a2a2a; 
+      width: 200px; 
+      border-radius: 8px; 
+      overflow: hidden; 
+      display: none; 
+      right: 0; 
+      max-height: 300px;
+      overflow-y: auto;
+      border: 2px solid #444;
+    }
+    .search-results div { 
+      padding: 12px; 
+      border-bottom: 1px solid #444; 
+      cursor: pointer; 
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    #clearButton {
+      position: absolute;
+      right: 8px;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+      padding: 4px;
+      outline: none;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1999;
+      display: none;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background: #202020;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+      border-right: 2px solid #333;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu a {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #fff;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      outline: none;
+    }
+
+    .close-btn {
+      font-size: 22px;
+      color: #fff;
+      background: none;
+      border: none;
+      align-self: flex-end;
+      margin-bottom: 20px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 5px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Category Sections */
+    .category-section { 
+      padding: 20px 15px; 
+      margin-bottom: 20px;
+    }
+    
+    .category-header { 
+      margin-bottom: 15px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    
+    .category-title { 
+      font-size: 22px; 
+      font-weight: bold; 
+      margin: 0;
+    }
+    
+    .view-all-btn {
+      background: none;
+      border: 2px solid #ff4500;
+      color: #ff4500;
+      padding: 8px 15px;
+      border-radius: 15px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .category-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+      gap: 15px; 
+      margin-bottom: 10px;
+    }
+
+    .horizontal-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding-bottom: 10px;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .horizontal-scroll::-webkit-scrollbar {
+      display: none;   
+    }
+
+    .horizontal-scroll .card {
+      flex: 0 0 140px;
+    }
+
+    .card { 
+      background: #1f1f1f; 
+      border-radius: 10px; 
+      overflow: hidden; 
+      transition: all 0.3s ease; 
+      font-size: 12px; 
+      text-align: center; 
+      cursor: pointer; 
+      position: relative;
+      border: 2px solid transparent;
+      outline: none;
+    }
+    
+    .card-title { 
+      padding: 8px 5px; 
+      font-weight: bold; 
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+    }
+
+    .placeholder-image {
+      position: relative;
+      background: linear-gradient(135deg, #1f1f1f 0%, #303030 100%);
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .placeholder-icon {
+      font-size: 50px;
+      opacity: 0.5;
+    }
+    
+    .placeholder-text {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 5px;
+      background: rgba(0,0,0,0.6);
+      font-size: 10px;
+      color: #ccc;
+    }
+
+    .quality-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+    }
+    
+    .quality-4k {
+      background: linear-gradient(135deg, #8a2be2, #4b0082);
+    }
+    
+    .quality-hd {
+      background: linear-gradient(135deg, #1e90ff, #0000cd);
+    }
+    
+    .quality-sd {
+      background: linear-gradient(135deg, #696969, #2f4f4f);
+    }
+    
+    .card-image-container {
+      position: relative;
+    }
+
+    /* Featured Section */
+    .swiper {
+      width: 100%;
+      height: 250px;
+      margin-bottom: 20px;
+    }
+
+    .swiper-slide {
+      outline: none;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .swiper-slide-title {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 5px;
+      color: #fff;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .swiper-pagination {
+      position: relative;
+      bottom: 10px;
+      text-align: center;
+    }
+
+    .swiper-pagination-bullet { 
+      width: 12px; 
+      height: 12px; 
+      border-radius: 0; 
+      background: #ff6600;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    footer { 
+      text-align: center; 
+      padding: 20px; 
+      font-size: 14px; 
+      background: #1f1f1f; 
+      margin-top: 20px; 
+    }
+
+    #backToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      border: 2px solid #1a365d;
+      outline: none;
+      background-color: #1a365d;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 18px;
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    /* TV/D-pad Focus Styles */
+    .focusable:focus,
+    .nav-logo:focus,
+    .nav-center a:focus,
+    .nav-links a:focus,
+    .menu-icon:focus,
+    .search-bar input:focus,
+    .search-results div:focus,
+    #clearButton:focus,
+    .mobile-menu a:focus,
+    .close-btn:focus,
+    .view-all-btn:focus,
+    .card:focus,
+    .swiper-slide:focus,
+    .swiper-pagination-bullet:focus,
+    #backToTopBtn:focus {
+      border-color: #ff4500 !important;
+      box-shadow: 0 0 15px rgba(255, 69, 0, 0.6) !important;
+      background: rgba(255, 69, 0, 0.1) !important;
+      transform: scale(1.05) !important;
+    }
+
+    .card:focus {
+      border-color: #ff4500 !important;
+      box-shadow: 0 0 20px rgba(255, 69, 0, 0.8) !important;
+      transform: scale(1.08) !important;
+    }
+
+    /* TV Remote Hint */
+    .tv-hint {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      z-index: 1000;
+      display: none;
+    }
+
+    .tv-hint.show {
+      display: block;
+    }
+
+    /* Category Toggle Buttons */
+    .category-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      padding: 10px 20px;
+      background: #2a2a2a;
+      border: 2px solid #444;
+      color: #fff;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .category-btn.active {
+      background: #ff4500;
+      border-color: #ff4500;
+    }
+
+    .category-btn:focus {
+      border-color: #ff4500 !important;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.5) !important;
+    }
+
+    /* Category visibility */
+    .category-section.hidden {
+      display: none;
+    }
+
+    .loader {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ffffff33;
+      border-top: 4px solid #ffffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .nav-links { display: none; }
+      .menu-icon { display: block; }
+      .search-bar input { width: 140px; }
+      .category-grid { grid-template-columns: repeat(3, 1fr); }
+      .horizontal-scroll .card { flex: 0 0 120px; margin-right: 10px; }
+      
+      .category-header {
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .category-title {
+        font-size: 18px;
+      }
+      
+      .category-toggle {
+        display: none !important;
+      }
+    }
+
+    /* Android TV specific styles */
+    @media screen and (min-width: 1280px) {
+      .horizontal-scroll .card {
+        flex: 0 0 180px;
+      }
+      
+      .category-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      }
+      
+      .card img {
+        height: 240px;
+      }
+      
+      .placeholder-image {
+        height: 240px;
+      }
+      
+      .tv-hint {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="splash-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#121212;display:none;flex-direction:column;justify-content:center;align-items:center;z-index:9999;">
+  <img src="favicon.png" alt="Loading..." style="width:100px;height:auto;margin-bottom:20px;">
+  <div class="loader"></div>
+</div>
+
+<!-- TV Remote Hint -->
+<div class="tv-hint" id="tvHint">
+  Use D-pad to navigate • OK/Enter to select • Back button to return
+</div>
+
+<script>
+  const splash = document.getElementById('splash-screen');
+  let splashTimeout = setTimeout(() => {
+    if (splash) {
+      splash.style.display = 'flex';
+    }
+  }, 2000);
+
+  window.addEventListener('load', () => {
+    clearTimeout(splashTimeout);
+    if (splash) {
+      splash.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-left">
+    <div class="menu-icon focusable" tabindex="0" onclick="toggleMenu()">&#9776;</div>
+    <a href="index.html" class="nav-logo focusable" tabindex="0">PanguPlay</a>
+  </div>
+
+  <div class="nav-center nav-links">
+    <a href="index.html" class="focusable" tabindex="0">Home</a>
+    <a href="movies.html" class="focusable" tabindex="0">Movies</a>
+    <a href="shows.html" class="focusable" tabindex="0">Shows</a>
+    <a href="dubbed.html" class="focusable" tabindex="0">Tamil Dub</a>
+    <a href="720p.html" class="focusable" tabindex="0">Kuku TV</a>
+    <a href="request.html" class="focusable" tabindex="0">Request</a>
+    <a href="https://purushothmathav.github.io/quicksubs" target="_blank" class="focusable" tabindex="0">🎭Chinese Drama</a>
+    <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank" class="focusable" tabindex="0">Telegram</a>
+  </div>
+
+  <div class="nav-right">
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." id="searchInput" class="focusable" tabindex="0" oninput="searchFunction()">
+      <button id="clearButton" class="focusable" tabindex="0">✖</button>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu Backdrop -->
+<div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMenu()"></div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn focusable" tabindex="0" onclick="closeMenu()">✖</button>
+  <a href="index.html" class="focusable" tabindex="0">🏠 Home</a>
+  <a href="movies.html" class="focusable" tabindex="0">🎬 Movies</a>
+  <a href="shows.html" class="focusable" tabindex="0">📺 Shows</a>
+  <a href="dubbed.html" class="focusable" tabindex="0">🎙 Tamil Dub</a>
+  <a href="720p.html" class="focusable" tabindex="0">🎞️ Kuku TV</a>
+  <a href="request.html" class="focusable" tabindex="0">📩 Request</a>
+  <a href="https://purushothmathav.github.io/quicksubs" target="_blank" class="focusable" tabindex="0">🎭Chinese Drama</a>
+  <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank" class="focusable" tabindex="0">💬 Telegram</a>
+</div>
+
+<!-- Featured Section -->
+<div class="swiper">
+  <div class="swiper-wrapper" id="featured"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- Movie Categories -->
+<div id="movieCategories"></div>
+
+<!-- Back to top button -->
+<button id="backToTopBtn" class="focusable" tabindex="0" title="Go to top"></button>
+
+<footer>
+  &copy; 2025 PanguPlay
+</footer>
+
+<script>
+// TV Navigation System
+class TVNavigation {
+  constructor() {
+    this.currentFocus = null;
+    this.focusableElements = [];
+    this.isTV = this.detectTV();
+    this.scrollContainer = null;
+    this.init();
+  }
+
+  detectTV() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    return userAgent.includes('tv') || 
+           userAgent.includes('webos') || 
+           userAgent.includes('tizen') || 
+           userAgent.includes('android') && userAgent.includes('tv') ||
+           window.innerWidth >= 1280;
+  }
+
+  init() {
+    if (this.isTV) {
+      document.getElementById('tvHint').classList.add('show');
+      this.setupKeyboardNavigation();
+      this.updateFocusableElements();
+      
+      // Focus first element after page load
+      setTimeout(() => {
+        this.focusFirst();
+      }, 500);
+    }
+  }
+
+  setupKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+      switch(e.key) {
+        case 'ArrowUp':
+          e.preventDefault();
+          this.navigateUp();
+          break;
+        case 'ArrowDown':
+          e.preventDefault();
+          this.navigateDown();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          this.navigateLeft();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          this.navigateRight();
+          break;
+        case 'Enter':
+        case ' ':
+          e.preventDefault();
+          this.selectCurrent();
+          break;
+        case 'Escape':
+        case 'Backspace':
+          e.preventDefault();
+          this.goBack();
+          break;
+      }
+    });
+  }
+
+  updateFocusableElements() {
+    this.focusableElements = Array.from(document.querySelectorAll(
+      '.focusable, .card, .swiper-slide, .view-all-btn, .category-btn'
+    )).filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.width > 0 && rect.height > 0 && 
+             window.getComputedStyle(el).display !== 'none';
+    });
+    
+    this.focusableElements.forEach((el, index) => {
+      el.setAttribute('data-focus-index', index);
+      el.setAttribute('tabindex', '0');
+    });
+  }
+
+  focusFirst() {
+    if (this.focusableElements.length > 0) {
+      this.setFocus(this.focusableElements[0]);
+    }
+  }
+
+  setFocus(element) {
+    if (this.currentFocus) {
+      this.currentFocus.blur();
+    }
+    
+    this.currentFocus = element;
+    element.focus();
+    
+    // Scroll element into view
+    this.scrollToElement(element);
+  }
+
+  scrollToElement(element) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    if (rect.top < 100 || rect.bottom > windowHeight - 100) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+    
+    // Handle horizontal scrolling for cards in horizontal containers
+    const horizontalContainer = element.closest('.horizontal-scroll');
+    if (horizontalContainer) {
+      const containerRect = horizontalContainer.getBoundingClientRect();
+      const elementRect = element.getBoundingClientRect();
+      
+      if (elementRect.left < containerRect.left || 
+          elementRect.right > containerRect.right) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+  }
+
+  navigateUp() {
+    if (!this.currentFocus) return;
+    
+    const currentRect = this.currentFocus.getBoundingClientRect();
+    const candidates = this.focusableElements.filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.bottom <= currentRect.top + 10 &&
+             Math.abs(rect.left - currentRect.left) < 200;
+    });
+    
+    if (candidates.length > 0) {
+      const closest = candidates.reduce((prev, curr) => {
+        const prevRect = prev.getBoundingClientRect();
+        const currRect = curr.getBoundingClientRect();
+        return Math.abs(currRect.top - currentRect.top) < Math.abs(prevRect.top - currentRect.top) ? curr : prev;
+      });
+      this.setFocus(closest);
+    }
+  }
+
+  navigateDown() {
+    if (!this.currentFocus) return;
+    
+    const currentRect = this.currentFocus.getBoundingClientRect();
+    const candidates = this.focusableElements.filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.top >= currentRect.bottom - 10 &&
+             Math.abs(rect.left - currentRect.left) < 200;
+    });
+    
+    if (candidates.length > 0) {
+      const closest = candidates.reduce((prev, curr) => {
+        const prevRect = prev.getBoundingClientRect();
+        const currRect = curr.getBoundingClientRect();
+        return Math.abs(currRect.top - currentRect.top) < Math.abs(prevRect.top - currentRect.top) ? curr : prev;
+      });
+      this.setFocus(closest);
+    }
+  }
+
+  navigateLeft() {
+    if (!this.currentFocus) return;
+    
+    const currentRect = this.currentFocus.getBoundingClientRect();
+    const candidates = this.focusableElements.filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.right <= currentRect.left + 10 &&
+             Math.abs(rect.top - currentRect.top) < 100;
+    });
+    
+    if (candidates.length > 0) {
+      const closest = candidates.reduce((prev, curr) => {
+        const prevRect = prev.getBoundingClientRect();
+        const currRect = curr.getBoundingClientRect();
+        return Math.abs(currRect.left - currentRect.left) < Math.abs(prevRect.left - currentRect.left) ? curr : prev;
+      });
+      this.setFocus(closest);
+    }
+  }
+
+  navigateRight() {
+    if (!this.currentFocus) return;
+    
+    const currentRect = this.currentFocus.getBoundingClientRect();
+    const candidates = this.focusableElements.filter(el => {
+      const rect = el.getBoundingClientRect();
+      return rect.left >= currentRect.right - 10 &&
+             Math.abs(rect.top - currentRect.top) < 100;
+    });
+    
+    if (candidates.length > 0) {
+      const closest = candidates.reduce((prev, curr) => {
+        const prevRect = prev.getBoundingClientRect();
+        const currRect = curr.getBoundingClientRect();
+        return Math.abs(currRect.left - currentRect.left) < Math.abs(prevRect.left - currentRect.left) ? curr : prev;
+      });
+      this.setFocus(closest);
+    }
+  }
+
+  selectCurrent() {
+    if (this.currentFocus) {
+      this.currentFocus.click();
+    }
+  }
+
+  goBack() {
+    // Handle back navigation
+    if (document.getElementById('searchResults').style.display === 'block') {
+      document.getElementById('searchResults').style.display = 'none';
+      document.getElementById('searchInput').focus();
+    } else if (document.getElementById('mobileMenu').classList.contains('open')) {
+      closeMenu();
+    } else {
+      window.history.back();
+    }
+  }
+
+  refresh() {
+    setTimeout(() => {
+      this.updateFocusableElements();
+    }, 100);
+  }
+}
+
+// Initialize TV Navigation
+let tvNav;
+
+<script>
+// Sample data - you would replace this with your actual movie data
+const videos = [
+{
+  "type": "movie",
+  "title": "Aap Jaisa Koi (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BYzgwOGM4YTEtMmE1Ny00MWQxLTlhMzEtYWY0MDY1ZjY0NWJhXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl10.hotshare.click/Aap_Jaisa_Koi_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl10.hotshare.top/Aap_Jaisa_Koi_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91633",
+  "720Url": "https://play.onestream.watch/stream/page/91631",
+  "details": {
+    "director": "Vivek Soni",
+    "starring": "Madhavan, Fatima Sana Shaikh, Kumar Kanchan Ghosh",
+    "genres": "Drama, Romance",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "8.7/10",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.7 GB",
+    "streamURL": "https://dl10.hotshare.click/Aap_Jaisa_Koi_2025_Original_1080p_HD.mp4"
+  },
+  "id": "aap-jaisa-koi-2025",
+  "mature": "",
+  "categories": ["romantic-comedy-drama", "emotional", "middle-aged-love", "sanskrit-professor-protagonist", "french-teacher-love-interest", "online-dating-subplot", "patriarchal-conflict", "family-opposition", "kolkata-jamshedpur-setting", "self-discovery", "music-rich", "social-issues", "cult", "latest", "hindi", "r-madhavan", "fatima-sana-shaikh", "ayesha-raza", "manish-chaudhari", "namit-das", "vivek-soni", "karan-johar", "justin-prabhakaran", "rochak-kohli"]
+},
+{
+  "type": "movie",
+  "title": "8 Vasantalu (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZTVhODBiMWEtMmZhMy00Y2NkLTgyZmMtNDBjZWIyYjdhYTFhXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://s01.hotshare.link/8_Vasantalu_2025_Original_1080p_HD.mp4",
+  "alt": "https://s02.hotshare.link/8_Vasantalu_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91624",
+  "720Url": "https://play.onestream.watch/stream/page/91616",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.52 GB",
+    "streamURL": "https://s01.hotshare.link/8_Vasantalu_2025_Original_1080p_HD.mp4"
+  },
+  "id": "8-vasantalu-2025",
+  "mature": "",
+  "categories": ["latest", "romantic-drama", "coming-of-age", "emotional", "female-protagonist", "grief-and-healing", "literary-journey", "martial-arts-subplot", "heartbreak", "self-discovery", "eight-seasons-metaphor", "mother-daughter-bond", "army-family-background", "social-issues", "cult", "telugu", "ananthika-sanilkumar", "ravi-theja-duggirala", "hanu-reddy", "kanna-pasunoori", "phanindra-narsetti", "hesham-abdul-wahab"]
+},
+{
+  "type": "movie",
+  "title": "Chennai City Gangsters (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMWY2ODk2NWQtMDc3Ny00OWQzLTkxMWItM2M2ZTRiY2U1NTE0XkEyXkFqcGc@._V1_QL75_UY562_CR215,0,380,562_.jpg",
+  "video": "https://s02.hotshare.link/Moviesda.Mobi_-_Chennai_City_Gangsters_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl7.hotshare.click/Moviesda.Mobi_-_Chennai_City_Gangsters_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91600",
+  "720Url": "https://play.onestream.watch/stream/page/91605",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.47 GB",
+    "streamURL": "https://s02.hotshare.link/Moviesda.Mobi_-_Chennai_City_Gangsters_2025_Original_1080p_HD.mp4"
+  },
+  "id": "chennai-city-gangsters-2025",
+  "mature": "",
+  "categories": ["comedy-heist", "emotional", "quirky-gang", "bank-robbery-plot", "lost-money-mission", "former-conmen", "brother-duo-directors", "romantic-subplot", "ensemble-cast", "sketch-comedy-style", "social-issues", "cult", "latest", "tamil", "vaibhav", "athulya-ravi", "manikandan-rajesh", "anandaraj", "redin-kingsley", "john-vijay", "rajendran", "ilavarasu", "vikram-rajeshwar", "arun-keshav"]
+},
+{
+  "type": "movie",
+  "title": "Holocaust (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BNDFlZGIyMTAtZDllZi00NGI5LWExOWEtMjZmNTc4ZDk1YjU4XkEyXkFqcGc@._V1_QL75_UY562_CR27,0,380,562_.jpg",
+  "video": "https://dl9.hotshare.click/Holocaust_2025_Original_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91622",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "720p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.34 GB",
+    "streamURL": "https://dl9.hotshare.click/Holocaust_2025_Original_720p_HD.mp4"
+  },
+  "id": "holocaust-2025",
+  "mature": "",
+  "categories": ["horror-thriller", "emotional", "aspiring-filmmaker-protagonist", "haunted-bungalow", "script-reality-blur", "mysterious-box", "six-day-countdown", "psychological-terror", "kerala-setting", "female-lead", "paranormal-events", "social-issues", "cult", "latest", "tamil", "jayakrishnan", "charmila", "nandan-unni", "thanvi-vinod", "midhun-vembalakkal", "preethy-gino", "vishnu-chandran"]
+},
+{
+  "type": "movie",
+  "title": "Mr Rani (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMjNlNTIyYTUtNDZkZi00ZmVmLWE0ZjAtY2YzMzJiZjNhODkyXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://dl5.hotshare.click/Mr_Rani_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl5.hotshare.click/Moviesda.Mobi_-_Mr_Rani_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91596",
+  "720Url": "https://play.onestream.watch/stream/page/91592",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.72 GB",
+    "streamURL": "https://dl5.hotshare.click/Mr_Rani_2025_Original_1080p_HD.mp4"
+  },
+  "id": "mr-rani-2025",
+  "mature": "",
+  "categories": ["gender-bending-comedy", "emotional", "identity-crisis", "double-life", "actor-struggles", "engineering-vs-art", "unexpected-fame", "performance-art", "self-discovery", "family-pressure", "social-issues", "cult", "latest", "kannada", "deepak-subramanya", "parvati-nair", "srivatsa-shyam", "madhu-chandra", "judah-sandy"]
+},
+{
+  "type": "movie",
+  "title": "Narivetta (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BNmNmODM3NGItZjM2Mi00NDk5LThmMmQtNTE4ZGM3NzBmNGUwXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://s06.hotshare.link/Narivetta_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl2.hotshare.click/Narivetta_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91594",
+  "720Url": "https://play.onestream.watch/stream/page/91585",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "11 July 2025",
+    "fileSize": "1.54 GB",
+    "streamURL": "https://s06.hotshare.link/Narivetta_2025_Original_1080p_HD.mp4"
+  },
+  "id": "narivetta-2025",
+  "mature": "",
+  "categories": ["action-drama", "emotional", "tribal-resistance", "police-protagonist", "land-rights-conflict", "state-authority", "real-life-inspired", "muthanga-incident", "kerala-setting", "female-lead", "social-issues", "cult", "latest", "malayalam", "tovino-thomas", "suraj-venjaramoodu", "cheran", "priyamvada-krishnan", "arya-salim", "rini-udayakumar", "anuraj-manohar", "jakes-bejoy"]
+},
+{
+  "type": "movie",
+  "title": "Heza (2019)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZGQ0Mjg3YTMtM2M0NC00YTZlLWJmYzItZjJjZjQ2ZjQ2OTAyXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://s09.hotshare.link/Heza_2019_Original_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91555",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "720p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "10 July 2025",
+    "fileSize": "946.94 MB",
+    "streamURL": "https://s09.hotshare.link/Heza_2019_Original_720p_HD.mp4"
+  },
+  "id": "heza-2019",
+  "mature": "",
+  "categories": ["latest", "horror", "thriller", "supernatural", "witchcraft", "haunting", "musician", "evil-eye", "telugu"]
+},
+{
+  "type": "movie",
+  "title": "Poorveegam (2025)",
+  "image": "https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/poorveegam-et00430172-1737533758.jpg",
+  "video": "https://dl5.hotshare.click/Moviesda.Mobi_-_Poorveegam_2025_Original_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91562",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "720p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "10 July 2025",
+    "fileSize": "1.41 GB",
+    "streamURL": "https://dl5.hotshare.click/Moviesda.Mobi_-_Poorveegam_2025_Original_720p_HD.mp4"
+  },
+  "id": "poorveegam-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "family", "agriculture", "generational-conflict", "urbanization", "social-message", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Samurai (2002)",
+  "image": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dkEw6Fkp7gc8GPGhLSTeS2mHz0G.jpg",
+  "video": "https://s10.hotshare.link/Moviesda.Mobi_-_Samurai_2002_Original_1080p_HD.mp4",
+  "alt": "https://s06.hotshare.link/Moviesda.Mobi_-_Samurai_2002_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91574",
+  "720Url": "https://play.onestream.watch/stream/page/91579",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "10 July 2025",
+    "fileSize": "1.57 GB",
+    "streamURL": "https://s10.hotshare.link/Moviesda.Mobi_-_Samurai_2002_Original_1080p_HD.mp4"
+  },
+  "id": "samurai-2002",
+  "mature": "",
+  "categories": ["latest", "action", "thriller", "vigilante", "crime", "corruption", "justice", "medical-student", "kidnapping", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Vettu (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BNzhiNGYxYzItZTI1ZC00NjhmLTljNmUtMWJmMTYxMzllNzIwXkEyXkFqcGc@._V1_QL75_UX380_CR0,23,380,562_.jpg",
+  "video": "https://s10.hotshare.link/Moviesda.Mobi_-_Vettu_2025_Original_1080p_HD.mp4",
+  "alt": "https://s02.hotshare.link/Moviesda.Mobi_-_Vettu_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91567",
+  "720Url": "https://play.onestream.watch/stream/page/91570",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "10 July 2025",
+    "fileSize": "1.20 GB",
+    "streamURL": "https://s10.hotshare.link/Moviesda.Mobi_-_Vettu_2025_Original_1080p_HD.mp4"
+  },
+  "id": "vettu-2025",
+  "mature": "",
+  "categories": ["latest", "action", "drama", "emotional", "mother-son", "revenge", "violence", "family", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Madras (2014)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZTE5MDg1OGEtMmI5Zi00ZDVmLWJmOTktNTVjYTdkYWNjMWUxXkEyXkFqcGc@._V1_QL75_UY562_CR8,0,380,562_.jpg",
+  "video": "https://s06.hotshare.link/Moviesda.Mobi_-_Madras_2014_Original_1080p_HD.mp4",
+  "alt": "https://s01.hotshare.link/Moviesda.Mobi_-_Madras_2014_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91544",
+  "720Url": "https://play.onestream.watch/stream/page/91549",
+  "details": {
+    "director": "Pa. Ranjith",
+    "starring": "Catherine Tresa, Gana Bala, Hari Krishna",
+    "genres": "Action, Drama",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "7.9/10",
+    "lastUpdated": "09 July 2025",
+    "fileSize": "1.59 GB",
+    "streamURL": "https://s06.hotshare.link/Moviesda.Mobi_-_Madras_2014_Original_1080p_HD.mp4"
+  },
+  "id": "madras-2014",
+  "mature": "",
+  "categories": ["latest", "action", "drama"]
+},
+{
+  "type": "movie",
+  "title": "Phoenix (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZDYzNTVlMmQtOWM2Mi00YmZiLWJmN2UtN2I4YWMxYWQ5MDlkXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl1.hotshare.click/Phoenix_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91540",
+  "details": {
+    "director": "Anal Arasu",
+    "starring": "Varalaxmi Sarathkumar, Sampath Raj, Devadarshini Chetan",
+    "genres": "Action, Thriller",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "8.4/10",
+    "lastUpdated": "09 July 2025",
+    "fileSize": "923.33 MB",
+    "streamURL": "https://dl1.hotshare.click/Phoenix_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "phoenix-2025",
+  "mature": "",
+  "categories": ["latest", "action", "thriller"]
+},
+{
+  "type": "movie",
+  "title": "Paranthu Po (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMThlMzhmNDQtM2NlYS00MWNkLTg4NzgtNmFkN2M4NDYwZWUwXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl6.hotshare.click/Paranthu_Po_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91534",
+  "details": {
+    "director": "Ram",
+    "starring": "Shiva, Grace Antony, Aju Varghese",
+    "genres": "Comedy, Drama, Musical",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "9/10",
+    "lastUpdated": "09 July 2025",
+    "fileSize": "922.98 MB",
+    "streamURL": "https://dl6.hotshare.click/Paranthu_Po_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "paranthu-po-2025",
+  "mature": "",
+  "categories": ["latest", "comedy", "drama", "musical"]
+},
+{
+  "type": "movie",
+  "title": "Moonwalk (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZGViMThhZmYtOWU2YS00NjA0LWI3YjItNDkxMzJmMzc5MTM1XkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl5.hotshare.click/Moonwalk_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl1.hotshare.click/Moonwalk_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91523",
+  "720Url": "https://play.onestream.watch/stream/page/91526",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "08 July 2025",
+    "fileSize": "1.49 GB",
+    "streamURL": "https://dl5.hotshare.click/Moonwalk_2025_Original_1080p_HD.mp4"
+  },
+  "id": "moonwalk-2025",
+  "mature": "",
+  "categories": ["latest", "dance-drama", "coming-of-age", "romance", "emotional", "friendship", "retro", "college-life", "breakdance", "michael-jackson-tribute", "social-issues", "malayalam", "anunath"]
+},
+{
+  "type": "movie",
+  "title": "Akkenam (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BZTk1M2Y2M2EtYjQ2Mi00YTYwLThkZjgtYWQ2ZDJkZDY5MTdkXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://s04.hotshare.link/Akkenam_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91519",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "08 July 2025",
+    "fileSize": "929.95 MB",
+    "streamURL": "https://s04.hotshare.link/Akkenam_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "akkenam-2025",
+  "mature": "",
+  "categories": ["latest", "action", "drama", "thriller", "tamil"]
+},	
+{
+  "type": "movie",
+  "title": "3BHK (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BODVjNjQwOWItYzU1OC00NjViLTg3MzQtYmY2ZmIxYjYxNTBlXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://s09.hotshare.link/3BHK_2025_PreDVD__v1__720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91508",
+  "details": {
+    "director": "Sri Ganesh",
+    "starring": "Siddharth, R. Sarathkumar, Devayani",
+    "genres": "Drama, Family",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "8.9/10",
+    "lastUpdated": "07 July 2025",
+    "fileSize": "947.67 MB",
+    "streamURL": "https://s09.hotshare.link/3BHK_2025_PreDVD__v1__720p_HD.mp4"
+  },
+  "id": "3bhk-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "comedy", "family", "tamil"]
+},	
+{
+  "type": "movie",
+  "title": "Sri Sri Sri Raajavaru (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BYzE4NzJjNjItNmU2My00NDI1LWI0OGMtYTQ5M2U5NTA1MTJkXkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg",
+  "video": "https://s09.hotshare.link/Sri_Sri_Sri_Raajavaru_2025_Original_1080p_HD.mp4",
+  "alt": "https://s01.hotshare.link/Sri_Sri_Sri_Raajavaru_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91494",
+  "720Url": "https://play.onestream.watch/stream/page/91499",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "06 July 2025",
+    "fileSize": "1.54 GB",
+    "streamURL": "https://s09.hotshare.link/Sri_Sri_Sri_Raajavaru_2025_Original_1080p_HD.mp4"
+  },
+  "id": "sri-sri-sri-raajavaru-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "family", "history", "telugu"]
+},
+{
+  "type": "movie",
+  "title": "Firefly (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMmNlZmM4N2EtMjExZi00Yjk3LTlhOGQtNGNkMmIxMzEzN2RhXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://s10.hotshare.link/Firefly_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl9.hotshare.click/Firefly_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91485",
+  "720Url": "https://play.onestream.watch/stream/page/91490",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "05 July 2025",
+    "fileSize": "1.28 GB",
+    "streamURL": "https://s10.hotshare.link/Firefly_2025_Original_1080p_HD.mp4"
+  },
+  "id": "firefly-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "emotional", "surreal", "grief", "self-discovery", "reverse-screenplay", "therapy", "loneliness", "quirky-humor", "romance", "kannada", "vamshi-krishna"]
+},	
+{
+  "type": "movie",
+  "title": "Madras Matinee (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BYTZjMTM4MWYtODZhOS00NjdkLTk3NTQtZGY3YjY0NTBlYTVlXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://dl5.hotshare.click/Moviesda.Mobi_-_Madras_Matinee_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl4.hotshare.top/Moviesda.Mobi_-_Madras_Matinee_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91426",
+  "720Url": "https://play.onestream.watch/stream/page/91429",
+  "details": {
+    "director": "Karthikeyan Mani",
+    "starring": "Sathyaraj, Kaali Venkat, Sunil Sukhada",
+    "genres": "Comedy, Drama, Family",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "9.6/10",
+    "lastUpdated": "04 July 2025",
+    "fileSize": "1.11 GB",
+    "streamURL": "https://dl5.hotshare.click/Moviesda.Mobi_-_Madras_Matinee_2025_Original_1080p_HD.mp4"
+  },
+  "id": "madras-matinee-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "comedy", "family", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Paramasivan Fathima (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMTdkZjlkM2QtMTFkYy00NWJmLThlYjQtMmE0OWM3Yjc2ZTFjXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://s05.hotshare.link/Moviesda.Mobi_-_Paramasivan_Fathima_2025_Original_1080p_HD.mp4",
+  "alt": "https://s10.hotshare.link/Moviesda.Mobi_-_Paramasivan_Fathima_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91468",
+  "720Url": "https://play.onestream.watch/stream/page/91449",
+  "details": {
+    "director": "Esakki Karvannan",
+    "starring": "Vemal",
+    "genres": "Horror, Thriller",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "8.8/10",
+    "lastUpdated": "04 July 2025",
+    "fileSize": "1.71 GB",
+    "streamURL": "https://s05.hotshare.link/Moviesda.Mobi_-_Paramasivan_Fathima_2025_Original_1080p_HD.mp4"
+  },
+  "id": "paramasivan-fathima-2025",
+  "mature": "",
+  "categories": ["latest", "horror", "thriller", "drama", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Pattaapakal (2024)",
+  "image": "https://m.media-amazon.com/images/M/MV5BYTQ5NWVkY2EtZWRmYy00ZjRmLTlhMzMtY2RlYzc2MTk2MTAxXkEyXkFqcGc@._V1_QL75_UY562_CR21,0,380,562_.jpg",
+  "video": "https://s01.hotshare.link/Pattaapakal_2024_Original_1080p_HD.mp4",
+  "alt": "https://s07.hotshare.link/Pattaapakal_2024_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91477",
+  "720Url": "https://play.onestream.watch/stream/page/91481",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "04 July 2025",
+    "fileSize": "0.98 GB",
+    "streamURL": "https://s01.hotshare.link/Pattaapakal_2024_Original_1080p_HD.mp4"
+  },
+  "id": "pattaapakal-2024",
+  "mature": "",
+  "categories": ["latest", "comedy", "drama", "malayalam"]
+},
+{
+  "type": "movie",
+  "title": "Thug Life (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMjljM2JjMzAtODNhZi00NzFlLThjOWEtODNjN2RhYjdmNGE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+  "video": "https://dl7.hotshare.top/Moviesda.Mobi_-_Thug_Life_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl2.hotshare.click/Moviesda.Mobi_-_Thug_Life_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91407",
+  "720Url": "https://play.onestream.watch/stream/page/91412",
+  "details": {
+    "director": "",
+    "starring": "",
+    "genres": "",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "",
+    "lastUpdated": "04 July 2025",
+    "fileSize": "1.76 GB",
+    "streamURL": "https://dl7.hotshare.top/Moviesda.Mobi_-_Thug_Life_2025_Original_1080p_HD.mp4"
+  },
+  "id": "thug-life-2025",
+  "mature": "",
+  "categories": ["latest", "action", "drama", "thriller", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Uppu Kappurambu (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BOWU2ZGM2MjQtYjY0Ny00NzBjLThkNWQtZmM5YTk2NzI3Mzc2XkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl9.hotshare.click/Uppu_Kappurambu_2025_Original_1080p_HD.mp4",
+  "alt": "https://dl10.hotshare.click/Uppu_Kappurambu_2025_Original_720p_HD.mp4",
+  "1080Url": "https://play.onestream.watch/stream/page/91473",
+  "720Url": "https://play.onestream.watch/stream/page/91465",
+  "details": {
+    "director": "Ani. I.V. Sasi",
+    "starring": "Keerthy Suresh, Suhas, Subhalekha Sudhakar",
+    "genres": "Comedy, Drama",
+    "quality": "1080p",
+    "language": "Tamil",
+    "movieRating": "8.2/10",
+    "lastUpdated": "04 July 2025",
+    "fileSize": "1.72 GB",
+    "streamURL": "https://dl9.hotshare.click/Uppu_Kappurambu_2025_Original_1080p_HD.mp4"
+  },
+  "id": "uppu-kappurambu-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "comedy", "telugu"]
+},	
+{
+  "type": "movie",
+  "title": "Love Marriage (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMGRjMDJiMGMtMmM5Zi00ZGVjLWE2NTctNjlmZGE5MmViOTIyXkEyXkFqcGc@._V1_QL75_UY562_CR3,0,380,562_.jpg",
+  "video": "https://dl10.hotshare.top/Love_Marriage_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91380",
+  "details": {
+    "director": "Shanmuga Priyan",
+    "starring": "Vikram Prabhu, Sathyaraj, Ramesh Thilak",
+    "genres": "Drama, Family, Romantic",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "8.8/10",
+    "lastUpdated": "01 July 2025",
+    "fileSize": "935.90 MB",
+    "streamURL": "https://dl10.hotshare.top/Love_Marriage_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "love-marriage-2025",
+  "mature": "",
+  "categories": ["latest", "drama", "comedy", "family", "tamil"]
+},
+{
+  "type": "movie",
+  "title": "Maargan (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BMDExODdkNTAtNmYwYi00MDM4LWJjNGItNGM0YjA4NzYwODQxXkEyXkFqcGc@._V1_QL75_UY562_CR35,0,380,562_.jpg",
+  "video": "https://dl3.hotshare.click/Maargan_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91386",
+  "details": {
+    "director": "Leo John Paul",
+    "starring": "Vijay Anthony, P. Samuthirakani",
+    "genres": "Crime, Supernatural, Thriller",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "9.1/10",
+    "lastUpdated": "01 July 2025",
+    "fileSize": "937.13 MB",
+    "streamURL": "https://dl3.hotshare.click/Maargan_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "maargan-2025",
+  "mature": "",
+  "categories": ["latest", "thriller", "drama", "tamil"]
+},	
+{
+  "type": "movie",
+  "title": "Kannappa (2025)",
+  "image": "https://m.media-amazon.com/images/M/MV5BNTdhMjA2NWMtNmVkOC00ODdiLTgwNjItNWQ5ZGI1ZTEzODI1XkEyXkFqcGc@._V1_QL75_UY562_CR9,0,380,562_.jpg",
+  "video": "https://s01.hotshare.link/Kannappa_2025_HQ_PreDVD_720p_HD.mp4",
+  "lookUrl": "https://play.onestream.watch/stream/page/91358",
+  "details": {
+    "director": "Mukesh Kumar Singh",
+    "starring": "Vishnu Manchu, Akshay Kumar, Mohanlal, Prabhas",
+    "genres": "Action, Drama, Fantasy, Period",
+    "quality": "PreDVD",
+    "language": "Tamil",
+    "movieRating": "⭐7.5/10",
+    "lastUpdated": "27 June 2025",
+    "fileSize": "1.9 GB",
+    "streamURL": "https://s01.hotshare.link/Kannappa_2025_HQ_PreDVD_720p_HD.mp4"
+  },
+  "id": "kannappa-2025",
+  "mature": "U",
+  "categories": ["latest", "action", "drama", "history", "fantasy", "telugu"]
+}
+];
+
+// Category definitions
+const categories = {
+  latest: {
+    title: "Latest Releases",
+    icon: "🆕",
+    layout: "horizontal"
+  },
+  action: {
+    title: "Action Movies",
+    icon: "⚡",
+    layout: "horizontal"
+  },
+  drama: {
+    title: "Drama",
+    icon: "🎭",
+    layout: "horizontal"
+  },
+  "drama-thriller": {
+    title: "Drama Thriller",
+    icon: "🎭",
+    layout: "horizontal"
+  },
+  drama: {
+    title: "Drama",
+    icon: "🎭",
+    layout: "horizontal"
+  },
+  comedy: {
+    title: "Comedy",
+    icon: "😂",
+    layout: "horizontal"
+  },
+  thriller: {
+    title: "Thriller",
+    icon: "🔥",
+    layout: "horizontal"
+  },
+  romance: {
+    title: "Romance",
+    icon: "💕",
+    layout: "horizontal"
+  },
+  horror: {
+    title: "Horror",
+    icon: "👻",
+    layout: "horizontal"
+  },
+  lcu: {
+	title: "Lokesh Cinematic Universe",
+	icon: "📽️",
+	layout: "horizontal"
+  },
+  telugu: {
+    title: "Telugu Movies",
+    icon: "👻",
+    layout: "horizontal"
+  },
+  malayalam: {
+    title: "Malayalam Movies",
+    icon: "👻",
+    layout: "horizontal"
+  },
+  kannada: {
+    title: "Kannada Movies",
+    icon: "👻",
+    layout: "horizontal"
+  },
+  hindi: {
+    title: "Hindi Movies",
+    icon: "👻",
+    layout: "horizontal"
+  },
+  "90s": {
+    title: "90's Classics",
+    icon: "📼",
+    layout: "horizontal"
+  },
+  "2000s": {
+    title: "2000's Hits",
+    icon: "💿",
+    layout: "horizontal"
+  },
+  ajith: {
+    title: "Actor Ajith Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  vijay: {
+    title: "Actor Vijay Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  "vijay-sethupathi": {
+    title: "Actor Vijay Sethupathi Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  suriya: {
+    title: "Actor Suriya Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  dhanush: {
+    title: "Actor Dhanush Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  "vijay-antony": {
+    title: "Actor Vijay Antony Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  "siva-karthikeyan": {
+    title: "Actor Vijay Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  },
+  vijay: {
+    title: "Actor Vijay Movies",
+    icon: "🔄",
+    layout: "horizontal"
+  }
+};
+
+// Utility functions
+function generatePlaceholderImage(title) {
+  const words = title.split(' ');
+  const initials = words.length > 1 
+    ? (words[0][0] + words[1][0]).toUpperCase()
+    : title.substring(0, 2).toUpperCase();
+  
+  const hash = title.split('').reduce((acc, char) => char.charCodeAt(0) + acc, 0);
+  const hue = hash % 360;
+  const background = `hsl(${hue}, 60%, 20%)`;
+  
+  return `<div class="placeholder-image" style="background: ${background}">
+            <div class="placeholder-icon">🎬</div>
+            <div class="placeholder-text">${title}</div>
+          </div>`;
+}
+
+function getQualityClass(quality) {
+  if (quality.includes('4K') || quality.includes('1080p')) {
+    return 'quality-4k';
+  } else if (quality.includes('640p') || quality.includes('720p')) {
+    return 'quality-hd';
+  } else {
+    return 'quality-sd';
+  }
+}
+
+function createMovieCard(movie) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  
+  const quality = movie.details.quality || 'SD';
+  const qualityClass = getQualityClass(quality);
+  
+  let imageContent;
+  if (movie.image && movie.image.trim() !== '') {
+    imageContent = `
+      <div class="card-image-container">
+        <img src="${movie.image}" alt="${movie.title}" loading="lazy">
+        <div class="quality-tag ${qualityClass}">${quality}</div>
+      </div>`;
+  } else {
+    imageContent = `
+      <div class="card-image-container">
+        ${generatePlaceholderImage(movie.title)}
+        <div class="quality-tag ${qualityClass}">${quality}</div>
+      </div>`;
+  }
+  
+  card.innerHTML = `
+    ${imageContent}
+    <div class="card-title">${movie.title}</div>
+  `;
+  
+  card.onclick = () => openPlayer(movie);
+  return card;
+}
+
+function renderCategories() {
+  const container = document.getElementById("movieCategories");
+  Object.keys(categories).forEach((key) => {
+    const category = categories[key];
+    const filtered = videos.filter(video => video.categories.includes(key));
+    if (!filtered.length) return;
+
+    const section = document.createElement("div");
+    section.className = "category-section";
+    section.innerHTML = `
+      <div class="category-header">
+        <h2 class="category-title">${category.icon} ${category.title}</h2>
+        <button class="view-all-btn focusable" tabindex="0">View All</button>
+      </div>
+      <div class="${category.layout === 'horizontal' ? 'horizontal-scroll' : 'category-grid'}">
+        ${filtered.map(video => `
+          <div class="card focusable" tabindex="0">
+            <div class="card-image-container">
+              <img src="${video.image}" alt="${video.title}">
+            </div>
+            <div class="card-title">${video.title}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+
+  if (tvNav) tvNav.refresh();
+}
+
+renderCategories();
+
+
+let lastScrollY = 0;
+
+function showFullCategory(categoryKey) {
+/*
+  const allMovies = videos.filter(movie => 
+	movie.categories && movie.categories.includes(categoryKey)
+  );
+*/
+  const allMovies = videos.filter(movie => 
+	Array.isArray(movie.categories) && movie.categories.some(cat => cat === categoryKey)
+  );
+  
+  const container = document.getElementById('movieCategories');
+  container.innerHTML = '';
+  
+  const section = document.createElement('div');
+  section.className = 'category-section';
+  
+  const header = document.createElement('div');
+  header.className = 'category-header';
+  
+  const title = document.createElement('h2');
+  title.className = 'category-title';
+  title.innerHTML = `${categories[categoryKey].icon} ${categories[categoryKey].title} - All Movies`;
+  
+  const backBtn = document.createElement('button');
+  backBtn.className = 'view-all-btn';
+  backBtn.textContent = 'Back to Categories';
+  backBtn.onclick = () => {
+	renderCategories();
+	showCategory('all');
+	setTimeout(() => window.scrollTo({ top: lastScrollY, behavior: 'smooth' }), 50);
+  };
+
+  
+  header.appendChild(title);
+  header.appendChild(backBtn);
+  
+  const moviesContainer = document.createElement('div');
+  moviesContainer.className = 'category-grid';
+  
+  allMovies.forEach(movie => {
+    const movieCard = createMovieCard(movie);
+    moviesContainer.appendChild(movieCard);
+  });
+  
+  section.appendChild(header);
+  section.appendChild(moviesContainer);
+  container.appendChild(section);
+}
+
+function showCategory(categoryKey) {
+  // Safe check only if buttons exist
+  const clickedBtn = event?.target;
+  if (clickedBtn?.classList?.contains('category-btn')) {
+    document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+    clickedBtn.classList.add('active');
+  }
+
+  const allSections = document.querySelectorAll('.category-section');
+  if (categoryKey === 'all') {
+    allSections.forEach(section => section.classList.remove('hidden'));
+  } else {
+    allSections.forEach(section => {
+      section.classList.toggle('hidden', section.id !== `category-${categoryKey}`);
+    });
+  }
+}
+
+
+function renderFeatured() {
+  const featuredContainer = document.getElementById('featured');
+  const featuredMovies = videos.filter(movie => 
+    movie.categories && movie.categories.includes('latest')
+  ).slice(0, 8);
+  
+  featuredMovies.forEach(movie => {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    
+    let imageContent;
+    if (movie.image && movie.image.trim() !== '') {
+      imageContent = `<img src="${movie.image}" alt="${movie.title}" loading="lazy">`;
+    } else {
+      imageContent = generatePlaceholderImage(movie.title);
+    }
+    
+    slide.innerHTML = `
+      ${imageContent}
+      <div class="swiper-slide-title">${movie.title}</div>
+    `;
+    
+    slide.onclick = () => openPlayer(movie);
+    featuredContainer.appendChild(slide);
+  });
+  
+  // Initialize Swiper
+  if (featuredMovies.length > 0) {
+    new Swiper('.swiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        1024: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  }
+}
+
+function openPlayer(video) {
+  sessionStorage.setItem('playerData', JSON.stringify(video));
+  window.location.href = `player.html?id=${video.id}`;
+}
+
+// Search functionality
+function searchFunction() {
+  const input = document.getElementById('searchInput');
+  const resultsDiv = document.getElementById('searchResults');
+  const clearButton = document.getElementById('clearButton');
+  const query = input.value.toLowerCase().trim();
+  
+  if (query.length === 0) {
+    resultsDiv.style.display = 'none';
+    clearButton.style.display = 'none';
+    return;
+  }
+  
+  clearButton.style.display = 'block';
+  
+  const filteredMovies = videos.filter(movie =>
+    movie.title.toLowerCase().includes(query) ||
+    (movie.details.genres && movie.details.genres.toLowerCase().includes(query)) ||
+    (movie.details.starring && movie.details.starring.toLowerCase().includes(query))
+  );
+  
+  resultsDiv.innerHTML = '';
+  
+  if (filteredMovies.length === 0) {
+    resultsDiv.innerHTML = '<div>No results found</div>';
+  } else {
+    filteredMovies.slice(0, 8).forEach(movie => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <strong>${movie.title}</strong><br>
+        <small>${movie.details.genres || 'Movie'}</small>
+      `;
+      div.onclick = () => {
+        openPlayer(movie);
+        resultsDiv.style.display = 'none';
+        input.value = '';
+        clearButton.style.display = 'none';
+      };
+      resultsDiv.appendChild(div);
+    });
+  }
+  
+  resultsDiv.style.display = 'block';
+}
+
+// Clear search
+document.getElementById('clearButton').onclick = function() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('searchResults').style.display = 'none';
+  this.style.display = 'none';
+};
+
+// Hide search results when clicking outside
+document.addEventListener('click', function(event) {
+  const searchBar = document.querySelector('.search-bar');
+  const resultsDiv = document.getElementById('searchResults');
+  
+  if (!searchBar.contains(event.target)) {
+    resultsDiv.style.display = 'none';
+  }
+});
+
+// Mobile menu functions
+function toggleMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const backdrop = document.getElementById('mobileBackdrop');
+  
+  mobileMenu.classList.toggle('open');
+  backdrop.style.display = mobileMenu.classList.contains('open') ? 'block' : 'none';
+}
+
+function closeMenu() {
+  const mobileMenu = document.getElementById('mobileMenu');
+  const backdrop = document.getElementById('mobileBackdrop');
+  
+  mobileMenu.classList.remove('open');
+  backdrop.style.display = 'none';
+}
+
+// Edge swipe gesture
+let startX = 0;
+let isAtEdge = false;
+
+document.getElementById('gestureZone').addEventListener('touchstart', function(e) {
+  startX = e.touches[0].clientX;
+  isAtEdge = startX < 30;
+});
+
+document.getElementById('gestureZone').addEventListener('touchmove', function(e) {
+  if (!isAtEdge) return;
+  
+  const currentX = e.touches[0].clientX;
+  const diffX = currentX - startX;
+  
+  if (diffX > 50) {
+    toggleMenu();
+    isAtEdge = false;
+  }
+});
+
+// Back to top button
+const backToTopBtn = document.getElementById('backToTopBtn');
+
+window.addEventListener('scroll', function() {
+  if (window.pageYOffset > 300) {
+    backToTopBtn.style.display = 'block';
+  } else {
+    backToTopBtn.style.display = 'none';
+  }
+});
+
+backToTopBtn.addEventListener('click', function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+  renderFeatured();
+  renderCategories();
+  showCategory('all');
+  
+  // Set up category toggle event listeners
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const category = this.textContent.toLowerCase().replace(' ', '').replace("'", '');
+      const categoryMap = {
+        'all': 'all',
+        'latest': 'latest',
+        'action': 'action',
+        'drama': 'drama',
+        'comedy': 'comedy',
+        'thriller': 'thriller',
+        'romance': 'romance',
+        'horror': 'horror',
+        '90sclassics': '90s',
+        '2000s': '2000s',
+        'recent': 'recent',
+		'vijay': 'vijay',
+		'ajith': 'ajith',		
+		'vijay-sethupathi': 'vijay-sethupathi',
+		'vijay-antony': 'vijay-antony',
+		'dhanush': 'dhanush',
+		'suriya': 'suriya',
+		'telugu': 'telugu',
+		'kannada': 'kannada',
+		'malayalam': 'malayalam',
+		'hindi': 'hindi',
+		'lcu': 'lcu',
+		'drama-thriller': 'drama-thriller',
+      };
+      
+      showCategory(categoryMap[category] || category);
+    });
+  });
+});
+
+
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    tvNav = new TVNavigation();
+  });
+</script>
+
+<script src="/PanguPlay/orientation-lock.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/PanguPlay/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>

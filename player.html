@@ -1,0 +1,2431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Video Player - panguplay</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.css">
+  <script type="text/javascript" src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f1f1f">
+  <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://purushothmathav.github.io/panguplay/favicon.png">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #121212; color: #fff; font-family: 'Inter', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; }
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+    }
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+    .heading {
+      font-size: 24px;
+      text-align: center;
+      flex-grow: 1;
+    }
+    .back-button {
+      background-color: #ff4500;
+      border: none;
+      border-radius: 50px;
+      color: white;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+	
+    .video-container {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 10px 0;
+      //aspect-ratio: 16/9;
+      position: relative;
+    } 
+	
+	.player-wrapper {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+	
+	.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* prevent fullscreen overflow */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+	
+	/*
+	.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh; /* prevent fullscreen overflow */
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+	.player-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black; /* ensures no weird background in fullscreen */
+  width: 100%;
+  height: 100%;
+}
+
+.player-wrapper video {
+  max-width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+}
+
+ */   
+    .resolution-selector {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 10px;
+    }
+    .resolution-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .resolution-btn.active {
+      background-color: #ff4500;
+    }
+    .resolution-btn:hover {
+      background-color: #ff6600;
+    }
+    
+    /* Custom player controls */
+    .custom-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  padding: 8px;
+  border-radius: 5px;
+  margin: 10px 0;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  min-width: 0;
+}
+.action-controls {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  min-width: 0;
+}
+.custom-control-btn {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 6px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  flex: 1 1 0;      /* Allow buttons to shrink/grow */
+  min-width: 0;     /* Prevent overflow */
+  justify-content: center;
+  white-space: nowrap;
+}
+.custom-control-btn i {
+  font-size: 16px;
+}
+
+    .seek-controls {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .video-details-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #202020;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 10px;
+    }
+    .video-poster {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .video-details h2 {
+      font-size: 22px;
+      margin: 10px 0 5px;
+      color: #ff4500;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .copy-link {
+      background: none;
+      border: none;
+      color: #ff6600;
+      cursor: pointer;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+    .episodes-section {
+      margin-top: 20px;
+      background-color: #303030;
+      border-radius: 10px;
+      padding: 15px;
+    }
+    .episodes-title {
+      font-size: 20px;
+      color: #ff4500;
+      margin-bottom: 10px;
+    }
+    .episode-buttons-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .episode-button {
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .episode-button.active {
+      background-color: #ff4500;
+    }
+    .episode-button:hover {
+      background-color: #555;
+    }
+    .nav-buttons {
+      display: none;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    .nav-button {
+      background-color: #ff4500;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .nav-button:hover {
+      background-color: #ff6600;
+    }
+    .nav-button:disabled {
+      background-color: #666;
+      cursor: not-allowed;
+    }
+    
+    .loading-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .loading-spinner {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid #ff4500;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .navbar {
+      background: #1f1f1f;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      margin-left: 20px;
+    }
+    .nav-links a {
+      padding: 5px 10px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .nav-links a:hover {
+      background: #333;
+    }
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+    }
+    .search-bar {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .search-bar input {
+      padding: 6px 10px;
+      border: 1px solid #444;
+      background: #2a2a2a;
+      color: #fff;
+      border-radius: 20px;
+      outline: none;
+      width: 180px;
+      transition: all 0.3s ease;
+    }
+    .search-bar input:focus {
+      border-color: #ff4500;
+      background: #1e1e1e;
+    }
+    .search-results {
+      position: absolute;
+      top: 110%;
+      background: #2a2a2a;
+      width: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+      right: 0;
+    }
+    .search-results div {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      cursor: pointer;
+    }
+    .search-results div:hover {
+      background: #333;
+    }
+    .search-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    #searchInput {
+      padding-right: 30px;
+    }
+    #clearButton {
+      position: absolute;
+      right: 8px;
+      background: none;
+      border: none;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 14px;
+      display: none;
+    }
+
+    /* Mobile Menu Backdrop */
+    .mobile-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1999;
+      display: none;
+    }
+
+    /* Updated Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100%;
+      background: #202020;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 2000;
+      box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+      border-right: 2px solid #333;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu a {
+      margin: 15px 0;
+      font-size: 18px;
+      color: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mobile-menu a:hover {
+      background: #2a2a2a;
+    }
+
+    .close-btn {
+      font-size: 22px;
+      color: #fff;
+      background: none;
+      border: none;
+      align-self: flex-end;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      background: #1f1f1f;
+      margin-top: 20px;
+    }
+    
+.tap-overlay {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 24px;
+  z-index: 10;
+}
+
+.tap-overlay.active {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.tap-overlay i {
+  font-size: 36px;
+  margin-bottom: 5px;
+}
+
+.tap-overlay-left {
+  left: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tap-overlay-right {
+  right: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+#castBtn {
+  background-color: #ff4500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  display: wrap;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+#castBtn:hover {
+  background-color: #ff6600;
+}
+	
+    @media (max-width: 768px) {
+      .heading {
+        font-size: 20px;
+      }
+      .video-details h2 {
+        font-size: 18px;
+      }
+      .detail-row {
+        font-size: 14px;
+      }
+      .nav-links {
+        display: none;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .episode-button {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+      .resolution-selector {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px 0;
+        gap: 10px;
+      }
+      .resolution-btn {
+        flex: 1 1 40%;
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+      .custom-controls {
+    padding: 6px;
+  }
+  .custom-control-btn {
+    font-size: 13px;
+    padding: 6px 2px;
+  }
+  .action-controls {
+    gap: 4px;
+  }
+      .seek-controls {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+
+.player-logo-overlay {
+  position: absolute;
+  top: 0%;
+  right: 1%;
+  z-index: 9999;
+  opacity: 0.2;
+  pointer-events: none; /* Prevent click blocking */
+}
+
+.player-logo-overlay img {
+  height: 90px;
+  width: auto;
+} 
+
+/* Adjust for mobile specifically */
+@media (max-width: 768px) {
+  .player-logo-overlay {
+    top: 0%;
+    right: 1%;
+  }
+  .player-logo-overlay img {
+  height: 50px;
+  width: auto;
+} 
+}
+
+.player-wrapper video {
+  object-fit: contain; /* Default */
+  transition: object-fit 0.3s ease;
+}
+
+.player-wrapper.stretch video {
+  object-fit: cover;
+}
+
+
+.hud-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 30, 30, 0.85);
+  color: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+  font-size: 18px;
+  text-align: center;
+  min-width: 100px;
+}
+.hud-overlay i {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+body.lock-scroll {
+  overflow: hidden;
+  touch-action: none;
+}
+
+.autoplay-overlay:fullscreen,
+.autoplay-overlay:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.auto-play-next-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(32, 32, 32, 0.95);
+  color: white;
+  border-radius: 30px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  font-size: 14px;
+  cursor: pointer;
+  border: 2px solid #ff4500;
+  transition: background 0.3s ease;
+}
+
+.auto-play-next-btn:hover {
+  background: #3a3a3a;
+}
+
+
+.progress-ring {
+  width: 24px;
+  height: 24px;
+}
+
+.progress-ring-path {
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+}
+
+@keyframes countdownAnim {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 100;
+  }
+}
+/*
+.video-title-overlay {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 12px;
+  border-radius: 8px;
+  z-index: 9998;
+  pointer-events: none;
+  max-width: 90%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video-container:fullscreen .video-title-overlay,
+.video-container:-webkit-full-screen .video-title-overlay {
+  font-size: 20px;
+  top: 20px;
+}
+*/
+
+.plyr__time--duration {
+  display: inline !important;
+  visibility: visible !important;
+  width: auto !important;
+  opacity: 1 !important;
+}
+
+.player-wrapper .mature-warning {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: black;
+  color: white;
+  padding: 10px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-left: 5px solid #ffc107;
+  z-index: 20;
+  opacity: 0;
+  transform: translate(-100%, -100%) scale(1);
+  transition: transform 0.4s ease-out, opacity 0.3s ease-in;
+  pointer-events: none;
+  text-align: left;
+  line-height: 1.4;
+  border-radius: 4px;
+}
+
+.player-wrapper .mature-warning.show {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+.player-wrapper .mature-warning.hide {
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+
+
+.mature-consent-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 18, 18, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.mature-consent-box {
+  background: #1e1e1e;
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 90%;
+  width: 350px;
+  border: 2px solid #ff4500;
+}
+
+.mature-consent-box h3 {
+  color: #ff4500;
+  margin-bottom: 10px;
+}
+
+.mature-consent-box p {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.consent-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.consent-actions button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#agreeBtn {
+  background: #28a745;
+  color: white;
+}
+
+#denyBtn {
+  background: #dc3545;
+  color: white;
+}
+
+#matureConsentMask {
+  display: none;
+}
+
+
+.important-warning {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffcc00;
+  color: #000;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="nav-left">
+      <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      <a href="index.html" class="nav-logo">panguplay</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="shows.html">Shows</a>
+        <a href="dubbed.html">Tamil Dub</a>
+        <a href="720p.html">Kuku TV</a>
+        <a href="request.html">Request</a>
+        <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
+        <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">Telegram</a>
+      </div>
+    </div>
+    
+    <div class="nav-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." id="searchInput" oninput="searchFunction()">
+        <button id="clearButton" onclick="clearSearch()">✖</button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Backdrop -->
+  <div class="mobile-backdrop" id="mobileBackdrop" onclick="closeMenu()"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="close-btn" onclick="closeMenu()">✖</button>
+    <a href="index.html">🏠 Home</a>
+    <a href="movies.html">🎬 Movies</a>
+    <a href="shows.html">📺 Shows</a>
+    <a href="dubbed.html">🎙 Tamil Dub</a>
+    <a href="720p.html">🎞️ Kuku TV</a>
+    <a href="request.html">📩 Request</a>
+    <a href="https://purushothmathav.github.io/streamify" target="_blank">🎭Streamify</a>
+    <a href="https://t.me/+QscDhM495tM4NTg9" target="_blank">💬 Telegram</a>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <button class="back-button" onclick="goBack()">
+        <i class="fas fa-arrow-left"></i> Back
+      </button>
+      <div class="heading" id="pageHeading">panguplay</div>
+    </div>
+    
+    <div class="video-container">
+		<!-- HUD for Volume Control -->
+		<div id="hudOverlay" class="hud-overlay">
+			<i id="hudIcon" class="fas fa-volume-up"></i>
+			<div id="hudValue">50%</div>
+		</div>
+		<div class="player-wrapper">
+			<div class="player-logo-overlay" id="logoOverlay">
+				<img src="ply-logo.png" alt="Logo" />
+			</div>
+			<!-- <div id="videoTitleOverlay" class="video-title-overlay">Video Title</div> -->
+			<div id="loadingOverlay" class="loading-overlay">
+				<div class="loading-spinner"></div>
+			</div>
+			
+			<!-- 👇 Add this inside player-wrapper -->
+			<div id="matureTextWarning" class="mature-warning">Rated: <strong>A 18+</strong><br> MATURE CONTENT</div>
+			
+			<div id="matureConsentMask" class="mature-consent-mask">
+				<div class="mature-consent-box">
+					<h3>⚠️ Mature Content (18+)</h3>
+					<p>This video is rated <strong>A</strong>. Viewer discretion is advised.</p>
+					<p>You must confirm you are 18 or older to watch this content.</p>
+					<div class="consent-actions">
+						<button id="agreeBtn">I Agree (<span id="countdown">10</span>s)</button>
+						<button id="denyBtn">I Do Not Agree</button>
+					</div>
+				</div>
+			</div>
+			
+			<div id="importantNotice" class="important-warning" style="display:none;">
+				<i class="fas fa-exclamation-triangle"></i>
+				<span id="importantText"></span>
+			</div>
+
+
+			<video id="player" playsinline controls data-poster="">
+				<source src="" type="video/mp4" size="1080">
+				<source src="" type="video/mp4" size="720">
+					Your browser does not support the video tag.
+			</video>
+			
+			  <div id="newEpisodePopup" style="
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(30, 30, 30, 0.95);
+  border: 2px solid #00cc66;
+  border-radius: 12px;
+  padding: 20px 25px;
+  z-index: 9999;
+  display: none;
+  color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  text-align: center;
+  max-width: 90%;
+">
+  <div style="font-size: 18px; margin-bottom: 12px;">🆕 New Episode Available!</div>
+  <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+    <button id="watchNowBtn" style="
+      background: #00cc66;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      flex: 1 1 auto;
+    ">Watch Now</button>
+    <button id="cancelPopupBtn" style="
+      background: #666;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      flex: 1 1 auto;
+    ">Cancel</button>
+  </div>
+</div>
+
+
+		</div>
+    </div>
+    
+    <!-- Custom player controls -->
+<div class="custom-controls">
+  <div class="action-controls">
+    <button class="custom-control-btn" id="shareBtn">
+      <i class="fas fa-share"></i> Share
+    </button>
+    <button class="custom-control-btn" id="downloadBtn">
+      <i class="fas fa-download"></i> Download
+    </button>
+    <button class="custom-control-btn" id="streamBtn">
+      <i class="fas fa-play"></i> Stream
+    </button>
+    <button class="custom-control-btn" id="castBtn">
+      <i class="fas fa-tv"></i> Cast
+    </button>
+  </div>
+</div>
+
+<div class="nav-buttons" id="navButtons">
+      <button class="nav-button" id="prevBtn" onclick="playPreviousEpisode()">
+        <i class="fas fa-step-backward"></i> Previous Episode
+      </button>
+      <button class="nav-button" id="nextBtn" onclick="playNextEpisode()">
+        Next Episode <i class="fas fa-step-forward"></i>
+      </button>
+</div>
+
+<div class="resolution-selector" id="resolutionSelector">
+  <!-- Resolution buttons will be dynamically added here -->
+</div>
+    
+    <div class="video-details-container">
+      <img id="videoPoster" class="video-poster" src="" alt="Poster">
+      <div class="video-details">
+        <h2 id="videoTitle">Video Title</h2>
+        <div class="detail-row"><span>Rating:</span> <span id="movieRating">N/A</span></div>
+        <div class="detail-row"><span>Director:</span> <span id="director">N/A</span></div>
+        <div class="detail-row"><span>Starring:</span> <span id="starring">N/A</span></div>
+        <div class="detail-row"><span>Genre:</span> <span id="genres">N/A</span></div>
+        <div class="detail-row"><span>Quality:</span> <span id="quality">N/A</span></div>
+        <div class="detail-row"><span>Language:</span> <span id="language">N/A</span></div>
+        <div class="detail-row"><span>File Size:</span> <span id="fileSize">N/A</span></div>
+        <div class="detail-row"><span>Updated:</span> <span id="lastUpdated">N/A</span></div>
+        <div class="detail-row"><span>Stream:</span> <button class="copy-link" onclick="copyStreamUrl()">Copy Link</button></div>
+      </div>
+    </div>
+    
+    <div class="episodes-section" id="episodesSection">
+      <div class="episodes-title">Episodes</div>
+      <div class="episode-buttons-wrapper" id="episodeButtons"></div>
+    </div>
+  </div>
+  
+  <div id="toast" class="toast"></div>
+  
+
+
+  <footer>
+    &copy; 2025 panguplay
+  </footer>
+
+<div id="gestureZone" style="position: fixed; top: 0; left: 0; height: 100%; width: 30px; z-index: 3000;"></div>
+
+  <script disable-devtool-auto='true'
+src='https://cdn.jsdelivr.net/npm/disable-devtool'
+clear-log='true'
+disable-select='true' 
+disable-copy='true'
+disable-cut='true' 
+disable-paste='true'>
+</script>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.min.js"></script>
+  <script>
+    // Global variables
+// Instead of reading from URL, read from sessionStorage
+	let matureImageShown = false;
+    let playerData = null;
+    let episodes = [];
+    let currentEpisodeId = null;
+    let currentEpisodeIndex = 0;
+    let player;
+    let currentVideoSources = [];
+    let currentQuality = '1080p';
+    const seekTime = 0; // Seconds to skip when seeking
+	let autoPlayNext = true; // You can make this a user setting
+	let autoPlayTimeout;
+	let countdownInterval;
+	let matureConsentGranted = false;
+
+
+    function initPlayer() {
+  const isMobile = window.innerWidth <= 768;
+  player = new Plyr('#player', {
+    controls: isMobile
+      ? ['play-large', 'rewind', 'play', 'fast-forward', 'mute', 'progress', 'current-time', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']
+      : ['play-large', 'rewind', 'play', 'fast-forward', 'mute', 'progress', 'current-time', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+    settings: ['captions', 'speed'],
+    resetOnEnd: false,
+    keyboard: { focused: true, global: true },
+    tooltips: { controls: true, seek: true },
+    seekTime: 30,
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.8/plyr.svg',
+    blankVideo: 'https://cdn.plyr.io/static/blank.mp4',
+  });
+
+  // Existing event listeners
+  player.on('ready', () => hideLoading());
+  player.on('loadstart', () => showLoading());
+  player.on('canplay', () => hideLoading());
+  player.on('error', () => {
+    hideLoading();
+    showToast('Error playing video. Please try another quality or source.');
+  });
+
+  // NEW: Add auto next episode functionality
+  player.on('ended', handleVideoEnded);
+}
+
+function showNewEpisodePopup(episodeId) {
+  const popup = document.getElementById('newEpisodePopup');
+  const watchBtn = document.getElementById('watchNowBtn');
+  const cancelBtn = document.getElementById('cancelPopupBtn');
+  if (!popup || !watchBtn || !cancelBtn) return;
+
+  // Get current show ID (from global playerData)
+  const showId = playerData?.id || 'defaultShow';
+
+  // Store a flag so we don't show again this session
+  sessionStorage.setItem(`seenNewPopup_${showId}`, 'true');
+
+  popup.style.display = 'block';
+
+  watchBtn.onclick = () => {
+    popup.style.display = 'none';
+    playEpisode(episodeId); // go to new episode
+  };
+
+  cancelBtn.onclick = () => {
+    popup.style.display = 'none';
+  };
+}
+
+
+
+function showMatureTextWarning() {
+  const el = document.getElementById('matureTextWarning');
+  if (!el) return;
+
+  el.classList.add('show');
+
+  // Wait 2s, then shrink + hide
+  setTimeout(() => {
+    el.classList.add('hide');
+    setTimeout(() => {
+      el.remove(); // Optional: fully remove from DOM
+    }, 300); // match CSS shrink duration
+  }, 5000);
+}
+
+
+// Handle video end for auto-play next episode
+function handleVideoEnded() {
+  // Only auto-play for series with multiple episodes
+  if (!episodes.length || episodes.length <= 1 || !autoPlayNext) {
+    return;
+  }
+
+  // Check if there's a next episode
+  if (currentEpisodeIndex < episodes.length - 1) {
+    showAutoPlayOverlay();
+  } else {
+    showToast('Series completed! 🎉');
+  }
+}
+
+// Show countdown overlay for auto-play
+function showAutoPlayOverlay() {
+  const nextEpisode = episodes[currentEpisodeIndex + 1];
+  let countdown = 3;
+
+  let btn = document.getElementById('autoPlayNextBtn');
+  if (!btn) {
+    btn = createAutoPlayNextButton();
+  }
+
+  const label = btn.querySelector('.label');
+  const progress = btn.querySelector('.progress-ring');
+
+  label.textContent = `Auto: Next in ${countdown}s`;
+
+  // Show button
+  btn.style.display = 'flex';
+
+  // Animate progress ring
+  progress.style.animation = `countdownAnim ${countdown}s linear forwards`;
+
+  // Start countdown
+  countdownInterval = setInterval(() => {
+    countdown--;
+    label.textContent = `Auto: Next in ${countdown}s`;
+    if (countdown <= 0) {
+      clearInterval(countdownInterval);
+      hideAutoPlayOverlay();
+      playNextEpisode();
+    }
+  }, 1000);
+}
+
+function createAutoPlayNextButton() {
+  const btn = document.createElement('div');
+  btn.id = 'autoPlayNextBtn';
+  btn.className = 'auto-play-next-btn';
+  btn.innerHTML = `
+    <svg class="progress-ring" viewBox="0 0 36 36">
+      <path class="progress-ring-path"
+            stroke="#ff4500"
+            stroke-width="3"
+            fill="none"
+            stroke-dasharray="100, 100"
+            d="M18 2.0845
+               a 15.9155 15.9155 0 0 1 0 31.831
+               a 15.9155 15.9155 0 0 1 0 -31.831" />
+    </svg>
+    <span class="label">Auto: Next</span>
+  `;
+  btn.onclick = () => {
+    clearInterval(countdownInterval);
+    hideAutoPlayOverlay();
+    playNextEpisode();
+  };
+
+  // ✅ Append to the correct fullscreen container if active
+  const container = document.fullscreenElement || document.querySelector('.video-container');
+
+  // Make sure it's only appended once
+  if (!document.getElementById('autoPlayNextBtn')) {
+    container.appendChild(btn);
+  }
+
+  return btn;
+}
+
+
+function hideAutoPlayOverlay() {
+  const btn = document.getElementById('autoPlayNextBtn');
+  if (btn) btn.style.display = 'none';
+  if (countdownInterval) clearInterval(countdownInterval);
+}
+
+document.addEventListener('fullscreenchange', () => {
+  const btn = document.getElementById('autoPlayNextBtn');
+  if (btn && btn.style.display === 'flex') {
+    document.fullscreenElement?.appendChild(btn);
+  }
+});
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get playerData from sessionStorage
+      playerData = JSON.parse(sessionStorage.getItem('playerData') || 'null');
+      if (!playerData) {
+        showToast('No video data found. Please go back and select a video.');
+        return;
+      }
+      initPlayer();
+      setupPage();
+      //setupDownloadButton();
+      setupDoubleTapSeeking();
+	  enableLandscapeOnFullScreen();
+	  updateLogoInFullscreen();
+      document.addEventListener('keydown', handleKeyboardShortcuts);
+	  loadAutoPlaySetting();
+	  addAutoPlayStyles();
+    });
+
+
+function updateLogoInFullscreen() {
+  const logoOverlay = document.getElementById('logoOverlay');
+  const playerWrapper = document.querySelector('.player-wrapper');
+  
+  if (!logoOverlay || !playerWrapper) return; // Guard clause
+  
+  // Create a clone of the logo to avoid moving the original
+  const logoForFullscreen = logoOverlay.cloneNode(true);
+  logoForFullscreen.id = 'logoOverlayFullscreen';
+  
+  function handleFullscreenChange() {
+    const isFullscreen = document.fullscreenElement !== null;
+    
+    if (isFullscreen) {
+      // Remove any existing cloned logo first
+      const existingLogo = document.getElementById('logoOverlayFullscreen');
+      if (existingLogo) existingLogo.remove();
+      
+      // Add the cloned logo to the fullscreen element
+      document.fullscreenElement.appendChild(logoForFullscreen);
+      
+      // Set responsive positioning based on screen orientation and device
+      logoForFullscreen.style.position = 'fixed';
+      logoForFullscreen.style.zIndex = '9999';
+      logoForFullscreen.style.display = 'block';
+      
+      // Check if device is mobile
+      const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      // Check orientation
+      const isLandscape = window.innerWidth > window.innerHeight;
+      
+      if (isMobile) {
+        if (isLandscape) {
+          // Mobile landscape mode
+          logoForFullscreen.style.top = '1%';
+          logoForFullscreen.style.right = '1%';
+          
+          // Make logo smaller on mobile landscape
+          const logoImg = logoForFullscreen.querySelector('img');
+          if (logoImg) {
+            logoImg.style.height = '40px';
+            logoImg.style.width = 'auto';
+          }
+        } else {
+          // Mobile portrait mode (though fullscreen is typically landscape)
+          logoForFullscreen.style.top = '1%';
+          logoForFullscreen.style.right = '1%';
+        }
+      } else {
+        // Desktop/larger screens
+        logoForFullscreen.style.top = '0%';
+        logoForFullscreen.style.right = '1%';
+      }
+    } else {
+      // Remove the cloned logo when exiting fullscreen
+      const existingLogo = document.getElementById('logoOverlayFullscreen');
+      if (existingLogo) existingLogo.remove();
+    }
+  }
+  
+  // Listen for fullscreen changes
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+  
+  // Also check when orientation changes while in fullscreen
+  window.addEventListener('orientationchange', () => {
+    if (document.fullscreenElement) {
+      // Small delay to ensure window dimensions are updated
+      setTimeout(handleFullscreenChange, 100);
+    }
+  });
+  
+  // For browsers that don't support orientation event
+  window.addEventListener('resize', () => {
+    if (document.fullscreenElement) {
+      // Small delay to avoid excessive calls
+      setTimeout(handleFullscreenChange, 100);
+    }
+  });
+}
+
+//Video Stretch control 
+let initialDistance = null;
+
+function getDistance(touches) {
+  const dx = touches[0].clientX - touches[1].clientX;
+  const dy = touches[0].clientY - touches[1].clientY;
+  return Math.sqrt(dx * dx + dy * dy);
+}
+
+function handleTouchStart(e) {
+  if (e.touches.length === 2) {
+    initialDistance = getDistance(e.touches);
+  }
+}
+
+function handleTouchMove(e) {
+  if (e.touches.length === 2 && initialDistance !== null) {
+    const currentDistance = getDistance(e.touches);
+    const diff = currentDistance - initialDistance;
+
+    if (Math.abs(diff) > 30) { // Minimum pinch distance to trigger
+      const wrapper = document.querySelector('.player-wrapper');
+
+      if (diff > 0) {
+        // Pinch out → stretch
+        wrapper.classList.add('stretch');
+        showToast('Stretch to fill screen');
+      } else {
+        // Pinch in → fit
+        wrapper.classList.remove('stretch');
+        showToast('Fit to screen');
+      }
+
+      // Prevent multiple toggles in one gesture
+      initialDistance = null;
+    }
+  }
+}
+
+function handleTouchEnd(e) {
+  if (e.touches.length < 2) {
+    initialDistance = null;
+  }
+}
+
+// Attach listeners to the video area
+const videoContainer = document.querySelector('.video-container');
+videoContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+videoContainer.addEventListener('touchmove', handleTouchMove, { passive: true });
+videoContainer.addEventListener('touchend', handleTouchEnd);
+videoContainer.addEventListener('touchcancel', handleTouchEnd);
+
+
+// Volume control swipe gesture (fullscreen only)
+let swipeStartX = 0;
+let swipeStartY = 0;
+let lastVolume = 0.5;
+
+const hudOverlay = document.getElementById('hudOverlay');
+const hudIcon = document.getElementById('hudIcon');
+const hudValue = document.getElementById('hudValue');
+
+const swipeThreshold = 15;
+const hudTimeout = 1000;
+let hudTimer = null;
+
+function isFullscreen() {
+  return !!(document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement);
+}
+
+function showVolumeHud(value) {
+  hudIcon.className = 'fas fa-volume-up';
+  hudValue.textContent = `${Math.round(value * 100)}%`;
+  hudOverlay.style.display = 'flex';
+
+  if (hudTimer) clearTimeout(hudTimer);
+  hudTimer = setTimeout(() => {
+    hudOverlay.style.display = 'none';
+  }, hudTimeout);
+}
+
+const videoArea = document.querySelector('.video-container');
+
+videoArea.addEventListener('touchstart', (e) => {
+  if (!isFullscreen()) return;
+  document.body.classList.add('lock-scroll');
+
+  if (e.touches.length === 1) {
+    swipeStartX = e.touches[0].clientX;
+    swipeStartY = e.touches[0].clientY;
+  }
+}, { passive: false });
+
+videoArea.addEventListener('touchmove', (e) => {
+  if (!isFullscreen()) return;
+  e.preventDefault();
+
+  if (e.touches.length !== 1) return;
+
+  const deltaX = e.touches[0].clientX - swipeStartX;
+  const deltaY = e.touches[0].clientY - swipeStartY;
+
+  if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > swipeThreshold) {
+    const screenWidth = window.innerWidth;
+    const isRight = swipeStartX > screenWidth / 2;
+    const goingUp = deltaY < 0;
+
+    if (isRight) {
+      lastVolume += goingUp ? 0.05 : -0.05;
+      lastVolume = Math.min(Math.max(lastVolume, 0), 1);
+      if (player && typeof player.volume === 'number') {
+        player.volume = lastVolume;
+        showVolumeHud(lastVolume);
+      }
+    }
+
+    swipeStartY = e.touches[0].clientY;
+  }
+}, { passive: false });
+
+videoArea.addEventListener('touchend', () => {
+  swipeStartX = 0;
+  swipeStartY = 0;
+  document.body.classList.remove('lock-scroll');
+});
+
+
+//DoubleTap Function
+function setupDoubleTapSeeking() {
+  const videoContainer = document.querySelector('.video-container');
+  const playerElement = document.getElementById('player');
+  let lastTap = 0;
+
+  const leftOverlay = document.createElement('div');
+  leftOverlay.className = 'tap-overlay tap-overlay-left';
+  leftOverlay.innerHTML = '<i class="fas fa-backward"></i><span>-30s</span>';
+
+  const rightOverlay = document.createElement('div');
+  rightOverlay.className = 'tap-overlay tap-overlay-right';
+  rightOverlay.innerHTML = '<i class="fas fa-forward"></i><span>+30s</span>';
+
+  videoContainer.appendChild(leftOverlay);
+  videoContainer.appendChild(rightOverlay);
+
+  videoContainer.addEventListener('touchend', function (e) {
+    const currentTime = new Date().getTime();
+    const tapLength = currentTime - lastTap;
+    const screenWidth = window.innerWidth;
+    const touchX = e.changedTouches[0].clientX;
+    const side = touchX < screenWidth / 2 ? 'left' : 'right';
+
+    if (tapLength < 300 && tapLength > 0) {
+      if (side === 'left') {
+        player.currentTime = Math.max(player.currentTime - 10, 0);
+        showTapOverlay(leftOverlay);
+      } else {
+        player.currentTime = Math.min(player.currentTime + 10, player.duration);
+        showTapOverlay(rightOverlay);
+      }
+      e.preventDefault();
+    }
+
+    lastTap = currentTime;
+  });
+
+  function showTapOverlay(overlay) {
+    overlay.classList.add('active');
+    setTimeout(() => overlay.classList.remove('active'), 500);
+  }
+}
+
+//CastAPI Initialization
+function initializeCastApi() {
+  // Defensive: Only attach event if button exists
+  const castButton = document.getElementById('castBtn');
+  if (!castButton) return;
+
+  cast.framework.CastContext.getInstance().setOptions({
+    receiverApplicationId: chrome.cast.media.DEFAULT_MEDIA_RECEIVER_APP_ID,
+    autoJoinPolicy: chrome.cast.AutoJoinPolicy.ORIGIN_SCOPED,
+  });
+
+  castButton.addEventListener('click', () => {
+  if (!matureConsentGranted) {
+    showToast('You must agree to view mature content before casting.');
+    return;
+  }
+
+  
+    // Defensive: Ensure video sources are ready
+    if (!currentVideoSources || !currentVideoSources.length || !currentVideoSources[0].url) {
+      showToast('No video to cast.');
+      return;
+    }
+
+    const castSession = cast.framework.CastContext.getInstance().getCurrentSession();
+
+    if (castSession) {
+      loadMediaToCast(castSession);
+    } else {
+      cast.framework.CastContext.getInstance().requestSession().then(() => {
+        const newSession = cast.framework.CastContext.getInstance().getCurrentSession();
+        loadMediaToCast(newSession);
+      }).catch(err => {
+        console.error('Failed to start cast session:', err);
+        showToast('Failed to start casting.');
+      });
+    }
+  });
+}
+
+function loadMediaToCast(castSession) {
+  if (!castSession) {
+    showToast('No cast session available.');
+    return;
+  }
+
+  // Defensive: Ensure video sources are ready
+  if (!currentVideoSources || !currentVideoSources.length || !currentVideoSources[0].url) {
+    showToast('No video to cast.');
+    return;
+  }
+
+  const title = playerData?.title || 'panguplay';
+  const image = playerData?.image || '';
+  const videoUrl = currentVideoSources[0].url;
+
+  const mediaInfo = new chrome.cast.media.MediaInfo(videoUrl, 'video/mp4');
+  mediaInfo.metadata = new chrome.cast.media.GenericMediaMetadata();
+  mediaInfo.metadata.title = title;
+  if (image) {
+    mediaInfo.metadata.images = [{ url: image }];
+  }
+
+  const request = new chrome.cast.media.LoadRequest(mediaInfo);
+  castSession.loadMedia(request).then(() => {
+    showToast('Casting started!');
+  }).catch(err => {
+    console.error('Failed to load media:', err);
+    showToast('Failed to cast video.');
+  });
+}
+
+// Initialize the Cast API when the page loads
+window['__onGCastApiAvailable'] = function(isAvailable) {
+  if (isAvailable) {
+    // Wait until DOM and setupPage are done
+    setTimeout(initializeCastApi, 500);
+  }
+};
+
+//Landscape Function
+	function enableLandscapeOnFullScreen() {
+  const playerWrapper = document.querySelector('.player-wrapper');
+  const videoElement = document.getElementById('player');
+
+  document.addEventListener('fullscreenchange', () => {
+    const fullscreenEl = document.fullscreenElement;
+
+    // If the video element entered fullscreen instead of the wrapper, fix it
+    if (fullscreenEl === videoElement) {
+      document.exitFullscreen().then(() => {
+        playerWrapper.requestFullscreen().catch(err => {
+          console.warn('Failed to request fullscreen on wrapper:', err);
+        });
+      });
+    }
+
+    // Lock orientation
+    if (fullscreenEl) {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(err => {
+          console.warn('Orientation lock failed:', err);
+        });
+      }
+    } else {
+      if (screen.orientation && screen.orientation.unlock) {
+        screen.orientation.unlock();
+      }
+    }
+  });
+}
+
+	
+    // Setup download button functionality
+    function setupDownloadButton() {
+  const downloadBtn = document.getElementById('downloadBtn');
+  downloadBtn.removeEventListener('click', downloadVideo); // avoid duplicates
+  downloadBtn.addEventListener('click', downloadVideo);
+}
+    
+    // Handle keyboard shortcuts
+    function handleKeyboardShortcuts(e) {
+      // Left arrow for seeking backward
+      if (e.key === 'ArrowLeft') {
+        seekBackward();
+      }
+      // Right arrow for seeking forward
+      else if (e.key === 'ArrowRight') {
+        seekForward();
+      }
+      // 'D' key for download
+      else if ((e.key === 'd' || e.key === 'D') && matureConsentGranted) {
+        downloadVideo();
+      }
+    }
+    
+    // Seek forward function
+     function seekForward() {
+      if (!player) return;
+      const newTime = Math.min(player.currentTime + seekTime, player.duration);
+      player.currentTime = newTime;
+      showToast(`Forwarded ${seekTime}s`);
+    }
+    
+    // Seek backward function
+    function seekBackward() {
+      if (!player) return;
+      const newTime = Math.max(player.currentTime - seekTime, 0);
+      player.currentTime = newTime;
+      showToast(`Rewound ${seekTime}s`);
+    }
+	
+async function downloadVideo() {
+
+  if (!matureConsentGranted) {
+    showToast('You must agree to watch mature content before downloading.');
+    return;
+  }
+  if (!playerData || !currentVideoSources || currentVideoSources.length === 0) {
+    showToast('Video not ready yet.');
+    return;
+  }
+  
+  let urlToDownload = null;
+  let filename = `${playerData.title}.mp4`;
+  let fallbackUrl = null;
+
+  // === Series (episode) case ===
+  if (currentEpisodeId && episodes.length > 0) {
+    const episode = episodes[currentEpisodeIndex];
+    urlToDownload = episode.videoUrl;
+    fallbackUrl = episode.lookUrl || episode.altVideoUrl || null;
+    filename = `${playerData.title}-S${episode.season}E${episode.episode}.mp4`;
+  }
+
+  // === Movie / single video ===
+  else if (playerData.video) {
+    // 🔍 Find currently playing quality
+    if (currentVideoSources.length > 1) {
+      const activeSource = currentVideoSources.find(src => src.quality === currentQuality);
+      urlToDownload = activeSource ? activeSource.url : playerData.video;
+      filename = `${playerData.title}-${currentQuality}.mp4`;
+    } else {
+      urlToDownload = playerData.video;
+      filename = `${playerData.title}.mp4`;
+    }
+
+    // Fallback by quality or lookUrl
+    fallbackUrl =
+      playerData.lookUrl ||
+      (currentQuality === '720p' && playerData['720Url']) ||
+      (currentQuality === '1080p' && playerData['1080Url']) ||
+      null;
+  }
+
+  if (!urlToDownload) {
+    showToast('No video available for download');
+    return;
+  }
+
+  const hasToken = urlToDownload.includes('h=') && urlToDownload.includes('e=') || urlToDownload.includes('X-Amz-Expires=') && urlToDownload.includes('X-Amz-Date=') || urlToDownload.includes('/dl/') && urlToDownload.includes('/p/') || urlToDownload.includes('token=');
+
+  if (hasToken) {
+    showToast('Checking download link...');
+    try {
+      const res = await fetch(urlToDownload, { method: 'HEAD' });
+      if (res.ok) {
+        triggerDownload(urlToDownload, filename);
+      } else {
+        throw new Error('Link expired');
+      }
+    } catch (err) {
+      console.warn('Token-protected download failed:', err);
+      fallbackOrNotify(fallbackUrl);
+    }
+  } else {
+    // ✅ Normal case — no token, just download selected quality
+    triggerDownload(urlToDownload, filename);
+  }
+}
+
+function triggerDownload(url, filename) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('Download started!');
+}
+
+function fallbackOrNotify(fallbackUrl) {
+  if (fallbackUrl) {
+    showToast('Download expired. Open fallback manually.');
+    const open = confirm('Download link expired.\n\nOpen fallback page to download manually?');
+    if (open) window.open(fallbackUrl, '_blank');
+  } else {
+    showToast('No fallback link available.');
+  }
+}
+   
+    // Setup page content
+function setupPage() {
+  if (!playerData) {
+    showToast('Missing video data.');
+    return;
+  }
+
+  if (playerData.mature === 'A' && !matureImageShown) {
+    showMatureTextWarning();
+    matureImageShown = true;
+  }
+
+  document.getElementById('videoTitle').textContent = playerData.title;
+  document.getElementById('pageHeading').textContent = playerData.title;
+  document.title = playerData.title + ' - panguplay';
+  const posterUrl = playerData.image;
+  document.getElementById('videoPoster').src = posterUrl;
+  document.getElementById('player').setAttribute('data-poster', posterUrl);
+
+  // Video metadata
+  const details = playerData.details || {};
+  document.getElementById('movieRating').textContent = details.movieRating || 'N/A';
+  document.getElementById('director').textContent = details.director || 'N/A';
+  document.getElementById('starring').textContent = details.starring || 'N/A';
+  document.getElementById('genres').textContent = details.genres || 'N/A';
+  document.getElementById('quality').textContent = details.quality || 'N/A';
+  document.getElementById('language').textContent = details.language || 'N/A';
+  document.getElementById('fileSize').textContent = details.fileSize || 'N/A';
+  document.getElementById('lastUpdated').textContent = details.lastUpdated || 'N/A';
+
+  // Handle series
+  if (playerData.type === 'series' && Array.isArray(playerData.episodes)) {
+    episodes = playerData.episodes;
+    if (episodes.length > 0) {
+      playEpisode(episodes[0].id);
+    }
+    document.getElementById('episodesSection').style.display = 'block';
+    document.getElementById('navButtons').style.display = 'flex';
+  } else {
+    // Handle movies
+    document.getElementById('episodesSection').style.display = 'none';
+    document.getElementById('navButtons').style.display = 'none';
+
+    currentVideoSources = [];
+    if (playerData.video) {
+      currentVideoSources.push({
+        url: playerData.video,
+        quality: '1080p'
+      });
+    }
+    if (playerData.alt) {
+      currentVideoSources.push({
+        url: playerData.alt,
+        quality: '720p'
+      });
+    }
+
+    setupResolutionSelector();
+    // We'll call loadVideo later inside proceedWithVideoLoad
+  }
+  
+  // Handle important notice
+if (playerData.important) {
+  const notice = document.getElementById('importantNotice');
+  const text = document.getElementById('importantText');
+  if (notice && text) {
+    text.textContent = playerData.important;
+    notice.style.display = 'flex';
+
+    // Auto-hide after 6 seconds
+    setTimeout(() => {
+      notice.style.opacity = '0';
+      notice.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => {
+        notice.style.display = 'none';
+      }, 500); // Wait for fade-out to finish
+    }, 6000);
+  }
+}
+
+
+  // Mature check logic
+  const isMature = playerData.mature && playerData.mature.trim().toUpperCase() === 'A';
+
+  const mask = document.getElementById('matureConsentMask');
+  if (mask) mask.style.display = 'none';
+
+  if (isMature && !matureConsentGranted) {
+    showMatureConsentMask(); // will call proceedWithVideoLoad() on Agree
+  } else {
+    matureConsentGranted = true;
+    proceedWithVideoLoad();        // ✅ Load the video now
+    setupDoubleTapSeeking();	// ✅ Enable double-tap gestures
+	updateLogoInFullscreen();
+  }
+}
+	
+		
+function loadVideo(initialUrl) {
+  if (!player) return;
+  showLoading();
+  const poster = playerData.image;
+  const currentTime = player.currentTime || 0;
+
+  const sources = currentVideoSources.map(source => ({
+    src: source.url,
+    type: 'video/mp4',
+    size: parseInt(source.quality.replace('p', ''))
+  }));
+
+  const tracks = (playerData.captions || []).map(caption => ({
+    kind: 'subtitles',
+    label: caption.label,
+    srclang: caption.srclang,
+    src: caption.src,
+    default: caption.default || false
+  }));
+
+  player.source = {
+    type: 'video',
+    title: playerData.title,
+    sources: sources,
+    poster: poster,
+    tracks: tracks
+  };
+
+  player.once('canplay', () => {
+    player.currentTime = currentTime;
+    player.play().catch(err => {
+      showToast('Playback error. Trying fallback…');
+      tryFallback();
+    });
+    hideLoading();
+
+    // ✅ FIX: rebind gestures after video is playable
+    setupDoubleTapSeeking();
+  });
+
+  player.once('error', () => {
+    showToast('Video load error. Trying fallback…');
+    tryFallback();
+  });
+}
+
+
+function showMatureConsentMask() {
+  const mask = document.getElementById('matureConsentMask');
+  if (!mask) return;
+
+  mask.style.display = 'flex';
+
+  const agreeBtn = document.getElementById('agreeBtn');
+  const denyBtn = document.getElementById('denyBtn');
+  const countdownSpan = document.getElementById('countdown');
+
+  let countdown = 10;
+  countdownSpan.textContent = countdown;
+
+  const timer = setInterval(() => {
+    countdown--;
+    countdownSpan.textContent = countdown;
+    if (countdown <= 0) {
+      clearInterval(timer);
+      mask.innerHTML = "<h3 style='color: red;'>Access Denied</h3><p>You did not consent to view mature content.</p>";
+      disableVideo();  // 👈 this will stop/remove the video
+    }
+  }, 1000);
+
+  agreeBtn.onclick = () => {
+    clearInterval(timer);
+    matureConsentGranted = true; // ✅ allow Stream / Cast
+    mask.remove();
+    proceedWithVideoLoad();     // 👈 load the video
+    setupDoubleTapSeeking();    // ✅ BIND GESTURES HERE AFTER VIDEO LOAD
+	updateLogoInFullscreen();
+  };
+
+  denyBtn.onclick = () => {
+    clearInterval(timer);
+    matureConsentGranted = false;
+    mask.innerHTML = "<h3 style='color: red;'>Access Denied</h3><p>You chose not to view mature content.</p>";
+    disableVideo(); // 👈 stop the video permanently
+  };
+}
+
+
+
+
+function proceedWithVideoLoad() {
+  const mask = document.getElementById('matureConsentMask');
+  if (mask) mask.remove();
+
+  // Setup player data
+  document.getElementById('videoTitle').textContent = playerData.title;
+  document.getElementById('pageHeading').textContent = playerData.title;
+  document.title = playerData.title + ' - panguplay';
+  const posterUrl = playerData.image;
+  document.getElementById('videoPoster').src = posterUrl;
+  document.getElementById('player').setAttribute('data-poster', posterUrl);
+
+  // Setup video sources
+  currentVideoSources = [];
+  if (playerData.video) {
+    currentVideoSources.push({
+      url: playerData.video,
+      quality: '1080p'
+    });
+  }
+  if (playerData.alt) {
+    currentVideoSources.push({
+      url: playerData.alt,
+      quality: '720p'
+    });
+  }
+
+  setupResolutionSelector();
+  loadVideo(currentVideoSources[0]?.url || '');
+
+  // ✅ NOW it's safe to enable download
+  setupDownloadButton();
+  setupDoubleTapSeeking();
+}
+
+
+function disableVideo() {
+  const video = document.getElementById('player');
+  if (!video) return;
+
+  // Kill Plyr instance if needed
+  if (player) {
+    player.stop();
+    player.source = null; // Clear sources
+  }
+
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+
+  showToast('Video blocked due to lack of consent.');
+}
+
+    function tryFallback() {
+      const fallback = currentVideoSources.find(src => src.quality === '720p');
+      if (!fallback) return;
+      player.source = {
+        type: 'video',
+        sources: [{
+          src: fallback.url,
+          type: 'video/mp4',
+          size: 720
+        }],
+        poster: playerData.image
+      };
+      player.play().catch(err => {
+        console.error('Fallback failed:', err);
+        showToast('Fallback failed. No video available.');
+        hideLoading();
+      });
+    }
+
+  //setup share button
+    document.getElementById('shareBtn').addEventListener('click', () => {
+      const details = playerData.details || {};
+      const shareData = {
+        title: playerData.title,
+        text: `🎬 ${playerData.title}\n🌟 Rating: ${details.movieRating || 'N/A'}\n📀 Quality: ${details.quality || 'N/A'}\n🗣️ Language: ${details.language || 'N/A'}\n📁 Size: ${details.fileSize || 'N/A'}\n\nWatch now: https://purushothmathav.github.io/panguplay`,
+      };
+      if (navigator.share) {
+        navigator.share(shareData)
+          .then(() => showToast('Shared successfully!'))
+          .catch(err => {
+            console.error('Share failed:', err);
+            showToast('Failed to share. Please try again.');
+          });
+      } else {
+        navigator.clipboard.writeText(`${shareData.text}\n${shareData.url || ''}`)
+          .then(() => showToast('Link copied to clipboard!'))
+          .catch(err => {
+            console.error('Failed to copy link:', err);
+            showToast('Failed to copy link.');
+          });
+      }
+    });
+
+//setup stream button
+    document.getElementById('streamBtn').addEventListener('click', () => {
+  if (!matureConsentGranted) {
+    showToast('You must agree to view mature content before streaming.');
+    return;
+  }
+
+  let streamUrl;
+  if (currentEpisodeId && episodes.length > 0) {
+    streamUrl = episodes[currentEpisodeIndex].videoUrl;
+  } else if (currentVideoSources.length > 0) {
+    const activeSource = currentVideoSources.find(source => source.quality === currentQuality);
+    streamUrl = activeSource ? activeSource.url : currentVideoSources[0].url;
+  }
+  if (streamUrl) {
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    if (isAndroid) {
+      window.location.href = `intent://${streamUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;scheme=http;end;`;
+    } else {
+      window.open(streamUrl, '_blank');
+    }
+  } else {
+    showToast('No stream URL available.');
+  }
+});
+
+
+    // Setup resolution selector
+    function setupResolutionSelector() {
+      const resolutionSelector = document.getElementById('resolutionSelector');
+      resolutionSelector.innerHTML = '';
+      if (currentVideoSources.length <= 1) {
+        resolutionSelector.style.display = 'none';
+        return;
+      }
+      resolutionSelector.style.display = 'flex';
+      currentVideoSources.forEach(source => {
+        const button = document.createElement('button');
+        button.className = 'resolution-btn' + (source.quality === currentQuality ? ' active' : '');
+        button.textContent = source.quality;
+        button.onclick = () => {
+          const currentTime = player.currentTime;
+          currentQuality = source.quality;
+          document.querySelectorAll('.resolution-btn').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          const selected = currentVideoSources.find(v => v.quality === currentQuality);
+          if (selected) {
+            player.source = {
+              type: 'video',
+              sources: [{
+                src: selected.url,
+                type: 'video/mp4',
+                size: parseInt(selected.quality.replace('p', ''))
+              }],
+              poster: playerData.image
+            };
+            player.once('canplay', () => {
+              player.currentTime = currentTime;
+              player.play().catch(err => {
+                showToast('Playback error. Try another quality.');
+              });
+            });
+          }
+        };
+        resolutionSelector.appendChild(button);
+      });
+    }
+    
+    // Play episode for series
+   function playEpisode(episodeId) {
+      const index = episodes.findIndex(e => e.id === episodeId);
+      if (index === -1) return;
+      currentEpisodeId = episodeId;
+      currentEpisodeIndex = index;
+      const episode = episodes[index];
+	  
+// 🔁 NEW EPISODE POPUP — Show once per session
+const showId = playerData?.id || 'defaultShow';
+const popupSeen = sessionStorage.getItem(`seenNewPopup_${showId}`);
+const newest = episodes.find(e => e.isNew === 'yes');
+
+if (newest && newest.id !== episode.id && !popupSeen) {
+  showNewEpisodePopup(newest.id);
+}
+
+	  
+  // Handle episode-level important notice
+const notice = document.getElementById('importantNotice');
+const text = document.getElementById('importantText');
+
+if (notice && text) {
+  if (episode.important) {
+    text.textContent = episode.important;
+
+    // Reset any previous fade-out or hidden state
+    notice.style.display = 'flex';
+    notice.style.opacity = '1';
+    notice.style.transition = 'none'; // reset any existing transition
+
+    // Force reflow to restart transition cleanly
+    void notice.offsetWidth;
+
+    // Now add fade-out with delay
+    setTimeout(() => {
+      notice.style.transition = 'opacity 0.5s ease';
+      notice.style.opacity = '0';
+      setTimeout(() => {
+        notice.style.display = 'none';
+      }, 500);
+    }, 6000);
+  } else {
+    // No important message for this episode
+    notice.style.display = 'none';
+    notice.style.opacity = '1';
+    text.textContent = '';
+  }
+}
+	  
+      currentVideoSources = [];
+      if (episode.videoUrl) {
+        currentVideoSources.push({
+          url: episode.videoUrl,
+          quality: '1080p'
+        });
+      }
+      if (episode.altVideoUrl) {
+        currentVideoSources.push({
+          url: episode.altVideoUrl,
+          quality: '720p'
+        });
+      }
+      setupResolutionSelector();
+      loadVideo(currentVideoSources[0]?.url || '');
+	  /*
+	    document.getElementById('videoTitleOverlay').textContent =
+    `S${String(episode.season).padStart(2, '0')}E${String(episode.episode).padStart(2, '0')} - ${episode.title}`; */
+      updateHeaderTitle(playerData.title, true, episode.season, episode.episode, episode.title);
+      updateEpisodeButtons();
+      updateNavButtons();
+	   setupDownloadButton();
+	   updateLogoInFullscreen();
+	   /*
+	  if (matureConsentGranted) {
+  setupDownloadButton();
+} */
+    }
+    
+    function updateHeaderTitle(title, isSeries = false, seasonNumber = null, episodeNumber = null, episodeTitle = null) {
+      const headerElement = document.getElementById('pageHeading');
+      if (isSeries && seasonNumber !== null && episodeNumber !== null) {
+        headerElement.textContent = `S${String(seasonNumber).padStart(2, '0')}E${String(episodeNumber).padStart(2, '0')} - ${episodeTitle || `Episode ${episodeNumber}`}`;
+      } else {
+        headerElement.textContent = title;
+      }
+    }
+
+    function updateEpisodeButtons() {
+      const container = document.getElementById('episodeButtons');
+      container.innerHTML = '';
+      episodes.forEach(ep => {
+        const btn = document.createElement('button');
+        btn.className = 'episode-button' + (ep.id === currentEpisodeId ? ' active' : '');
+        btn.textContent = `E${ep.episode}`;
+        btn.onclick = () => playEpisode(ep.id);
+        container.appendChild(btn);
+      });
+    }
+
+	function updateNavButtons() {
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const navContainer = document.getElementById('navButtons');
+
+  if (episodes.length <= 1) {
+    navContainer.style.display = 'none';
+    return;
+  }
+
+  navContainer.style.display = 'flex';
+
+  const prevIndex = currentEpisodeIndex - 1;
+  const nextIndex = currentEpisodeIndex + 1;
+
+  if (prevIndex >= 0) {
+    prevBtn.disabled = false;
+    prevBtn.innerHTML = `<i class="fas fa-step-backward"></i> EP${episodes[prevIndex].episode}`;
+  } else {
+    prevBtn.disabled = true;
+    prevBtn.innerHTML = `<i class="fas fa-step-backward"></i> EP-`;
+  }
+
+  if (nextIndex < episodes.length) {
+    nextBtn.disabled = false;
+    nextBtn.innerHTML = `EP${episodes[nextIndex].episode} <i class="fas fa-step-forward"></i>`;
+  } else {
+    nextBtn.disabled = true;
+    nextBtn.innerHTML = `EP- <i class="fas fa-step-forward"></i>`;
+  }
+}
+
+
+    function playPreviousEpisode() {
+      if (currentEpisodeIndex > 0) {
+        playEpisode(episodes[currentEpisodeIndex - 1].id);
+      }
+    }
+
+    function playNextEpisode() {
+      if (currentEpisodeIndex < episodes.length - 1) {
+        playEpisode(episodes[currentEpisodeIndex + 1].id);
+      }
+    }
+
+    function copyStreamUrl() {
+      let urlToCopy;
+      if (currentEpisodeId && episodes.length > 0) {
+        urlToCopy = episodes[currentEpisodeIndex].videoUrl;
+      } else if (currentVideoSources.length > 0) {
+        const activeSource = currentVideoSources.find(source => source.quality === currentQuality);
+        urlToCopy = activeSource ? activeSource.url : currentVideoSources[0].url;
+      }
+      if (urlToCopy) {
+        navigator.clipboard.writeText(urlToCopy)
+          .then(() => showToast('Stream URL copied to clipboard!'))
+          .catch(err => {
+            console.error('Failed to copy: ', err);
+            showToast('Failed to copy URL');
+          });
+      }
+    }
+
+    function showLoading() {
+      document.getElementById('loadingOverlay').style.display = 'flex';
+    }
+    function hideLoading() {
+      document.getElementById('loadingOverlay').style.display = 'none';
+    }
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.style.opacity = 1;
+      setTimeout(() => {
+        toast.style.opacity = 0;
+      }, 3000);
+    }
+    function goBack() {
+      window.history.back();
+    }
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.getElementById('mobileBackdrop').style.display = 'block';
+    }
+    function closeMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('mobileBackdrop').style.display = 'none';
+    }
+
+    function searchFunction() {
+      const input = document.getElementById('searchInput');
+      const clearButton = document.getElementById('clearButton');
+      if (input.value) {
+        clearButton.style.display = 'block';
+      } else {
+        clearButton.style.display = 'none';
+        document.getElementById('searchResults').style.display = 'none';
+      }
+    }
+
+  
+    function clearSearch() {
+      const input = document.getElementById('searchInput');
+      input.value = '';
+      document.getElementById('clearButton').style.display = 'none';
+      document.getElementById('searchResults').style.display = 'none';
+    }
+
+const video = document.getElementById('player');
+video.addEventListener('loadedmetadata', () => {
+  const ratio = video.videoWidth / video.videoHeight;
+  const wrapper = document.querySelector('.player-wrapper');
+
+  if (ratio < 1) {
+    // Portrait mode
+    wrapper.style.maxWidth = '406px';
+    wrapper.style.margin = '0 auto';
+  } else {
+    // Landscape
+    wrapper.style.maxWidth = '100%';
+  }
+}); 
+
+document.addEventListener('fullscreenchange', () => {
+  const wrapper = document.querySelector('.player-wrapper');
+  if (document.fullscreenElement) {
+    wrapper.style.justifyContent = 'center';
+    wrapper.style.alignItems = 'center';
+  } else {
+    wrapper.style.justifyContent = '';
+    wrapper.style.alignItems = '';
+  }
+});
+
+function updateEpisodeButtonsInFullscreen() {
+  const episodeNav = document.querySelector('.episode-navigation');
+
+  if (!episodeNav) return;
+
+  // Clone to use for fullscreen
+  const navClone = episodeNav.cloneNode(true);
+  navClone.id = 'episodeNavigationFullscreen';
+
+  function handleFullscreenChange() {
+    const isFullscreen = document.fullscreenElement !== null;
+
+    if (isFullscreen) {
+      // Remove old clone if exists
+      const oldClone = document.getElementById('episodeNavigationFullscreen');
+      if (oldClone) oldClone.remove();
+
+      // Append to fullscreen element
+      document.fullscreenElement.appendChild(navClone);
+
+      // Set styles
+      navClone.style.position = 'fixed';
+      navClone.style.bottom = '60px';
+      navClone.style.left = '0';
+      navClone.style.right = '0';
+      navClone.style.zIndex = '9999';
+      navClone.style.display = 'flex';
+      navClone.style.justifyContent = 'space-between';
+      navClone.style.padding = '0 16px';
+      navClone.classList.add('show'); // force visibility
+
+      // Adjust for mobile or desktop
+      const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      const isLandscape = window.innerWidth > window.innerHeight;
+
+      if (isMobile && isLandscape) {
+        // Mobile landscape: smaller button size
+        const buttons = navClone.querySelectorAll('.episode-nav-btn');
+        buttons.forEach(btn => {
+          btn.style.padding = '8px 12px';
+          btn.style.fontSize = '12px';
+        });
+      }
+    } else {
+      const oldClone = document.getElementById('episodeNavigationFullscreen');
+      if (oldClone) oldClone.remove();
+    }
+  }
+
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+  document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+  document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+  document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+  window.addEventListener('orientationchange', () => {
+    if (document.fullscreenElement) {
+      setTimeout(handleFullscreenChange, 100);
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (document.fullscreenElement) {
+      setTimeout(handleFullscreenChange, 100);
+    }
+  });
+}
+
+
+  </script>
+  
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/panguplay/service-worker.js')
+        .then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+          console.error('Service Worker registration failed:', error);
+        });
+    });
+  }
+</script>
+
+<script src="/panguplay/orientation-lock.js"></script>
+
+<script>
+
+const gestureZone = document.getElementById('gestureZone');
+
+gestureZone.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+gestureZone.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  if (touchEndX - touchStartX > 60) {
+    toggleMenu();
+  }
+});
+
+</script>
+  
+</body>
+</html>
